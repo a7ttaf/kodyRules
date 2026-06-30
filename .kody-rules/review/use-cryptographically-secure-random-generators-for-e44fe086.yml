@@ -1,0 +1,14 @@
+title: Use Cryptographically Secure Random Generators for Tokens
+rule: >-
+  For security tokens (session IDs, CSRF tokens, password‐reset links), use cryptographically secure random functions like random_bytes() or openssl_random_pseudo_bytes(), instead of predictable functions like rand() or mt_rand().
+severity: high
+scope: file
+examples:
+  - snippet: "<?php\n$token = mt_rand();\n?>"
+    isCorrect: false
+  - snippet: "<?php\n$token = bin2hex(random_bytes(16));\n?>"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

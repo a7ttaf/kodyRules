@@ -1,0 +1,14 @@
+title: Use Template Literals Instead of String Concatenation
+rule: >-
+  Check for cases of string concatenation using +. Template literals improve readability and are less error-prone.
+severity: low
+scope: file
+examples:
+  - snippet: "const message = \"Hello, \" + title + \"!\"\n"
+    isCorrect: false
+  - snippet: "const message = `Hello, ${title}!`;\n"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

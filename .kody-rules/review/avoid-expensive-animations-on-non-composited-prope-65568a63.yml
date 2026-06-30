@@ -1,0 +1,13 @@
+title: Avoid expensive animations on non-composited properties
+rule: Animate transform/opacity; avoid top/left/width/box-shadow on large elements.
+severity: low
+scope: file
+examples:
+  - snippet: ".el{ transition: width .2s }"
+    isCorrect: false
+  - snippet: ".el{ transition: transform .2s }"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

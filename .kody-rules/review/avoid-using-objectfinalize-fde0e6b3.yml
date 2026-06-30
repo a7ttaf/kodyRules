@@ -1,0 +1,14 @@
+title: Avoid Using `Object.finalize()`
+rule: >-
+  Ensure that the `finalize()` method is not used. Use try-with-resources or explicit cleanup methods instead.
+severity: high
+scope: file
+examples:
+  - snippet: "@Override\nprotected void finalize() {\n    // Cleanup logic\n}"
+    isCorrect: false
+  - snippet: "// Use try-with-resources or explicit cleanup instead"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

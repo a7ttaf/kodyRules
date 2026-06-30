@@ -1,0 +1,14 @@
+title: Ensure `ThreadLocal` Variables Are Properly Cleaned
+rule: >-
+  Ensure that `ThreadLocal` variables are cleaned using `.remove()` to avoid memory leaks.
+severity: high
+scope: file
+examples:
+  - snippet: "public class ThreadLocalUserSession implements UserSession {\n\n  private static final ThreadLocal<UserSession> DELEGATE = new ThreadLocal<>();\n\n  public UserSession get() {\n    UserSession session = DELEGATE.get();\n    if (session != null) {\n      return session;\n    }\n    throw new UnauthorizedException(\"User is not authenticated\");\n  }\n\n  public void set(UserSession session) {\n    DELEGATE.set(session);\n  }\n\n   public void incorrectCleanup() {\n     DELEGATE.set(null); // Noncompliant\n   }\n\n  // some other methods without a call to DELEGATE.remove()\n}"
+    isCorrect: false
+  - snippet: "public class ThreadLocalUserSession implements UserSession {\n\n  private static final ThreadLocal<UserSession> DELEGATE = new ThreadLocal<>();\n\n  public UserSession get() {\n    UserSession session = DELEGATE.get();\n    if (session != null) {\n      return session;\n    }\n    throw new UnauthorizedException(\"User is not authenticated\");\n  }\n\n  public void set(UserSession session) {\n    DELEGATE.set(session);\n  }\n\n  public void unload() {\n    DELEGATE.remove(); // Compliant\n  }\n\n  // ...\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

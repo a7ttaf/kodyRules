@@ -1,0 +1,14 @@
+title: Versioned static resources with long cache
+rule: >-
+  Enable content versioning and long-lived caching via ResourceChain with VersionResourceResolver and set Cache-Control to public, max-age=31536000 for static locations; keep HTML templates non-immutable.
+severity: high
+scope: file
+examples:
+  - snippet: "new VersionResourceResolver().addContentVersionStrategy(\"/\")"
+    isCorrect: true
+  - snippet: "addResourceHandler(\"/assets/**\").addResourceLocations(...); // no cache"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

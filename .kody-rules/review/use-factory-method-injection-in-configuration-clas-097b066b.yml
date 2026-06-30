@@ -1,0 +1,14 @@
+title: Use Factory Method Injection in `@Configuration` Classes
+rule: >-
+  Ensure that factory method injection is used in `@Configuration` classes instead of `@Autowired` field injection.
+severity: critical
+scope: file
+examples:
+  - snippet: "@Configuration\npublic class  FooConfiguration {\n\n  @Autowired private  DataSource dataSource \u037e  // Noncompliant\n\n  @Bean\n  public  MyService myService() {\n    return new  MyService(this .dataSource )\u037e\n  }\n}"
+    isCorrect: false
+  - snippet: "@Configuration\npublic class  FooConfiguration {\n\n @Bean\n  public  MyService myService(DataSource dataSource) {\n    return new  MyService(dataSource)\u037e\n  }\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

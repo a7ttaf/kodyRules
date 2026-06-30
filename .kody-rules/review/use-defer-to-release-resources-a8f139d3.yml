@@ -1,0 +1,14 @@
+title: Use defer to Release Resources
+rule: >-
+  Always use `defer` to release resources like files or locks when a function has multiple exit points. Open or lock resources and immediately defer their close/unlock to ensure they get released on every code path.
+severity: high
+scope: file
+examples:
+  - snippet: "func ReadConfig(path string) ([]byte, error) {\n    f, err := os.Open(path)\n    if err != nil {\n        return nil, err\n    }\n    data, err := io.ReadAll(f)\n    if err != nil {\n        f.Close() // closes file on error path\n        return nil, err\n    }\n    // Forgot to close file on success path\n    return data, nil\n}"
+    isCorrect: false
+  - snippet: "func ReadConfig(path string) ([]byte, error) {\n    f, err := os.Open(path)\n    if err != nil {\n        return nil, err\n    }\n    defer f.Close()\n    data, err := io.ReadAll(f)\n    if err != nil {\n        return nil, err\n    }\n    return data, nil\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

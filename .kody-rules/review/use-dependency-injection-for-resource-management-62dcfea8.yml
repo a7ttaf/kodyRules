@@ -1,0 +1,14 @@
+title: Use dependency injection for resource management
+rule: >-
+  Pass dependencies (clients, sessions, configs) into functions/classes instead of creating them internally.
+severity: low
+scope: file
+examples:
+  - snippet: "def repo(): return DB()"
+    isCorrect: false
+  - snippet: "def repo(db: DB): return db.query(...)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

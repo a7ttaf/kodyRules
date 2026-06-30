@@ -1,0 +1,14 @@
+title: Use object literals for event payloads
+rule: >-
+  When emitting custom events with data using `$emit`, pass an object literal as the payload instead of a raw primitive value, especially if there's a chance more data might be needed later.
+severity: low
+scope: file
+examples:
+  - snippet: "this.$emit('user-updated', userId);"
+    isCorrect: false
+  - snippet: "this.$emit('user-updated', { userId: userId, status: 'active' });"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

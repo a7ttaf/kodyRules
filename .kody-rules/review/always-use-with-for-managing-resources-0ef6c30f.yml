@@ -1,0 +1,14 @@
+title: Always Use `with` for Managing Resources
+rule: >-
+  Ensure that resources such as files, sockets, or database connections are managed using the `with` statement. Code that explicitly calls `.close()` without `with` should be refactored to use context managers for automatic resource cleanup.
+severity: low
+scope: file
+examples:
+  - snippet: "file = open('test.txt', 'r')\ndata = file.read()\nfile.close()"
+    isCorrect: false
+  - snippet: "with open('test.txt', 'r') as file:\n    data = file.read()"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

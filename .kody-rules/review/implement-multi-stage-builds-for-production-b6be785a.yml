@@ -1,0 +1,14 @@
+title: Implement multi-stage builds for production
+rule: >-
+  Use a builder stage for toolchains/dev deps and a minimal runtime stage that contains only runtime artifacts.
+severity: high
+scope: file
+examples:
+  - snippet: "Single-stage image with devDependencies included"
+    isCorrect: false
+  - snippet: "Two-stage build: build -> minimal runtime"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

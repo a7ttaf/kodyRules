@@ -1,0 +1,14 @@
+title: Optimize Docker layer caching strategy
+rule: >-
+  Copy and install dependencies before application sources; ensure .dockerignore excludes node_modules and build outputs.
+severity: low
+scope: file
+examples:
+  - snippet: "COPY . . && npm ci"
+    isCorrect: false
+  - snippet: "COPY package*.json ./ && npm ci && COPY . ."
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Propagate context with timeouts for external calls
+rule: >-
+  Use context.WithTimeout for HTTP and DB calls; log request deadlines and results; treat timeouts as audit-worthy events.
+severity: low
+scope: file
+examples:
+  - snippet: "context.WithTimeout(ctx, 5time.Second)"
+    isCorrect: true
+  - snippet: "context.Background()"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

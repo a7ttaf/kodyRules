@@ -1,0 +1,13 @@
+title: Add input validation for API parameters
+rule: Validate presence, format, and ranges for incoming parameters before processing.
+severity: high
+scope: file
+examples:
+  - snippet: "Long.parseLong(q.get(\"n\")) // no checks"
+    isCorrect: false
+  - snippet: "if(!NUMBER.matcher(n).matches()) return badRequest()"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

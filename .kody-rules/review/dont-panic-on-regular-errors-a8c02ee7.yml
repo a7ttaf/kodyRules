@@ -1,0 +1,14 @@
+title: Don't Panic on Regular Errors
+rule: >-
+  Reserve `panic` for unrecoverable situations (like invariant violations or truly fatal errors). For expected error conditions (file not found, invalid input, etc.), return an `error` to the caller instead of panicking.
+severity: high
+scope: file
+examples:
+  - snippet: "func GetConfig(path string) []byte {\n    data, err := os.ReadFile(path)\n    if err != nil {\n        panic(\"could not read config: \" + err.Error())\n    }\n    return data\n}"
+    isCorrect: false
+  - snippet: "func GetConfig(path string) ([]byte, error) {\n    data, err := os.ReadFile(path)\n    if err != nil {\n        return nil, fmt.Errorf(\"could not read config: %w\", err)\n    }\n    return data, nil\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

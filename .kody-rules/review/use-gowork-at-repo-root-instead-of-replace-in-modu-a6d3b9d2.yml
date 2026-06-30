@@ -1,0 +1,14 @@
+title: Use go.work at repo root instead of replace in modules
+rule: >-
+  Maintain a single go.work at the monorepo root listing all local modules via use directives. Forbid go.mod replace directives that point to sibling modules (e.g., ../pkg) in workspace modules.
+severity: high
+scope: file
+examples:
+  - snippet: "replace github.com/acme/lib => ../lib"
+    isCorrect: false
+  - snippet: "go.work\nuse ( ./services/service ./libs/lib )"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

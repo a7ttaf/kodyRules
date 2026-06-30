@@ -1,0 +1,18 @@
+title: Self-closing components
+rule: >-
+  Components with no content should be self-closing in Single-File Components, string templates, and JSX - but never in in-DOM templates.
+severity: low
+scope: file
+examples:
+  - snippet: "<MyComponent></MyComponent> "
+    isCorrect: false
+  - snippet: "<my-component/> "
+    isCorrect: false
+  - snippet: "<MyComponent/> "
+    isCorrect: true
+  - snippet: "<my-component></my-component> "
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

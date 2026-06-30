@@ -1,0 +1,24 @@
+title: Component name casing in JS/JSX
+rule: >-
+  Component names in JS/JSX should always be PascalCase, though they may be kebab-case inside strings for simpler applications that only use global component registration through `app.component`.
+severity: low
+scope: file
+examples:
+  - snippet: "app.component('myComponent', { /*...*/ })"
+    isCorrect: false
+  - snippet: "import myComponent from './MyComponent.vue'"
+    isCorrect: false
+  - snippet: "export default { name: 'my-component' }"
+    isCorrect: false
+  - snippet: "app.component('MyComponent', { /*...*/ })"
+    isCorrect: true
+  - snippet: "app.component('my-component', { /*...*/ })"
+    isCorrect: true
+  - snippet: "import MyComponent from './MyComponent.vue'"
+    isCorrect: true
+  - snippet: "export default { name: 'MyComponent' }"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

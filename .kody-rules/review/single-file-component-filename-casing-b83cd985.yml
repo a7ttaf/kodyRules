@@ -1,0 +1,18 @@
+title: Single-file component filename casing
+rule: >-
+  Filenames of Single-File Components should either be always PascalCase or always kebab-case.
+severity: low
+scope: file
+examples:
+  - snippet: "mycomponent.vue"
+    isCorrect: false
+  - snippet: "myComponent.vue"
+    isCorrect: false
+  - snippet: "MyComponent.vue"
+    isCorrect: true
+  - snippet: "my-component.vue"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

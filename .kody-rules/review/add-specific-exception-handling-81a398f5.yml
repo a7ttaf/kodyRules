@@ -1,0 +1,14 @@
+title: Add specific exception handling
+rule: >-
+  Catch and handle only the exceptions you expect (e.g., KeyError, ValueError, TimeoutError); let unknown ones bubble.
+severity: high
+scope: file
+examples:
+  - snippet: "except Exception: pass"
+    isCorrect: false
+  - snippet: "except (KeyError, ValueError) as e: ..."
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

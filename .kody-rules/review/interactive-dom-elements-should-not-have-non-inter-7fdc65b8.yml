@@ -1,0 +1,14 @@
+title: Interactive DOM elements should not have non-interactive ARIA roles
+rule: >-
+  Ensure that interactive DOM elements have appropriate ARIA roles. Incorrect roles can mislead assistive technologies, affecting accessibility.
+severity: high
+scope: file
+examples:
+  - snippet: "function myButton() {\n    return <button role=\"article\">Click me!</button>; // Noncompliant; \"button\" is interactive, but \"article\" isn't\n}"
+    isCorrect: false
+  - snippet: "function myButton() {\n    return <button role=\"button\">Click me!</button>;\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Avoid Using Mutable Global Variables
+rule: >-
+  Identify global variables that are mutable (e.g., lists, dictionaries). Global mutable state can cause unpredictable behavior. Recommend using local variables or encapsulating state in a class.
+severity: high
+scope: file
+examples:
+  - snippet: "global_state = {}\n\ndef update_state(key, value):\n    global global_state\n    global_state[key] = value"
+    isCorrect: false
+  - snippet: "class GlobalState:\n    def __init__(self):\n        self.state = {}\n\n    def update_state(self, key, value):\n        self.state[key] = value\n\nglobal_state = GlobalState()\nglobal_state.update_state(\"key\", \"\n"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

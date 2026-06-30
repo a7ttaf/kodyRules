@@ -1,0 +1,14 @@
+title: Pin container images by digest in Helm/K8s
+rule: >-
+  Use immutable image digests (repo@sha256:...) instead of mutable tags for production workloads.
+severity: high
+scope: file
+examples:
+  - snippet: "image: backend@sha256:abc123..."
+    isCorrect: true
+  - snippet: "image: backend:1.2.3"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

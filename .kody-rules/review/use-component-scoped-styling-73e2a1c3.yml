@@ -1,0 +1,9 @@
+title: Use component-scoped styling
+rule: >-
+  For applications, styles in a top-level `App` component and in layout components may be global, but all other components should always be scoped. This can be achieved through CSS modules, class-based strategies like BEM, or the `scoped` attribute in Single-File Components.
+severity: high
+scope: file
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Structured audit log middleware with trace IDs
+rule: >-
+  Attach a trace_id (e.g., from request header or generated UUID) and emit structured JSON logs for login, role change, and data export routes.
+severity: high
+scope: file
+examples:
+  - snippet: "logger.info({ action:'role.change', trace_id })"
+    isCorrect: true
+  - snippet: "console.log('role changed')"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

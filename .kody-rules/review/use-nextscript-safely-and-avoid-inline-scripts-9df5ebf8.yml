@@ -1,0 +1,14 @@
+title: Use next/script safely and avoid inline scripts
+rule: >-
+  For third-party scripts, use <Script> with an appropriate strategy and onLoad callbacks. Avoid dangerouslySetInnerHTML for scripts.
+severity: low
+scope: file
+examples:
+  - snippet: "Inline <script> in layout"
+    isCorrect: false
+  - snippet: "<Script strategy=\"afterInteractive\" />"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

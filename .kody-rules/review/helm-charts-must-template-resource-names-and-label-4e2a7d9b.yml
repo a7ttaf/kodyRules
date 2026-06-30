@@ -1,0 +1,14 @@
+title: Helm charts must template resource names and labels consistently
+rule: >-
+  Use template helpers to set metadata.name and labels (app.kubernetes.io/) consistently across templates; prohibit hardcoded mismatches.
+severity: low
+scope: file
+examples:
+  - snippet: "name: {{ include \"app.fullname\" . }}"
+    isCorrect: true
+  - snippet: "name: users-api # hardcoded"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Cache expensive object creations
+rule: >-
+  Hoist and reuse costly objects (Pattern, DateTimeFormatter) rather than re-creating per use.
+severity: low
+scope: file
+examples:
+  - snippet: "new DateTimeFormatterBuilder() in loop"
+    isCorrect: false
+  - snippet: "static final Pattern P = Pattern.compile(...)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

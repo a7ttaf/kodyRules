@@ -1,0 +1,14 @@
+title: Avoid asynchronous operations in constructors
+rule: >-
+  Ensure that constructors do not include asynchronous operations. Constructors should initialize class instances synchronously. If async logic is required, suggest moving it to a separate initialization method.
+severity: high
+scope: file
+examples:
+  - snippet: "class MyClass {\n  constructor() {\n    Promise.resolve().then(() => this.data = fetchData()); // Noncompliant, this.data will be undefined in the new instance\n  }\n}"
+    isCorrect: false
+  - snippet: "class MyClass {\n  constructor() {\n    this.data = null;\n  }\n\n  async initialize() {\n    this.data = await fetchData();\n  }\n}\n\n(async () => {\n  const myObject = new MyClass();\n  await myObject.initialize();\n})();"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

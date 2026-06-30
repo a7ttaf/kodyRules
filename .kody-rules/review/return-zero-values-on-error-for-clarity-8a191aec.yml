@@ -1,0 +1,14 @@
+title: Return zero values on error for clarity
+rule: >-
+  When returning (T, error), return the zero value for T (or nil for pointers/slices/maps) whenever error != nil.
+severity: low
+scope: file
+examples:
+  - snippet: "return result, err // result is non-zero"
+    isCorrect: false
+  - snippet: "var z T; return z, err"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

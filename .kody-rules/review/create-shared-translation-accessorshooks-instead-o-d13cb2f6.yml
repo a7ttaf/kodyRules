@@ -1,0 +1,14 @@
+title: Create shared translation accessors/hooks instead of prop drilling
+rule: >-
+  Avoid prop drilling translation functions/objects; expose shared accessors (e.g., a global translation service or context API).
+severity: low
+scope: file
+examples:
+  - snippet: "pass t through multiple component levels"
+    isCorrect: false
+  - snippet: "use a shared i18n accessor instead of drilling"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

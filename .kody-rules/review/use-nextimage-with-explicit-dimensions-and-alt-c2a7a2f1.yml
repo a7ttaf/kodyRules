@@ -1,0 +1,14 @@
+title: Use next/image with explicit dimensions and alt
+rule: >-
+  Always use the Next.js Image component for images with width/height (or fill) and meaningful alt text. Avoid plain <img> for app assets.
+severity: high
+scope: file
+examples:
+  - snippet: "<img src=\"/avatar.jpg\">"
+    isCorrect: false
+  - snippet: "<Image src=\"/avatar.jpg\" width={64} height={64} alt=\"User avatar\" />"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

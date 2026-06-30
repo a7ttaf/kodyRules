@@ -1,0 +1,14 @@
+title: Enable CSRF prevention
+rule: >-
+  Ensure that CSRF protection is enforced. Disabling CSRF protection allows malicious sites to execute unauthorized actions on behalf of authenticated users.
+severity: high
+scope: file
+examples:
+  - snippet: "new ApolloServer({\n  csrfPrevention: false,\n});"
+    isCorrect: false
+  - snippet: "new ApolloServer({\n  csrfPrevention: true,\n});"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

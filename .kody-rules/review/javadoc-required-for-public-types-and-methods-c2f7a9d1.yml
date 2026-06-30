@@ -1,0 +1,14 @@
+title: Javadoc required for public types and methods
+rule: >-
+  All public classes, interfaces, and methods must include Javadoc with a summary sentence, @param for each parameter, @return when not void, and @throws where applicable.
+severity: high
+scope: file
+examples:
+  - snippet: "/** Compute sum. @param a @param b @return sum */\npublic int add(int a, int b){ return a + b; }"
+    isCorrect: true
+  - snippet: "public int add(int a, int b){ return a + b; }"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

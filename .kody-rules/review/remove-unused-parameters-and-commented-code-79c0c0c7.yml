@@ -1,0 +1,14 @@
+title: Remove unused parameters and commented code
+rule: >-
+  Delete dead/commented code and unused params; rely on version control for history.
+severity: low
+scope: file
+examples:
+  - snippet: "// TODO remove later"
+    isCorrect: false
+  - snippet: "clean method signature"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

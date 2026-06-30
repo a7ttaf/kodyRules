@@ -1,0 +1,16 @@
+title: Disabling Vue.js built-in escaping is security-sensitive
+rule: >-
+  Avoid using directives or features that bypass Vue's built-in HTML escaping mechanisms, such as the `v-html` directive, unless the content is known to be safe or has been properly sanitized.
+severity: high
+scope: file
+examples:
+  - snippet: "<div v-html=\"userInput\"></div> "
+    isCorrect: false
+  - snippet: "<div>{{ userInput }}</div> "
+    isCorrect: true
+  - snippet: "<div v-html=\"sanitizedInput\"></div> "
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

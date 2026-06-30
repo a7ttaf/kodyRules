@@ -1,0 +1,14 @@
+title: Don't Compare Addresses to nil
+rule: >-
+  Never compare the address of a variable to nil (e.g., `&x == nil`). To check if a pointer is nil, compare the pointer itself to nil. The address of a variable (`&x`) will always be non-nil if `x` exists.
+severity: high
+scope: file
+examples:
+  - snippet: "var ptr *int\nif &ptr != nil {\n    // This block will always execute, even if ptr is nil\n    fmt.Println(\"ptr is not nil\")\n}"
+    isCorrect: false
+  - snippet: "var ptr *int\nif ptr != nil {\n    // This will execute only if ptr points to a value\n    fmt.Println(\"ptr is not nil\")\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

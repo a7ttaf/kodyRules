@@ -1,0 +1,14 @@
+title: Derive TypeScript types from validation schemas
+rule: >-
+  Avoid duplicating runtime schemas and TypeScript types; derive types from constants/functions or declare as const tuples.
+severity: low
+scope: file
+examples:
+  - snippet: "type X='a'|'b'; const ARR=['a','b']"
+    isCorrect: false
+  - snippet: "const ARR=['a','b'] as const; type X=typeof ARR[number]"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

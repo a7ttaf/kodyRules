@@ -1,0 +1,14 @@
+title: Use computed/derived properties for repeated calculations
+rule: >-
+  Compute expensive derived values once per input set and reuse them rather than recalculating in multiple places.
+severity: low
+scope: file
+examples:
+  - snippet: "recompute the same reduce several times"
+    isCorrect: false
+  - snippet: "derive once and reuse"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

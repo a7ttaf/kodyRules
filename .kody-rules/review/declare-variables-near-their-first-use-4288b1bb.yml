@@ -1,0 +1,14 @@
+title: Declare Variables Near Their First Use
+rule: >-
+  Ensure that variables are declared as close as possible to their first use to improve readability.
+severity: low
+scope: file
+examples:
+  - snippet: "int result;\n// Many lines of code\nresult = computeResult();"
+    isCorrect: false
+  - snippet: "int result = computeResult();"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

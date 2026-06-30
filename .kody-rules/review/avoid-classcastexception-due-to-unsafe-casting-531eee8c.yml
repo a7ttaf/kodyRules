@@ -1,0 +1,14 @@
+title: Avoid ClassCastException Due to Unsafe Casting
+rule: >-
+  Ensure that `instanceof` checks are used before performing explicit type casting to prevent `ClassCastException`.
+severity: high
+scope: file
+examples:
+  - snippet: "private String hexString(Object o) {\n  return Integer.toHexString((Integer) o); // Noncompliant if hexString is called with a String for example\n}"
+    isCorrect: false
+  - snippet: "private String hexString(Integer i) {\n  return Integer.toHexString(i);\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

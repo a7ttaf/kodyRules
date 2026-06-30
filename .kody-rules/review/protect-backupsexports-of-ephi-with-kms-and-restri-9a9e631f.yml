@@ -1,0 +1,14 @@
+title: Protect backups/exports of ePHI with KMS and restricted buckets
+rule: >-
+  Write ePHI backups to storage with server-side encryption (SSE-KMS) and least-privilege access; disallow public ACLs and cross-account access without a BAA. Record the KMS key id in metadata.
+severity: high
+scope: file
+examples:
+  - snippet: "put_object(bucket,\"phi-backups\", data) // default"
+    isCorrect: false
+  - snippet: "put_object_kms(bucket,\"phi-backups\", kid, data)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

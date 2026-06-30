@@ -1,0 +1,14 @@
+title: Encrypt ePHI at rest with KMS-managed AES-256 and envelope keys
+rule: >-
+  Before persisting ePHI, encrypt using a data key protected by a Key Management Service (KMS). Use authenticated encryption (AES-256-GCM or equivalent), rotate keys, and store the key id and algorithm with the record.
+severity: critical
+scope: file
+examples:
+  - snippet: "db.Save(Record{Note: note}) // plaintext"
+    isCorrect: false
+  - snippet: "cipher, kid := kms.Encrypt(ctx, \"alias/phi-data\", ephi)\ndb.Save(Record{Blob: cipher, KMSKeyID: kid})"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

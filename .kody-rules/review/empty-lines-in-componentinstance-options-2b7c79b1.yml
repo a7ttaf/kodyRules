@@ -1,0 +1,14 @@
+title: Empty lines in component/instance options
+rule: >-
+  Consider adding one empty line between multi-line properties (like complex `props`, `computed`, `methods`, `watch` objects) within the component options, especially in large components.
+severity: low
+scope: file
+examples:
+  - snippet: "props: {\n  value: { /*...*/ },\n  focused: { /*...*/ }\n},\ncomputed: {\n  formattedValue() { /*...*/ },\n  inputClasses() { /*...*/ }\n}"
+    isCorrect: true
+  - snippet: "props: {\n  value: { /*...*/ },\n\n  focused: { /*...*/ }\n},\n\ncomputed: {\n  formattedValue() { /*...*/ },\n\n  inputClasses() { /*...*/ }\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

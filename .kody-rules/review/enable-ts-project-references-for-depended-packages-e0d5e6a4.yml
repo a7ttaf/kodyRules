@@ -1,0 +1,14 @@
+title: Enable TS project references for depended packages
+rule: >-
+  When a TS package depends on another workspace package, tsconfig.json must set "composite": true and include a "references" entry to the dependency; root must aggregate paths via tsconfig.base.json if used.
+severity: low
+scope: file
+examples:
+  - snippet: "\"references\": [{ \"path\": \"../core\" }]"
+    isCorrect: true
+  - snippet: "\"compilerOptions\": { \"composite\": false }"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

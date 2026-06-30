@@ -1,0 +1,14 @@
+title: Enforce minimum coverage in CI
+rule: >-
+  CI must fail the build when line coverage drops below the project threshold (e.g., 80%); publish coverage reports as artifacts.
+severity: high
+scope: pull-request
+examples:
+  - snippet: "coverage report --fail-under=80"
+    isCorrect: true
+  - snippet: "run: test # no coverage gate"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

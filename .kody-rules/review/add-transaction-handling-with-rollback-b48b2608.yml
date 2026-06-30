@@ -1,0 +1,14 @@
+title: Add transaction handling with rollback
+rule: >-
+  Wrap multi-statement DB operations in a transaction; commit on success and rollback on any exception.
+severity: high
+scope: file
+examples:
+  - snippet: "do_many_writes(conn)  # no tx"
+    isCorrect: false
+  - snippet: "with conn.begin(): do_many_writes(conn)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

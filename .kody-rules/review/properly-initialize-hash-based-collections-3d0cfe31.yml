@@ -1,0 +1,14 @@
+title: Properly Initialize Hash-Based Collections
+rule: >-
+  Ensure that `HashMap` and `HashSet` are initialized with appropriate capacity settings to optimize performance.
+severity: high
+scope: file
+examples:
+  - snippet: "private static final int KNOWN_CAPACITY = 1_000_000;\n\npublic static Map<String, Integer> buildAMap() {\n    return new HashMap<>(KNOWN_CAPACITY); // Noncompliant\n}\n\npublic static Set<String> buildASet() {\n    return new HashSet<>(KNOWN_CAPACITY); // Noncompliant\n}"
+    isCorrect: false
+  - snippet: "private static final int KNOWN_CAPACITY = 1_000_000;\n\npublic static Map<String, Integer> buildABetterMap() {\n    return HashMap.newHashMap(KNOWN_CAPACITY);\n}\n\npublic static Set<String> buildABetterSet() {\n    return HashSet.newHashSet(KNOWN_CAPACITY);\n}\n\npublic static Set<String> buildABetterSet(float customLoadFactor) {\n    return new HashSet<>(KNOWN_CAPACITY, customLoadFactor);\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

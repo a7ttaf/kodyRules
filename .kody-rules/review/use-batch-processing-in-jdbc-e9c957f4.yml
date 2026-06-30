@@ -1,0 +1,14 @@
+title: Use Batch Processing in JDBC
+rule: >-
+  Ensure that batch processing is used instead of executing individual SQL statements inside loops for better database efficiency.
+severity: high
+scope: file
+examples:
+  - snippet: "public void execute(Connection connection) {\n  try {\n    Statement statement = connection.createStatement();\n\n    for (int i = 0; i < 10; i++) {\n      statement.execute(\"INSERT INTO myTable (column1, column2) VALUES (\" + i + \", 'value\" + i + \"')\"); // Noncompliant\n    }\n\n    statement.close();\n    connection.close();\n  } catch (SQLException e) {\n    e.printStackTrace();\n  }\n}"
+    isCorrect: false
+  - snippet: "public void execute(Connection connection) {\n  try {\n    Statement statement = connection.createStatement();\n\n    for (int i = 0; i < 10; i++) {\n      statement.addBatch(\"INSERT INTO myTable (column1, column2) VALUES (\" + i + \", 'value\" + i + \"')\"); // Compliant\n    }\n    statement.executeBatch();\n\n    statement.close();\n    connection.close();\n  } catch (SQLException e) {\n    e.printStackTrace();\n  }\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

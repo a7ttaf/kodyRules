@@ -1,0 +1,14 @@
+title: Consolidate duplicate Dockerfiles
+rule: >-
+  Deduplicate near-identical Dockerfiles by sharing a common base stage (multi-stage) and varying only service-specific steps via build args/targets.
+severity: low
+scope: file
+examples:
+  - snippet: "# Two Dockerfiles differing only in CMD"
+    isCorrect: false
+  - snippet: "ARG SERVICE && multi-stage targets share a common base"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

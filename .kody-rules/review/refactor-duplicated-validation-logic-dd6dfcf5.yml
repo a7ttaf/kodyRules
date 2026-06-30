@@ -1,0 +1,14 @@
+title: Refactor duplicated validation logic
+rule: >-
+  Centralize repeated validation rules into helpers or small packages. Reuse them across handlers, services, and jobs.
+severity: low
+scope: file
+examples:
+  - snippet: "// copy-paste the same checks in multiple files"
+    isCorrect: false
+  - snippet: "func validateX(...) error { ... } // reused"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

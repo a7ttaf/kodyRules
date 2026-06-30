@@ -1,0 +1,14 @@
+title: Set CPU/memory requests and limits for all containers
+rule: >-
+  Every container must specify resources.requests and resources.limits for cpu and memory.
+severity: high
+scope: file
+examples:
+  - snippet: "resources:\n requests:\n cpu: 200m\n memory: 256Mi\n limits:\n cpu: 500m\n memory: 512Mi"
+    isCorrect: true
+  - snippet: "resources: {}"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

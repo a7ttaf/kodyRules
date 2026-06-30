@@ -1,0 +1,15 @@
+title: React "render" functions should return a value
+
+rule: >-
+  Ensure that React class components' render functions return a value. Forgetting a return statement results in missing UI elements and potential bugs.
+severity: high
+scope: file
+examples:
+  - snippet: "const React = require('react');\nclass MyComponent extends React.Component {\n  render() {\n    <div>Contents</div>; // Noncompliant: The render function returns nothing\n  }\n}"
+    isCorrect: false
+  - snippet: "const React = require('react');\nclass MyComponent extends React.Component {\n  render() {\n    return <div>Contents</div>;\n  }\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

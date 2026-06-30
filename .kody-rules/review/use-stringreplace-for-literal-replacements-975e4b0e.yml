@@ -1,0 +1,14 @@
+title: Use String.replace for literal replacements
+rule: >-
+  Use String#replace for literal substrings instead of replaceAll unless regex is required.
+severity: low
+scope: file
+examples:
+  - snippet: "s.replaceAll(\"foo\", \"bar\")"
+    isCorrect: false
+  - snippet: "s.replace(\"foo\", \"bar\")"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

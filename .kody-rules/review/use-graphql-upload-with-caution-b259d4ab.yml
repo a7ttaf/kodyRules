@@ -1,0 +1,14 @@
+title: Use graphql-upload with caution
+rule: >-
+  Check for the use of graphql-upload. This library enables file uploads using multipart requests, which can be exploited for CSRF attacks if not properly secured.
+severity: low
+scope: file
+examples:
+  - snippet: "app.use(graphqlUploadExpress());"
+    isCorrect: false
+  - snippet: "app.use(graphqlUploadExpress({\n  maxFileSize: 1000000,\n  maxFiles: 10,\n})); // Ensure CSRF protection is enabled elsewhere\n"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

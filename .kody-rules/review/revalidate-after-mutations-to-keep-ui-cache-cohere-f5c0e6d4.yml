@@ -1,0 +1,14 @@
+title: Revalidate after mutations to keep UI cache coherent
+rule: >-
+  After server-side mutations, call revalidatePath or revalidateTag to refresh cached RSC data.
+severity: high
+scope: file
+examples:
+  - snippet: "Mutation without revalidate*"
+    isCorrect: false
+  - snippet: "revalidateTag('posts') after create/delete"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

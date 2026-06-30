@@ -1,0 +1,14 @@
+title: Use standard HTTP status text for errors
+rule: >-
+  Return appropriate status codes and prefer http.StatusText(status) (or a consistent JSON error schema) rather than inventing custom reason phrases.
+severity: low
+scope: file
+examples:
+  - snippet: "w.WriteHeader(499); w.Write([]byte(\"Oops\"))"
+    isCorrect: false
+  - snippet: "http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

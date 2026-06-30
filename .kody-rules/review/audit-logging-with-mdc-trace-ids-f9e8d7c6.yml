@@ -1,0 +1,14 @@
+title: Audit logging with MDC trace IDs
+rule: >-
+  Populate MDC with userId and traceId; include them in log pattern; log security events as JSON.
+severity: low
+scope: file
+examples:
+  - snippet: "MDC.put(\"traceId\", tid)"
+    isCorrect: true
+  - snippet: "MDC.clear()"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

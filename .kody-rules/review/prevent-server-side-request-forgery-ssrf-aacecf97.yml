@@ -1,0 +1,13 @@
+title: Prevent Server-Side Request Forgery (SSRF)
+rule: Ensure that server-side requests are properly validated to prevent SSRF attacks.
+severity: high
+scope: file
+examples:
+  - snippet: "protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {\n    String location = req.getParameter(\"url\");\n\n    URL url = new URL(location);\n\n    HttpURLConnection  conn = (HttpURLConnection) url.openConnection();\n}"
+    isCorrect: false
+  - snippet: "protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {\n    String location = req.getParameter(\"url\");\n\n    List<String> allowedHosts = new ArrayList<String>();\n    allowedHosts.add(\"https://trusted1.example.com/\");\n    allowedHosts.add(\"https://trusted2.example.com/\");\n\n    URL url = new URL(location);\n\n    if (allowedHosts.contains(location))\n        HttpURLConnection conn = (HttpURLConnection) url.openConnection();\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

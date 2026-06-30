@@ -1,0 +1,14 @@
+title: Provide loading.tsx and error.tsx per segment
+rule: >-
+  For async routes, add loading.tsx for suspense fallbacks and error.tsx for boundaries. Use notFound() for 404 states.
+severity: low
+scope: file
+examples:
+  - snippet: "try/catch inside page.tsx without error.tsx"
+    isCorrect: false
+  - snippet: "error.tsx + loading.tsx in the segment"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

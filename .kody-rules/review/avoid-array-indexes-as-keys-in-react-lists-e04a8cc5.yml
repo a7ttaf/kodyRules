@@ -1,0 +1,14 @@
+title: Avoid array indexes as keys in React lists
+rule: >-
+  Ensure that React list items do not use array indexes as keys. This practice can cause reordering issues and unexpected behavior. Recommend using unique identifiers instead.
+severity: high
+scope: file
+examples:
+  - snippet: "function Blog(props) {\n  return (\n    <ul>\n      {props.posts.map((post, index) =>\n        <li key={index}> <!-- Noncompliant: When 'posts' are reordered, React will need to recreate the list DOM -->\n          {post.title}\n        </li>\n      )}\n    </ul>\n  );\n}"
+    isCorrect: false
+  - snippet: "function Blog(props) {\n  return (\n    <ul>\n      {props.posts.map((post) =>\n        <li key={post.id}>\n          {post.title}\n        </li>\n      )}\n    </ul>\n  );\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

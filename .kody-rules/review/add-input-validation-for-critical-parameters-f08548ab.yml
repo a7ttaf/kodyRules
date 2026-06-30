@@ -1,0 +1,14 @@
+title: Add input validation for critical parameters
+rule: >-
+  Validate presence, type, and range of critical inputs at boundaries (API, CLI, jobs) and fail fast with clear messages.
+severity: high
+scope: file
+examples:
+  - snippet: "def run(p): ... # no checks"
+    isCorrect: false
+  - snippet: "if not p: raise ValueError('p required')"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

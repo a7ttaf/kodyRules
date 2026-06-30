@@ -1,0 +1,14 @@
+title: Dynamic import for heavy client-only widgets
+rule: >-
+  Use next/dynamic with { ssr: false } for large client-only components (maps, editors) and provide a lightweight loading fallback.
+severity: low
+scope: file
+examples:
+  - snippet: "Static import of a heavy editor"
+    isCorrect: false
+  - snippet: "dynamic(...,{ ssr:false })"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

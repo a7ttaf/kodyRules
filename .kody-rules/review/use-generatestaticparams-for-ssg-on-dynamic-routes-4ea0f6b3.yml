@@ -1,0 +1,14 @@
+title: Use generateStaticParams for SSG on dynamic routes
+rule: >-
+  When statically prebuilding dynamic segments, implement generateStaticParams and validate params; fall back to notFound() for invalid slugs.
+severity: low
+scope: file
+examples:
+  - snippet: "Missing generateStaticParams for static content"
+    isCorrect: false
+  - snippet: "generateStaticParams + notFound()"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

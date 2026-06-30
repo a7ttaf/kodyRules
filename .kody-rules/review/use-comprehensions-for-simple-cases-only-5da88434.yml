@@ -1,0 +1,14 @@
+title: Use Comprehensions for Simple Cases Only
+rule: >-
+  Ensure that list, set, or dictionary comprehensions are not overly complex. If a comprehension includes multiple conditions or nested loops, recommend refactoring to a regular loop for better readability.
+severity: low
+scope: file
+examples:
+  - snippet: "result = [(x, y) for x in range(10) for y in range(5) if x * y > 10]"
+    isCorrect: false
+  - snippet: "result = []\nfor x in range(10):\n    for y in range(5):\n        if x * y > 10:\n            result.append((x, y))\n"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

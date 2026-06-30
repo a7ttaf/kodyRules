@@ -1,0 +1,14 @@
+title: Externalize URLs and API keys to configuration
+rule: >-
+  Read API URLs/keys from ENV/credentials and inject where needed; do not hardcode.
+severity: high
+scope: file
+examples:
+  - snippet: "KEY = \"abcd\""
+    isCorrect: false
+  - snippet: "Rails.application.credentials.dig(:service, :key)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

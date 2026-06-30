@@ -1,0 +1,14 @@
+title: Avoid Mutable Global State
+rule: >-
+  Do not use global (package-level) variables for mutable state whenever possible. Instead, encapsulate state in structs or pass it as parameters. If you must use a global variable (for configuration or caching), protect it with mutexes if concurrent access is possible and document its usage.
+severity: low
+scope: file
+examples:
+  - snippet: "var cache = map[string]string{}\n\nfunc SetCache(key, value string) {\n    cache[key] = value // modifies global map, not thread-safe\n}"
+    isCorrect: false
+  - snippet: "type Cache struct {\n    mu sync.Mutex\n    data map[string]string\n}\n\nfunc (c *Cache) Set(key, value string) {\n    c.mu.Lock()\n    c.data[key] = value\n    c.mu.Unlock()\n}\n\n// or pass *Cache around instead of using a global"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

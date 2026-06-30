@@ -1,0 +1,14 @@
+title: Use `String.replace()` Instead of `String.replaceAll()` for Simple Replacements
+rule: >-
+  Ensure that `String.replace()` is used when a simple string replacement is needed instead of `String.replaceAll()`.
+severity: critical
+scope: file
+examples:
+  - snippet: "String init = \"Bob is a Bird... Bob is a Plane... Bob is Superman!\";\nString changed = init.replaceAll(\"Bob is\", \"It's\"); // Noncompliant\nchanged = changed.replaceAll(\"\\\\.\\\\.\\\\.\", \";\"); // Noncompliant"
+    isCorrect: false
+  - snippet: "String init = \"Bob is a Bird... Bob is a Plane... Bob is Superman!\";\nString changed = init.replace(\"Bob is\", \"It's\");\nchanged = changed.replace(\"...\", \";\");"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

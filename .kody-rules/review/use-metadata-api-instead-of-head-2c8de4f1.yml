@@ -1,0 +1,14 @@
+title: Use Metadata API instead of <Head>
+rule: >-
+  Declare SEO metadata via export const metadata or generateMetadata; avoid manual <Head> in App Router.
+severity: low
+scope: file
+examples:
+  - snippet: "<Head> in app/*"
+    isCorrect: false
+  - snippet: "export const metadata = { title:'X' }"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

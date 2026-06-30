@@ -1,0 +1,14 @@
+title: Avoid Redundant Null Checks with `instanceof`
+rule: >-
+  Ensure that explicit null checks are not used with `instanceof`, as `null` is never an instance of any class.
+severity: high
+scope: file
+examples:
+  - snippet: "if (x != null && x instanceof MyClass) { ... }  // Noncompliant\n\nif (x == null || ! x instanceof MyClass) { ... } // Noncompliant"
+    isCorrect: false
+  - snippet: "if (x instanceof MyClass) { ... }\n\nif (! x instanceof MyClass) { ... }"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

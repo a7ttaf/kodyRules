@@ -1,0 +1,14 @@
+title: Add comprehensive null checks for parameters
+rule: >-
+  Validate method inputs up front with null checks or use Objects.requireNonNull and meaningful messages.
+severity: high
+scope: file
+examples:
+  - snippet: "user.getAddress().getCity().toLowerCase()"
+    isCorrect: false
+  - snippet: "String city = Optional.ofNullable(user)\n    .map(User::getAddress).map(Address::getCity)\n    .orElse(\"unknown\");"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

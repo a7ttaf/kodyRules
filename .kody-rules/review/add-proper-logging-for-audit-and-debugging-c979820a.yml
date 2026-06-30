@@ -1,0 +1,14 @@
+title: Add proper logging for audit and debugging
+rule: >-
+  Log key operations with structured fields (actor/resource/operation) at appropriate levels; include exception info on failures.
+severity: high
+scope: file
+examples:
+  - snippet: "logger.error('failed')"
+    isCorrect: false
+  - snippet: "logger.exception('update_failed', extra={'user_id': uid})"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

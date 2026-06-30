@@ -1,0 +1,13 @@
+title: Limit Line Length to 100 Characters
+rule: Ensure that no line exceeds 100 characters in length to maintain readability.
+severity: low
+scope: file
+examples:
+  - snippet: "String longString = \"This is an example of a very long line of code that exceeds 100 characters\";"
+    isCorrect: false
+  - snippet: "String longString = \"This is an example of a very long line of code \" +\n                  \"that is split into multiple lines.\";"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

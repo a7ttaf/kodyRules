@@ -1,0 +1,9 @@
+title: Avoid default exports
+rule: >-
+  Detect the use of default exports. Named exports provide better clarity, maintainability, and prevent issues when refactoring.
+severity: low
+scope: file
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,20 @@
+title: Component name casing in templates
+rule: >-
+  In most projects, component names should always be PascalCase in Single-File Components and string templates - but kebab-case in in-DOM templates.
+severity: low
+scope: file
+examples:
+  - snippet: "<mycomponent/> "
+    isCorrect: false
+  - snippet: "<MyComponent></MyComponent> "
+    isCorrect: false
+  - snippet: "<MyComponent/> "
+    isCorrect: true
+  - snippet: "<my-component></my-component> "
+    isCorrect: true
+  - snippet: "<my-component></my-component> "
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

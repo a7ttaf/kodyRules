@@ -1,0 +1,17 @@
+title: Validate new/updated dependencies for CVEs and supply-chain risk
+rule: >-
+  When a PR changes dependency manifests (e.g., package.json, yarn.lock, requirements.txt, composer.json), check for known vulnerabilities and risky packages.
+  - If an OSV/SCA MCP is available: query it for the new package versions and flag recent CVEs.
+  - Otherwise: require evidence (audit output, advisory links) in the PR description.
+  Also flag suspicious packages (typosquats, low-maintenance critical libs, unexpected transitive jumps) and require lockfile updates.
+severity: high
+scope: pull-request
+examples:
+  - snippet: "package.json changed, no audit/SCA evidence"
+    isCorrect: false
+  - snippet: "OSV/SCA result + pinned versions + updated lockfile"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

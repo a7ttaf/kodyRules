@@ -1,0 +1,14 @@
+title: Gradle: define modules in settings.gradle and use version catalogs
+rule: >-
+  List all included builds/modules in settings.gradle and manage versions via gradle/libs.versions.toml (version catalogs). Forbid hardcoded versions and repo declarations in module build.gradle files.
+severity: low
+scope: file
+examples:
+  - snippet: "dependencies { implementation libs.slf4j }"
+    isCorrect: true
+  - snippet: "dependencies { implementation \"org.slf4j:slf4j-api:2.0.13\" }"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Do Not Ignore Caught Exceptions
+rule: >-
+  Ensure that all caught exceptions are either logged or handled properly. Empty catch blocks are not allowed.
+severity: high
+scope: file
+examples:
+  - snippet: "try {\n    someMethod();\n} catch (Exception e) {\n    // Do nothing\n}"
+    isCorrect: false
+  - snippet: "try {\n    someMethod();\n} catch (Exception e) {\n    log.error(\"Exception occurred\", e);\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

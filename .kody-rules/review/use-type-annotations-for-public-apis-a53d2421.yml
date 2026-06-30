@@ -1,0 +1,14 @@
+title: Use Type Annotations for Public APIs
+rule: >-
+  Ensure that functions in public APIs include type annotations. Type annotations improve code clarity and help catch type-related errors early. Recommend adding them where missing.
+severity: low
+scope: file
+examples:
+  - snippet: "def add(a, b):\n    return a + b"
+    isCorrect: false
+  - snippet: "def add(a: int, b: int) -> int:\n    return a + b"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Do not use the Object constructor
+rule: >-
+  Ensure that the Object constructor is not used. Object literals are clearer, more predictable, and improve readability.
+severity: low
+scope: file
+examples:
+  - snippet: "const foo = new Object();"
+    isCorrect: false
+  - snippet: "const foo = {};\n"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

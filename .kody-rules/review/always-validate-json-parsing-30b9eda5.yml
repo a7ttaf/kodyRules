@@ -1,0 +1,14 @@
+title: Always validate JSON parsing
+rule: >-
+  Ensure that JSON data is validated before parsing. Parsing untrusted JSON without validation can result in runtime errors or vulnerabilities.
+severity: low
+scope: file
+examples:
+  - snippet: "const data = JSON.parse(userInput); // No validation"
+    isCorrect: false
+  - snippet: "try {\n  const data = JSON.parse(userInput);\n  if (typeof data !== 'object' || Array.isArray(data)) {\n    throw new Error('Invalid JSON structure');\n  }\n} catch (err) {\n  console.error('JSON parsing error:', err);\n}\n"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

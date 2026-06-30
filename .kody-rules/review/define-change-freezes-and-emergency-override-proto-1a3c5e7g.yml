@@ -1,0 +1,14 @@
+title: Define change freezes and emergency override protocol
+rule: >-
+  Establish maintenance windows and freeze periods; emergency overrides require incident_id, approver, and post-facto review logged in the audit trail.
+severity: low
+scope: file
+examples:
+  - snippet: "log_audit(\"change.override\",\"INC-9\")"
+    isCorrect: true
+  - snippet: "override()"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

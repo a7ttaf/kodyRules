@@ -1,0 +1,14 @@
+title: Avoid unsafe type assertions
+rule: >-
+  Detect cases of unsafe type assertions. These do not perform runtime checks and can lead to unexpected runtime errors. Recommend using proper type guards instead.
+severity: high
+scope: file
+examples:
+  - snippet: "const element = document.getElementById(\"myId\") as HTMLInputElement;\nelement.value = \"Hello\"; // Unsafe if the element is not an input"
+    isCorrect: false
+  - snippet: "const element = document.getElementById(\"myId\");\nif (element instanceof HTMLInputElement) {\n  element.value = \"Hello\";\n}\n"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

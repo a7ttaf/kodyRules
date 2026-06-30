@@ -1,0 +1,14 @@
+title: Automate ADR linting in CI
+rule: >-
+  Add a CI job that validates docs/adr/ files: filename pattern, required sections, valid Status, presence of PR/issue links, and optional schema (YAML front matter).
+severity: low
+scope: file
+examples:
+  - snippet: "ci: adr-lint checks docs/adr/.md"
+    isCorrect: true
+  - snippet: "No CI rule for ADRs"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

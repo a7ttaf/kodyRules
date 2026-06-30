@@ -1,0 +1,14 @@
+title: Ensure `__init__` Does Not Return a Value
+rule: >-
+  Verify that `__init__` methods always return `None`. Returning any other value causes a `TypeError` and prevents correct object instantiation.
+severity: high
+scope: file
+examples:
+  - snippet: "class MyClass(object):\n    def __init__(self):\n        self.message = 'Hello'\n        return self  # Noncompliant: a TypeError will be raised"
+    isCorrect: false
+  - snippet: "class MyClass(object):\n    def __init__(self):\n        self.message = 'Hello'"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

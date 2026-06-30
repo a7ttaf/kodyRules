@@ -1,0 +1,14 @@
+title: Avoid Creating Objects Just to Call `getClass()`
+rule: >-
+  Ensure that objects are not created solely for calling `getClass()`. Use `ClassName.class` instead.
+severity: high
+scope: file
+examples:
+  - snippet: "MyObject myOb = new MyObject();  // Noncompliant\nClass c = myOb.getClass();"
+    isCorrect: false
+  - snippet: "Class c = MyObject.class;"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

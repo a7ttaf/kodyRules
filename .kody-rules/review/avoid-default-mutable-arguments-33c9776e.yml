@@ -1,0 +1,14 @@
+title: Avoid Default Mutable Arguments
+rule: >-
+  Detect function definitions that use mutable objects (lists, dictionaries) as default arguments. This can lead to unintended shared state. Recommend using `None` as the default and initializing the object inside the function.
+severity: high
+scope: file
+examples:
+  - snippet: "def add_item_to_list(item, my_list=[]):\n    my_list.append(item)\n    return my_list\n"
+    isCorrect: false
+  - snippet: "def add_item_to_list(item, my_list=None):\n    if my_list is None:\n        my_list = []\n    my_list.append(item)\n    return my_list\n"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

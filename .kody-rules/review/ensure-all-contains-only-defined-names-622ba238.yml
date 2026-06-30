@@ -1,0 +1,14 @@
+title: Ensure `__all__` Contains Only Defined Names
+rule: >-
+  Check if the `__all__` list in a module contains titles that are not defined. Listing undefined titles can cause `ImportError` when performing wildcard imports.
+severity: high
+scope: file
+examples:
+  - snippet: "from mymodule import my_func\n\n__all__ = [\"unknown_func\"]  # Noncompliant: \"unknown_func\" is undefined"
+    isCorrect: false
+  - snippet: "from mymodule import my_func\n\n__all__ = [\"my_func\"]"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

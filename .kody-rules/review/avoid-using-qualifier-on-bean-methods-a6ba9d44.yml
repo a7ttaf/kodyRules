@@ -1,0 +1,14 @@
+title: Avoid Using `@Qualifier` on `@Bean` Methods
+rule: >-
+  Ensure that `@Qualifier` is not used on `@Bean` methods, as explicit bean titles should be used instead.
+severity: high
+scope: file
+examples:
+  - snippet: "@Configuration\npublic class MyConfiguration {\n  @Bean\n  @Qualifier(\"myService\")\n  public MyService myService() {\n    // ...\n    return new MyService();\n  }\n\n  @Bean\n  @Qualifier(\"betterService\")\n  public MyService aBetterService() {\n    // ...\n    return new MyService();\n  }\n\n  @Bean\n  @Qualifier(\"evenBetterService\")\n  public MyService anEvenBetterService() {\n    // ...\n    return new MyService();\n  }\n\n  @Bean\n  @Qualifier(\"differentService\")\n  public MyBean aDifferentService() {\n    // ...\n    return new MyBean();\n  }\n}"
+    isCorrect: false
+  - snippet: "@Configuration\npublic class MyConfiguration {\n  @Bean\n  public MyService myService() {\n    // ...\n    return new MyService();\n  }\n\n  @Bean(title=\"betterService\")\n  public MyService aBetterService() {\n    // ...\n    return new MyService();\n  }\n\n  @Bean(title=\"evenBetterService\")\n  public MyService anEvenBetterService() {\n    // ...\n    return new MyService();\n  }\n\n  @Bean(title=\"differentService\")\n  public MyBean aDifferentService() {\n    // ...\n    return new MyBean();\n  }\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Do not nest React components
+rule: >-
+  Check if React components are defined inside other components. Nested components are recreated on every render, causing unnecessary re-renders. Suggest moving them outside the parent component.
+severity: high
+scope: file
+examples:
+  - snippet: "function Component() {\n  function NestedComponent() { // Noncompliant: NestedComponent should be moved outside Component\n    return <div />;\n  }\n\n  return (\n    <div>\n      <NestedComponent />\n    </div>\n  );\n\nclass Component extends React.Component {\n  render() {\n    function UnstableNestedComponent() { // Noncompliant: NestedComponent should be moved outside Component\n      return <div />;\n    }\n\n    return (\n      <div>\n        <UnstableNestedComponent />\n      </div>\n    );\n  }\n}"
+    isCorrect: false
+  - snippet: "function OutsideComponent(props) {\n  return <div />;\n}\n\nfunction Component() {\n  return (\n    <div>\n      <OutsideComponent />\n    </div>\n  );\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Use `entrySet()` When Iterating Over Maps
+rule: >-
+  Ensure that `entrySet()` is used instead of iterating over `keySet()` and calling `get(key)`, to optimize performance.
+severity: high
+scope: file
+examples:
+  - snippet: "public void doSomethingWithMap(Map<String,Object> map) {\n  for (String key : map.keySet()) {  // Noncompliant; for each key the value is retrieved\n    Object value = map.get(key);\n    // ...\n  }\n}"
+    isCorrect: false
+  - snippet: "public void doSomethingWithMap(Map<String,Object> map) {\n  for (Map.Entry<String,Object> entry : map.entrySet()) {\n    String key = entry.getKey();\n    Object value = entry.getValue();\n    // ...\n  }\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

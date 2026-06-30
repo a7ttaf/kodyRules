@@ -1,0 +1,14 @@
+title: Ensure `@PathVariable` is Used for Path Variables
+rule: >-
+  Ensure that `@PathVariable` is used correctly in Spring applications to bind URI path variables to method parameters.
+severity: high
+scope: file
+examples:
+  - snippet: "@GetMapping(\"/api/resource/{id}\")\npublic ResponseEntity<String> getResourceById(Long id) { // Noncompliant - The 'id' parameter will not be automatically populated with the path variable value\n  return ResponseEntity.ok(\"Fetching resource with ID: \" + id);\n}"
+    isCorrect: false
+  - snippet: "@GetMapping(\"/api/resource/{id}\")\npublic ResponseEntity<String> getResourceById(@PathVariable Long id) { // Compliant\n  return ResponseEntity.ok(\"Fetching resource with ID: \" + id);\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

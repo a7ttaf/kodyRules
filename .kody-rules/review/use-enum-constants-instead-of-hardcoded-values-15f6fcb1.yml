@@ -1,0 +1,14 @@
+title: Use enum constants instead of hardcoded values
+rule: >-
+  When a value comes from a finite set, model it as an enum constant instead of string/int literals.
+severity: low
+scope: file
+examples:
+  - snippet: "if (role.equals(\"admin\")) {}"
+    isCorrect: false
+  - snippet: "if (role == Role.ADMIN) {}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

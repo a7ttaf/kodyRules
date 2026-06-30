@@ -1,0 +1,14 @@
+title: Consolidate repetitive configuration patterns
+rule: >-
+  Replace repeated set/get config calls with data-driven loops or loaders from a single schema/source.
+severity: low
+scope: file
+examples:
+  - snippet: "set_x(...); set_y(...); set_z(...)"
+    isCorrect: false
+  - snippet: "for k in KEYS: set_k(k)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

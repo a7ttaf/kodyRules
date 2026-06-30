@@ -1,0 +1,14 @@
+title: Optimize stream operations
+rule: >-
+  Combine filters/maps to minimize passes; avoid creating intermediate collections unnecessarily.
+severity: low
+scope: file
+examples:
+  - snippet: "list.stream().map(...).collect(toList()).stream()"
+    isCorrect: false
+  - snippet: "single pipeline; defer collect"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

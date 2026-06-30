@@ -1,0 +1,14 @@
+title: Refactor conditional logic into loops
+rule: >-
+  Replace repeated similar if/elif blocks with data-driven loops or dispatch tables.
+severity: low
+scope: file
+examples:
+  - snippet: "if x==1: ... elif x==2: ... elif x==3: ..."
+    isCorrect: false
+  - snippet: "handlers = {1: h1, 2: h2, 3: h3}; handlers[x]()"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

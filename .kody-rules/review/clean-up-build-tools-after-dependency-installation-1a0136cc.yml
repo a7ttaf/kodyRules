@@ -1,0 +1,14 @@
+title: Clean up build tools after dependency installation
+rule: >-
+  If a single-stage image must build native deps, remove compilers/headers after install and clear package caches in the same layer.
+severity: low
+scope: file
+examples:
+  - snippet: "apt-get install build-essential && npm ci"
+    isCorrect: false
+  - snippet: "apt-get update && apt-get install ... && npm ci && apt-get purge -y ... && rm -rf /var/lib/apt/lists/*"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

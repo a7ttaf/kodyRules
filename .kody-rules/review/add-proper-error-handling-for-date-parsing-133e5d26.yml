@@ -1,0 +1,14 @@
+title: Add proper error handling for date parsing
+rule: >-
+  Parse dates with DateTimeFormatter in try/catch and validate expected formats/timezones.
+severity: low
+scope: file
+examples:
+  - snippet: "ZonedDateTime.parse(s)"
+    isCorrect: false
+  - snippet: "try { parse } catch(DateTimeParseException e) { /* handle */ }"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

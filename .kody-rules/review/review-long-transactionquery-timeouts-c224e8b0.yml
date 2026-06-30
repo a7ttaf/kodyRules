@@ -1,0 +1,14 @@
+title: Review long transaction/query timeouts
+rule: >-
+  Set sensible timeouts for queries/transactions and avoid excessively long timeouts that mask problems.
+severity: low
+scope: file
+examples:
+  - snippet: "no timeout set"
+    isCorrect: false
+  - snippet: "setQueryTimeout(30)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

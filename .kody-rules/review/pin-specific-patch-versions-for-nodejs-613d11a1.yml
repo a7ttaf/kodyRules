@@ -1,0 +1,14 @@
+title: Pin specific patch versions for Node.js
+rule: >-
+  Use a fully qualified Node.js tag including major.minor.patch, not floating majors/minors.
+severity: low
+scope: file
+examples:
+  - snippet: "FROM node:20"
+    isCorrect: false
+  - snippet: "FROM node:20.11.1"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

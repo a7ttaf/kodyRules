@@ -1,0 +1,14 @@
+title: Avoid exposing internal IDs in error messages
+rule: >-
+  Do not include internal identifiers (DB IDs, service IDs, tokens) in client-facing errors. Log them internally; return generic messages externally.
+severity: low
+scope: file
+examples:
+  - snippet: "fmt.Errorf(\"pk=%s invalid\", pk)"
+    isCorrect: false
+  - snippet: "logger.Error(\"invalid\", \"pk\", pk); return ErrInvalid"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

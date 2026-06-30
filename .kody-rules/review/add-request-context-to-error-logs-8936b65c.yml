@@ -1,0 +1,14 @@
+title: Add request context to error logs
+rule: >-
+  Include request-scoped fields (method, path, request_id, deadline/canceled) in error logs. Pass context through layers.
+severity: low
+scope: file
+examples:
+  - snippet: "logger.Error(\"failed\") // no context"
+    isCorrect: false
+  - snippet: "logger.Error(\"failed\", \"method\", r.Method, \"request_id\", id)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

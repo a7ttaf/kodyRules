@@ -1,0 +1,14 @@
+title: Mark Properties as readonly If Not Reassigned
+rule: >-
+  Check if properties that are never reassigned are marked as readonly. This improves code clarity and prevents unintended reassignment.
+severity: low
+scope: file
+examples:
+  - snippet: "class User {\n  title: string = \"John\";\n}"
+    isCorrect: false
+  - snippet: "class User {\n  readonly title: string = \"John\";\n}\n"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

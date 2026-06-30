@@ -1,0 +1,14 @@
+title: Avoid Using defer in Hot Loops
+rule: >-
+  Don't place a defer inside a loop that iterates many times (especially if the loop is performance-critical). Defer calls won't run until the function returns and each call has a small overhead; instead, perform the operation directly in the loop when possible.
+severity: low
+scope: file
+examples:
+  - snippet: "for _, file := range files {\n    f, _ := os.Open(file)\n    defer f.Close() // defers 1000x if len(files)=1000; files stay open until after loop\n    processFile(f)\n}"
+    isCorrect: false
+  - snippet: "for _, file := range files {\n    f, _ := os.Open(file)\n    processFile(f)\n    f.Close() // close immediately after processing each file\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

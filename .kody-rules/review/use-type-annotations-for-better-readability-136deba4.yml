@@ -1,0 +1,14 @@
+title: Use Type Annotations for Better Readability
+rule: >-
+  Check if function signatures include type annotations. Type hints improve readability and help catch type-related errors early. Recommend adding type annotations where missing.
+severity: low
+scope: file
+examples:
+  - snippet: "def add(a, b):\n    return a + b"
+    isCorrect: false
+  - snippet: "def add(a: int, b: int) -> int:\n    return a + b"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

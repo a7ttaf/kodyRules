@@ -1,0 +1,14 @@
+title: Avoid Holding Large Backing Arrays via Small Slices
+rule: >-
+  Be c sem areful when slicing out a small portion of a large slice or array. The resulting slice still references the entire original array. If you only need the small portion long-term, copy that data into a new slice to avoid keeping the large array in memory.
+severity: low
+scope: file
+examples:
+  - snippet: "bigData := make([]byte, 1000000)\nsmall := bigData[:10]\n// 'small' is tiny but still prevents GC of the 1,000,000 byte array until bigData goes out of scope"
+    isCorrect: false
+  - snippet: "bigData := make([]byte, 1000000)\nsmallCopy := make([]byte, 10)\ncopy(smallCopy, bigData[:10])\n// 'smallCopy' now contains the data and doesn't depend on the large array"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

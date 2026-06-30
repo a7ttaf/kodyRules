@@ -1,0 +1,14 @@
+title: DOM elements should use the autocomplete attribute correctly
+rule: >-
+  Check for missing or incorrect autocomplete attributes. Proper use of autocomplete improves accessibility and usability, especially for screen readers.
+severity: low
+scope: file
+examples:
+  - snippet: "function MyInput() {\n    return <input type=\"text\" autocomplete=\"foo\" />; // Noncompliant\n}"
+    isCorrect: false
+  - snippet: "function MyInput() {\n    return <input type=\"text\" autocomplete=\"title\" />;\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Avoid Non-Numeric Properties on Arrays
+rule: >-
+  Ensure that arrays do not contain non-numeric properties. This practice can lead to unexpected behavior. Use Maps or Objects instead.
+severity: low
+scope: file
+examples:
+  - snippet: "const arr = [];\narr['key'] = 'value'; // Bad practice"
+    isCorrect: false
+  - snippet: "const map = new Map<string, string>();\nmap.set('key', 'value');"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

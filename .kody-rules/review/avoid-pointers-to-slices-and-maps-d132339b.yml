@@ -1,0 +1,14 @@
+title: Avoid Pointers to Slices (and Maps)
+rule: >-
+  Do not use pointers to slice or map types. Slices and maps are already reference types that point to underlying data, so they can be passed by value and still allow modifications to the contents.
+severity: low
+scope: file
+examples:
+  - snippet: "func AddItem(list *[]string, item string) {\n    *list = append(*list, item) // using a pointer to a slice\n}"
+    isCorrect: false
+  - snippet: "func AddItem(list []string, item string) []string {\n    return append(list, item) // pass slice by value and return the new slice\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

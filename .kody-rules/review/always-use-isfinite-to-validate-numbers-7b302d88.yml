@@ -1,0 +1,14 @@
+title: Always Use isFinite to Validate Numbers
+rule: >-
+  Ensure that isFinite is used to validate numbers. Without this, NaN or Infinity can cause unexpected behavior and runtime errors.
+severity: low
+scope: file
+examples:
+  - snippet: "const value = Number(\"Not a Number\");\nif (value) {\n  console.log(\"Valid number\"); // Will not catch NaN or Infinity\n}"
+    isCorrect: false
+  - snippet: "const value = Number(\"Not a Number\");\nif (isFinite(value)) {\n  console.log(\"Valid number\");\n}\n"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

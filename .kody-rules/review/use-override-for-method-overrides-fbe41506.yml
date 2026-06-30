@@ -1,0 +1,13 @@
+title: Use @Override for Method Overrides
+rule: Ensure that all overridden methods explicitly use the `@Override` annotation.
+severity: low
+scope: file
+examples:
+  - snippet: "public void equals(Object obj) {\n    // Incorrect override\n}"
+    isCorrect: false
+  - snippet: "@Override\npublic void equals(Object obj) {\n    // Correct override\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

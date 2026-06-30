@@ -1,0 +1,14 @@
+title: Prefer f-strings for String Formatting
+rule: >-
+  Detect string formatting using `.format()` or `%`. These methods are less readable and slower than f-strings. Recommend converting string formatting to f-strings for better readability and performance.
+severity: low
+scope: file
+examples:
+  - snippet: "Hello, {}'.format(title)"
+    isCorrect: false
+  - snippet: "f'Hello, {title}'"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

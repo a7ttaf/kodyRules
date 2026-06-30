@@ -1,0 +1,14 @@
+title: Avoid Complex init() Functions
+rule: >-
+  Do not put complex logic or long-running tasks in package `init()` functions. Keep `init()` minimal (if you use it at all), such as simple registration of types or default variable initialization. Perform real setup in explicit functions (like in `main` or a setup function called by main).
+severity: low
+scope: file
+examples:
+  - snippet: "var DefaultClient *Client\n\nfunc init() {\n    // Complex or external setup in init\n    cfg := loadConfigFromDisk() // reading file, etc.\n    DefaultClient = NewClient(cfg)\n}"
+    isCorrect: false
+  - snippet: "var DefaultClient *Client\n\nfunc InitClient() error {\n    cfg, err := loadConfigFromDisk()\n    if err != nil {\n        return err\n    }\n    DefaultClient = NewClient(cfg)\n    return nil\n}\n\nfunc main() {\n    if err := InitClient(); err != nil {\n        log.Fatal(err)\n    }\n    // ... proceed with DefaultClient ready\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

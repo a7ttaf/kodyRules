@@ -4,9 +4,9 @@ rule: >-
 severity: high
 scope: file
 examples:
-  - snippet: "final class Person { // Noncompliant\n  private final String title;\n  private final int age;\n\n  public Person(String title, int age) {\n    this.title = title;\n    this.age = age;\n  }\n\n  public String getName() {...}\n\n  public int getAge() {...}\n\n  @Override\n  public boolean equals(Object o) {...}\n\n  @Override\n  public int hashCode() {...}\n\n  @Override\n  public String toString() {...}\n}"
+  - snippet: "final class Person { // Noncompliant\n  private final String name;\n  private final int age;\n\n  public Person(String name, int age) {\n    this.name = name;\n    this.age = age;\n  }\n\n  public String getName() {...}\n\n  public int getAge() {...}\n\n  @Override\n  public boolean equals(Object o) {...}\n\n  @Override\n  public int hashCode() {...}\n\n  @Override\n  public String toString() {...}\n}"
     isCorrect: false
-  - snippet: "record Person(String title, int age) { }"
+  - snippet: "record Person(String name, int age) { }"
     isCorrect: true
 inheritance:
   inheritable: true

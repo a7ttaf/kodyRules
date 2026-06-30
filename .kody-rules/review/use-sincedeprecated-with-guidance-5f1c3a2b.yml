@@ -4,7 +4,7 @@ rule: >-
 severity: low
 scope: file
 examples:
-  - snippet: "/ @deprecated Use newApi() /\n@Deprecated\npublic void oldApi(){ }"
+  - snippet: "/** @deprecated Use newApi() */\n@Deprecated\npublic void oldApi(){ }"
     isCorrect: true
   - snippet: "/* Deprecated */\npublic void oldApi(){ }"
     isCorrect: false

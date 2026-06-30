@@ -5,9 +5,9 @@ severity: critical
 scope: file
 examples:
   - snippet: "for (var i = 1; i <= 10; i += 2)  // Compliant\n{\n  //...\n}"
-    isCorrect: false
-  - snippet: "for (var i = 1; i != 10; i += 2)  // Noncompliant. Infinite; i goes from 9 straight to 11.\n{\n  //...\n}"
     isCorrect: true
+  - snippet: "for (var i = 1; i != 10; i += 2)  // Noncompliant. Infinite; i goes from 9 straight to 11.\n{\n  //...\n}"
+    isCorrect: false
 inheritance:
   inheritable: true
   exclude: []

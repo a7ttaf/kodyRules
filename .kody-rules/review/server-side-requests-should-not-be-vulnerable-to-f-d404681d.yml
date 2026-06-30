@@ -6,7 +6,7 @@ scope: file
 examples:
   - snippet: "const axios = require('axios');\nconst express = require('express');\n\nconst app = express();\n\napp.get('/example', async (req, res) => {\n    try {\n        await axios.get(req.query.url); // Noncompliant\n        res.send(\"OK\");\n    } catch (err) {\n        console.error(err);\n        res.send(\"ERROR\");\n    }\n})"
     isCorrect: false
-  - snippet: "const axios = require('axios');\nconst express = require('express');\n\nconst schemesList = [\"http:\", \"https:\"];\nconst domainsList = [\"trusted1.example.com\", \"trusted2.example.com\"];\n\napp.get('/example', async (req, res) => {\n    const url = (new URL(req.query.url));\n\n    if (schemesList.includes(url.protocol) && domainsList.includes(url.hosttitle)) {\n        try {\n            await axios.get(url);\n            res.send(\"OK\");\n        } catch (err) {\n            console.error(err);\n            res.send(\"ERROR\");\n        }\n    }else {\n        res.send(\"INVALID_URL\");\n    }\n})"
+  - snippet: "const axios = require('axios');\nconst express = require('express');\n\nconst schemesList = [\"http:\", \"https:\"];\nconst domainsList = [\"trusted1.example.com\", \"trusted2.example.com\"];\n\napp.get('/example', async (req, res) => {\n    const url = (new URL(req.query.url));\n\n    if (schemesList.includes(url.protocol) && domainsList.includes(url.hostname)) {\n        try {\n            await axios.get(url);\n            res.send(\"OK\");\n        } catch (err) {\n            console.error(err);\n            res.send(\"ERROR\");\n        }\n    }else {\n        res.send(\"INVALID_URL\");\n    }\n})"
     isCorrect: true
 inheritance:
   inheritable: true

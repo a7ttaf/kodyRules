@@ -4,7 +4,7 @@ rule: >-
 severity: high
 scope: file
 examples:
-  - snippet: "/ Compute sum. @param a @param b @return sum /\npublic int add(int a, int b){ return a + b; }"
+  - snippet: "/** Compute sum. @param a @param b @return sum */\npublic int add(int a, int b){ return a + b; }"
     isCorrect: true
   - snippet: "public int add(int a, int b){ return a + b; }"
     isCorrect: false

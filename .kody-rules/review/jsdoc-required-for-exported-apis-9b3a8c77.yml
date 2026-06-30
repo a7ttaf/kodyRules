@@ -4,7 +4,7 @@ rule: >-
 severity: high
 scope: file
 examples:
-  - snippet: "/* Multiply two numbers. @param {number} x @param {number} y @returns {number} /\nexport const mul = (x, y) => x * y;"
+  - snippet: "/** Multiply two numbers. @param {number} x @param {number} y @returns {number} */\nexport const mul = (x, y) => x * y;"
     isCorrect: true
   - snippet: "export const mul = (x, y) => x * y;"
     isCorrect: false

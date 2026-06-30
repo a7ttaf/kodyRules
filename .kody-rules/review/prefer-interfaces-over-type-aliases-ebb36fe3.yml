@@ -1,0 +1,14 @@
+title: Prefer interfaces over type aliases
+rule: >-
+  Check if type aliases are used instead of interfaces. Interfaces provide better extensibility and readability when defining object shapes.
+severity: low
+scope: file
+examples:
+  - snippet: "type User = {\n  title: string;\n  age: number;\n};"
+    isCorrect: false
+  - snippet: "interface User {\n  title: string;\n  age: number;\n}\n"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,9 @@
+title: Prefer arrow functions for callbacks
+rule: >-
+  Use arrow functions (`=>`) for anonymous functions like callbacks (e.g., in lifecycle hooks, watchers, event handlers, array methods) instead of the `function` keyword, especially when needing lexical `this`.
+severity: low
+scope: file
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

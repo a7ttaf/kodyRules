@@ -1,0 +1,12 @@
+title: Avoid using Getters and Setters
+rule: >-
+  Check for the use of getters and setters. These can introduce unexpected side effects and have limited compiler support. Recommend using regular methods unless required by a framework.
+severity: low
+scope: file
+examples:
+  - snippet: "class Foo {\n  get next() { return this.nextId++; }\n}"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

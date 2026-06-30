@@ -1,0 +1,16 @@
+title: Single-file component top-level element order
+rule: >-
+  The top-level tags (`<script>`, `<template>`, `<style>`) in Single-File Components (.vue files) should be ordered consistently across the project. A common convention is `<script>`, then `<template>`, then `<style>`.
+severity: low
+scope: file
+examples:
+  - snippet: "<style>...</style>\n<script>...</script>\n<template>...</template>"
+    isCorrect: false
+  - snippet: "<script>...</script>\n<template>...</template>\n<style>...</style>"
+    isCorrect: true
+  - snippet: "<template>...</template>\n<script>...</script>\n<style>...</style>"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

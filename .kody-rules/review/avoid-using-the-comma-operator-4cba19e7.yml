@@ -1,0 +1,14 @@
+title: Avoid using the comma operator
+rule: >-
+  Detect occurrences of the comma operator in expressions. The comma operator can make code harder to read and debug, as it executes multiple expressions but only returns the value of the last one.
+severity: low
+scope: file
+examples:
+  - snippet: "i = a += 2, a + b;"
+    isCorrect: false
+  - snippet: "a += 2;\ni = a + b;"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

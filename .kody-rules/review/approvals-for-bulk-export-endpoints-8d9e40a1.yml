@@ -1,0 +1,14 @@
+title: Approvals for bulk export endpoints
+rule: >-
+  Protect /exports/ with role checks, fresh MFA, and rate limits; add requester and approved_by to the audit event.
+severity: high
+scope: file
+examples:
+  - snippet: "audit(\"export.create\", requester, approver)"
+    isCorrect: true
+  - snippet: "audit(\"export.create\") // missing approver"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Go: parallel-safe tests with t.Parallel and t.TempDir
+rule: >-
+  Mark tests that don't mutate shared state with t.Parallel() and use t.TempDir() for filesystem isolation; avoid package-level globals.
+severity: high
+scope: file
+examples:
+  - snippet: "t.Parallel(); dir := t.TempDir()"
+    isCorrect: true
+  - snippet: "var shared bytes.Buffer // used by tests"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

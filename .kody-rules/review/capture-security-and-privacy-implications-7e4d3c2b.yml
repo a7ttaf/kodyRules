@@ -1,0 +1,14 @@
+title: Capture security and privacy implications
+rule: >-
+  Add a 'Security & Privacy' section in ADRs addressing threat model impacts, secrets handling, data retention, and PII processing; link to relevant runbooks and DPA if applicable.
+severity: high
+scope: file
+examples:
+  - snippet: "## Security & Privacy\nPII minimized; keys via KMS"
+    isCorrect: true
+  - snippet: "## Security & Privacy\nN/A"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

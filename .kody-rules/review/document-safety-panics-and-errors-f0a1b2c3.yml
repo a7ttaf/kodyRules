@@ -1,0 +1,14 @@
+title: Document safety, panics, and errors
+rule: >-
+  When a function is unsafe, may panic, or returns Result, include sections # Safety, # Panics, and/or error conditions in the docs.
+severity: high
+scope: file
+examples:
+  - snippet: "/// # Panics\n/// Panics if index out of bounds."
+    isCorrect: true
+  - snippet: "/// Might panic"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Terraform state must use a remote backend with locking
+rule: >-
+  Configure a remote backend with state locking (e.g., S3 + DynamoDB table or AzureRM blob with leases). Do not use local backend for shared environments.
+severity: high
+scope: file
+examples:
+  - snippet: "backend \"s3\" { dynamodb_table = \"tf-state-locks\" }"
+    isCorrect: true
+  - snippet: "backend \"local\" { path = \"state.tfstate\" }"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

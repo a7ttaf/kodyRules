@@ -1,0 +1,14 @@
+title: Add TLS and JSON audit middleware
+rule: >-
+  Serve via rustls with TLS1.2+ and add middleware to log JSON audit events with user_id and request_id; never log raw tokens.
+severity: high
+scope: file
+examples:
+  - snippet: "info!(\"action\"=\"auth.login\", \"trace_id\"=%tid)"
+    isCorrect: true
+  - snippet: "println!(\"login\")"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

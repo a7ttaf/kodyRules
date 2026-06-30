@@ -1,0 +1,14 @@
+title: Pin providers/modules and commit .terraform.lock.hcl
+rule: >-
+  Use version constraints for required_providers and modules, and include .terraform.lock.hcl in PRs that change dependencies.
+severity: high
+scope: pull-request
+examples:
+  - snippet: "required_providers { aws = { version = \">= 5.0, < 6.0\" } }"
+    isCorrect: true
+  - snippet: "required_providers { aws = {} }"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

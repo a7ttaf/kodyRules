@@ -1,0 +1,14 @@
+title: Enforce HTTPS, HSTS, and session policy
+rule: >-
+  Use Spring Security to require HTTPS, enable HSTS, set session fixation protection, and configure SameSite, Secure, HttpOnly cookies.
+severity: high
+scope: file
+examples:
+  - snippet: "http.requiresChannel(c->c.anyRequest().requiresSecure())"
+    isCorrect: true
+  - snippet: "http.requiresChannel(c->c.anyRequest().requiresInsecure())"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,7 +1,7 @@
-title: Use Try-With-Resources for Resource Management
+title: Use try-with-resources for resource management
 rule: >-
   Ensure that resources such as streams or file handlers are managed using try-with-resources to avoid leaks.
-severity: low
+severity: high
 scope: file
 examples:
   - snippet: "FileInputStream fis = new FileInputStream(\"file.txt\");\ntry {\n    // Read file\n} finally {\n    fis.close();\n}"

@@ -1,0 +1,14 @@
+title: SBT: keep scalaVersion and versions centralized
+rule: >-
+  Define scalaVersion and library versions in version.sbt or ThisBuild in build.sbt; modules must not override scalaVersion or pin conflicting dependency versions locally.
+severity: low
+scope: file
+examples:
+  - snippet: "ThisBuild / scalaVersion := \"2.13.14\""
+    isCorrect: true
+  - snippet: "lazy val api = project.settings(scalaVersion := \"3.4.1\")"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

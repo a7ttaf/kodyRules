@@ -1,0 +1,14 @@
+title: ETag/Last-Modified for non-immutable assets
+rule: >-
+  For Go static servers, set immutable Cache-Control for hashed files; otherwise set "Cache-Control: no-cache" and support conditional GET via ETag or Last-Modified using file info.
+severity: low
+scope: file
+examples:
+  - snippet: "w.Header().Set(\"Cache-Control\",\"public, max-age=31536000, immutable\")"
+    isCorrect: true
+  - snippet: "http.FileServer(http.Dir(\"./public\")) // default"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

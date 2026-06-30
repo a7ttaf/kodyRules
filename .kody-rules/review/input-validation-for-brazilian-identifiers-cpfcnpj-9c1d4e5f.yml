@@ -1,0 +1,14 @@
+title: Input validation for Brazilian identifiers (CPF/CNPJ) with checksum
+rule: >-
+  Validate CPF/CNPJ format and checksum server-side; reject storage of invalid identifiers and never auto-correct them. Store normalized (digits-only) representation.
+severity: low
+scope: file
+examples:
+  - snippet: "if(isValidCPF(onlyDigits(cpf))) store({cpf})"
+    isCorrect: true
+  - snippet: "store({ cpf }) // no validation"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

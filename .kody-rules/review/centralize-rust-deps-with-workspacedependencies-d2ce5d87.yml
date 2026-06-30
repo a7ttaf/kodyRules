@@ -1,0 +1,14 @@
+title: Centralize Rust deps with workspace.dependencies
+rule: >-
+  In the root Cargo.toml, define [workspace] members and manage shared versions under [workspace.dependencies]. Member Cargo.toml files must not pin versions for crates declared centrally.
+severity: low
+scope: file
+examples:
+  - snippet: "serde = \"1.0\" # in [workspace.dependencies]"
+    isCorrect: true
+  - snippet: "serde = \"1.0.197\" # pinned in member crate"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

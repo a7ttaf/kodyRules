@@ -1,0 +1,14 @@
+title: Turbo pipeline must declare dependencies and outputs
+rule: >-
+  In turbo.json, each task must set dependsOn (e.g., "^build") and outputs (e.g., "dist/"). Require cache:true for build/test/lint pipelines unless explicitly justified.
+severity: low
+scope: file
+examples:
+  - snippet: "\"pipeline\": { \"build\": {} }"
+    isCorrect: false
+  - snippet: "\"pipeline\": { \"build\": { \"outputs\": [\"dist/\"], \"cache\": true } }"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

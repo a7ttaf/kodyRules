@@ -1,0 +1,15 @@
+title: Avoid `v-if` with `v-for`
+rule: Never use `v-if` on the same element as `v-for`.
+severity: high
+scope: file
+examples:
+  - snippet: "<ul>\n  <li\n    v-for=\"user in users\"\n    v-if=\"user.isActive\"\n    :key=\"user.id\"\n  >\n    {{ user.name }}\n  </li>\n</ul>"
+    isCorrect: false
+  - snippet: "<ul>\n  <li\n    v-for=\"user in activeUsers\"\n    :key=\"user.id\"\n  >\n    {{ user.name }}\n  </li>\n</ul>"
+    isCorrect: true
+  - snippet: "<ul>\n  <template v-for=\"user in users\" :key=\"user.id\">\n    <li v-if=\"user.isActive\">\n      {{ user.name }}\n    </li>\n  </template>\n</ul>"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

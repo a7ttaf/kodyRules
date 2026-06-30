@@ -1,0 +1,14 @@
+title: Add error handling for JSON marshalling
+rule: >-
+  Always check and handle errors from json.Marshal/json.Unmarshal (or Encoder/Decoder). Log context and return a safe, consistent error to callers.
+severity: high
+scope: file
+examples:
+  - snippet: "json.Marshal(x) // ignore error"
+    isCorrect: false
+  - snippet: "b, err := json.Marshal(x); if err != nil { return err }"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

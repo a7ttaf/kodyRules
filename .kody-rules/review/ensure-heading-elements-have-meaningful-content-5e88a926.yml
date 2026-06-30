@@ -1,0 +1,14 @@
+title: Ensure heading elements have meaningful content
+rule: >-
+  Verify that heading elements contain meaningful content. Headings are used for structure and navigation, so empty or generic headings negatively impact accessibility and usability.
+severity: high
+scope: file
+examples:
+  - snippet: "function JavaScript101() {\n  return (\n    <>\n      <h1>JavaScript Programming Guide</h1>\n      <p>An introduction to JavaScript programming and its applications.</p>\n\n      <h2>JavaScript Basics</h2>\n      <p>Understanding the basic concepts in JavaScript programming.</p>\n\n      <h3>Variables</h3>\n      <p>Explanation of what variables are and how to declare them in JavaScript.</p>\n\n      <h3 aria-hidden>Data Types</h3> // Noncompliant\n      <p>Overview of the different data types in JavaScript.</p>\n\n      <h3 /> // Noncompliant\n      <p>Understanding how to declare and use functions in JavaScript.</p>\n    </>\n  );\n}"
+    isCorrect: false
+  - snippet: "function JavaScript101() {\n  return (\n    <>\n      <h1>JavaScript Programming Guide</h1>\n      <p>An introduction to JavaScript programming and its applications.</p>\n\n      <h2>JavaScript Basics</h2>\n      <p>Understanding the basic concepts in JavaScript programming.</p>\n\n      <h3>Variables</h3>\n      <p>Explanation of what variables are and how to declare them in JavaScript.</p>\n\n      <h3>Data Types</h3>\n      <p>Overview of the different data types in JavaScript.</p>\n\n      <h3>Functions</h3>\n      <p>Understanding how to declare and use functions in JavaScript.</p>\n    </>\n  );\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

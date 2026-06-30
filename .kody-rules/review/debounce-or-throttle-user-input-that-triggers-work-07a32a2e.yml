@@ -1,0 +1,14 @@
+title: Debounce or throttle user input that triggers work
+rule: >-
+  Apply debounce/throttle to handlers that trigger network calls or heavy computation on rapid input.
+severity: high
+scope: file
+examples:
+  - snippet: "oninput => fetch()"
+    isCorrect: false
+  - snippet: "oninput => debounce(fetch)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

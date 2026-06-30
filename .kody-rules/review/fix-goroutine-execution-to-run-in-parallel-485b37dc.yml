@@ -1,0 +1,14 @@
+title: Fix goroutine execution to run in parallel
+rule: >-
+  Launch goroutines outside of waits, capture loop variables, and use sync.WaitGroup (and buffered channels when needed) to achieve true concurrency.
+severity: high
+scope: file
+examples:
+  - snippet: "go func(){ use(u) }() // without capturing u"
+    isCorrect: false
+  - snippet: "u := u; go func(u string){ ... }(u)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

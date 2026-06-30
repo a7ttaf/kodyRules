@@ -1,0 +1,16 @@
+title: Use detailed prop definitions
+rule: >-
+  In committed code, prop definitions should always be as detailed as possible, specifying at least type(s).
+severity: high
+scope: file
+examples:
+  - snippet: "props: ['status']"
+    isCorrect: false
+  - snippet: "props: {\n  status: String\n}"
+    isCorrect: true
+  - snippet: "props: {\n  status: {\n    type: String,\n    required: true,\n    validator: value => {\n      return [\n        'syncing',\n        'synced',\n        'version-conflict',\n        'error'\n      ].includes(value)\n    }\n  }\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

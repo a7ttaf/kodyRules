@@ -1,0 +1,14 @@
+title: Avoid Using Boolean Expressions in `except` Statements
+rule: >-
+  Detect `except` clauses that use `or` or `and` to catch multiple exceptions. This does not work as intended. Recommend using a tuple of exceptions instead.
+severity: critical
+scope: file
+examples:
+  - snippet: "try:\n    raise TypeError()\nexcept ValueError or TypeError:  # Noncompliant\n    print(\"Catching only ValueError\")\nexcept ValueError and TypeError:  # Noncompliant\n    print(\"Catching only TypeError\")\nexcept (ValueError or TypeError) as exception:  # Noncompliant\n    print(\"Catching only ValueError\")\n\nfoo = ValueError or TypeError  # foo == ValueError\nfoo = ValueError and TypeError  # foo == TypeError"
+    isCorrect: false
+  - snippet: "try:\n    raise TypeError()\nexcept (ValueError, TypeError) as exception:\n    print(\"Catching ValueError and TypeError\")"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

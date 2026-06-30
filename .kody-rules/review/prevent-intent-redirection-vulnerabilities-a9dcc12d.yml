@@ -1,0 +1,14 @@
+title: Prevent Intent Redirection Vulnerabilities
+rule: >-
+  Ensure that applications do not expose intent-processing components that can be manipulated by other applications.
+severity: critical
+scope: file
+examples:
+  - snippet: "public class Noncompliant extends AppCompatActivity {\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        Intent intent = getIntent();\n        Intent forward = (Intent) intent.getParcelableExtra(\"anotherintent\");\n        startActivity(forward); // Noncompliant\n    }\n}"
+    isCorrect: false
+  - snippet: "public class MainActivity extends AppCompatActivity {\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n\n        Intent intent = getIntent();\n        Intent forward = (Intent) intent.getParcelableExtra(\"anotherintent\");\n\n        ComponentName title = forward.resolveActivity(getPackageManager());\n        if (title.getPackageName().equals(\"safePackage\") &&\n                title.getClassName().equals(\"safeClass\")) {\n            startActivity(forward);\n        }\n    }\n}"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

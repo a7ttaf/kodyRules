@@ -1,0 +1,14 @@
+title: Don’t Create Exceptions Without Raising Them
+rule: >-
+  Identify instances where an exception object is created but never raised. This is likely an oversight and should either be removed or properly raised.
+severity: critical
+scope: file
+examples:
+  - snippet: "def func(x):\n    if not isinstance(x, int):\n        TypeError(\"Wrong type for parameter 'x'. func expects an integer\")  # Noncompliant\n    if x < 0:\n        ValueError  # Noncompliant\n    return x + 42"
+    isCorrect: false
+  - snippet: "def func(x):\n    if not isinstance(x, int):\n        raise TypeError(\"Wrong type for parameter 'x'. func expects an integer\")\n    if x < 0:\n        raise ValueError\n    return x + 42"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

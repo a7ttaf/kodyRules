@@ -1,0 +1,14 @@
+title: Keep 'use client' at the leaf: default to Server Components
+rule: >-
+  Prefer Server Components for pages/layouts and move interactivity to small leaf Client Components. Only add 'use client' where browser APIs or event handlers are strictly necessary.
+severity: high
+scope: file
+examples:
+  - snippet: "'use client' at the top of app/(marketing)/page.tsx"
+    isCorrect: false
+  - snippet: "Server page + small client child like <LikeButton />"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

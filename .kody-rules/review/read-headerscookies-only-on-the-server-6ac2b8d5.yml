@@ -1,0 +1,14 @@
+title: Read headers/cookies only on the server
+rule: >-
+  Use headers() and cookies() in Server Components, Route Handlers, or server actions; never in Client Components.
+severity: high
+scope: file
+examples:
+  - snippet: "cookies() inside a Client Component"
+    isCorrect: false
+  - snippet: "headers() inside a server layout"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Don’t Use `assert` for Data Validation
+rule: >-
+  Ensure that `assert` is not used for validating user input or critical checks. Assertions can be disabled in optimized mode (`python -O`). Recommend using explicit validation with `if` conditions and raising proper exceptions.
+severity: critical
+scope: file
+examples:
+  - snippet: "assert x > 0, 'x must be positive'"
+    isCorrect: false
+  - snippet: "if x <= 0:\n    raise ValueError('x must be positive')"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

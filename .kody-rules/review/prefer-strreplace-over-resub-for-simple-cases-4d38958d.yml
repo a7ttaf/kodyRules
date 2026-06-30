@@ -1,0 +1,14 @@
+title: Prefer `str.replace()` Over `re.sub()` for Simple Cases
+rule: >-
+  Detect uses of `re.sub()` where regular expressions are not needed. For simple string replacements, `str.replace()` is more efficient and should be used instead.
+severity: critical
+scope: file
+examples:
+  - snippet: "init = \"Bob is a Bird... Bob is a Plane... Bob is Superman!\"\nchanged = re.sub(r\"Bob is\", \"It's\", init) # Noncompliant\nchanged = re.sub(r\"\\.\\.\\.\", \";\", changed) # Noncompliant"
+    isCorrect: false
+  - snippet: "init = \"Bob is a Bird... Bob is a Plane... Bob is Superman!\"\nchanged = init.replace(\"Bob is\", \"It's\")\nchanged = changed.replace(\"...\", \";\")"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

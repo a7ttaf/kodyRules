@@ -1,0 +1,14 @@
+title: Avoid using eval
+rule: >-
+  Detect the use of eval(). Eval allows execution of arbitrary code, leading to security vulnerabilities such as code injection. Recommend safer alternatives like function execution.
+severity: critical
+scope: file
+examples:
+  - snippet: "const userInput = 'alert(\"Hacked!\")';\neval(userInput);"
+    isCorrect: false
+  - snippet: "const userInput = 'alert(\"Hacked!\")';\n// Avoid eval usage; parse or sanitize input appropriately\nconsole.log('Safe execution:', userInput);"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

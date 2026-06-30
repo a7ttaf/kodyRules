@@ -1,0 +1,14 @@
+title: Portable DSAR export with signed URL and TTL
+rule: >-
+  Provide an authenticated endpoint that assembles a user's data into a structured JSON export and returns a short-lived signed URL (≤24h). Include integration tests in the PR. (GDPR Art. 20)
+severity: high
+scope: pull-request
+examples:
+  - snippet: "URI url = storage.sign(path, Duration.ofHours(24));"
+    isCorrect: true
+  - snippet: "return ResponseEntity.ok(csvBody); // inline data, no TTL"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

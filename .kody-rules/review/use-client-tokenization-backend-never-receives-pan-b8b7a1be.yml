@@ -1,0 +1,14 @@
+title: Use client tokenization; backend never receives PAN
+rule: >-
+  For web/mobile payment forms, send PAN and CVV directly to the PCI-compliant gateway to obtain a single-use token; submit only the token to your backend. Validate that backend APIs reject requests containing PAN/SAD. (PCI DSS scoping & SAQ A)
+severity: high
+scope: file
+examples:
+  - snippet: "formData.append('pan', cardNumber)"
+    isCorrect: false
+  - snippet: "const token = await gateway.tokenize({pan, cvv}); formData.append('token', token)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

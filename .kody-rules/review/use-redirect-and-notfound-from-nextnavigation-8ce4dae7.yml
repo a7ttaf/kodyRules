@@ -1,0 +1,14 @@
+title: Use redirect() and notFound() from next/navigation
+rule: >-
+  Prefer redirect() and notFound() over manual 302/404 handling and custom components in App Router.
+severity: low
+scope: file
+examples:
+  - snippet: "Rendering a custom <NotFound /> component"
+    isCorrect: false
+  - snippet: "notFound() for a true 404"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

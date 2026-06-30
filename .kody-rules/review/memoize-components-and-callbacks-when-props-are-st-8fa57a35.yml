@@ -1,0 +1,14 @@
+title: Memoize components and callbacks when props are stable
+rule: >-
+  For pure functions called repeatedly with the same inputs, memoize results; avoid recreating identical callbacks in hot paths.
+severity: low
+scope: file
+examples:
+  - snippet: "arr.map(expensive)"
+    isCorrect: false
+  - snippet: "const f=memo(expensive); arr.map(f)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Encrypt transient PAN with AES-GCM using KMS keys and zeroize
+rule: >-
+  If PAN must be handled transiently, encrypt in memory with AES-256-GCM using a KMS/HSM-provided key, store only ciphertext or tokens, and zeroize plaintext buffers immediately. Rotate keys per policy. (PCI DSS 4.0 Req. 3)
+severity: high
+scope: file
+examples:
+  - snippet: "Files.writeString(path, pan)"
+    isCorrect: false
+  - snippet: "Arrays.fill(panBytes,(byte)0)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

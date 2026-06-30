@@ -1,0 +1,14 @@
+title: Audit access to PII with purpose and actor (no raw values)
+rule: >-
+  Whenever PII is read, emit an audit event capturing actor, purpose, fields touched, and legal basis; never include raw PII in the audit payload—store hashes/tokens only.
+severity: high
+scope: file
+examples:
+  - snippet: "audit_log(AuditEvent{ purpose: \"billing\", ..Default::default() })"
+    isCorrect: true
+  - snippet: "println!(\"user_cpf={}\", cpf)"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

@@ -1,0 +1,14 @@
+title: Transactional erasure with tombstone event
+rule: >-
+  Wrap PII scrubbing and session invalidation in a single DB transaction; publish a gdpr.erased event with subject ID and timestamp after commit.
+severity: high
+scope: file
+examples:
+  - snippet: "tx, _ := db.Begin(); / scrub PII / tx.Commit()"
+    isCorrect: true
+  - snippet: "db.Exec(\"DELETE FROM users WHERE id=$1\", id)"
+    isCorrect: false
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

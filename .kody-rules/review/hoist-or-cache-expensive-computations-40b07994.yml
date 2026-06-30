@@ -1,0 +1,14 @@
+title: Hoist or cache expensive computations
+rule: >-
+  Hoist constant work (e.g., RegExp, static JSON, config loads) out of loops and cache results by input when feasible.
+severity: low
+scope: file
+examples:
+  - snippet: "new RegExp(...) inside the loop"
+    isCorrect: false
+  - snippet: "declare the regex once outside the loop"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

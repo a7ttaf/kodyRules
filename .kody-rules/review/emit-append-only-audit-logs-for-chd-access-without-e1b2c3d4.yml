@@ -1,0 +1,14 @@
+title: Emit append-only audit logs for CHD access without PAN
+rule: >-
+  On every create/read/update/delete of CHD or tokens, write a structured audit event (who, what, when, result) without full PAN, including only pan_last4. Persist to an append-only/immutable sink. (PCI DSS 4.0 Req. 10)
+severity: high
+scope: file
+examples:
+  - snippet: "info!(\"audit\", pan = full_pan)"
+    isCorrect: false
+  - snippet: "event!(Level::INFO, target=\"audit\", pan_last4=last4)"
+    isCorrect: true
+inheritance:
+  inheritable: true
+  exclude: []
+  include: []

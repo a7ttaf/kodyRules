@@ -1,0 +1,12 @@
+title: Avoid Wildcard Imports
+rule: >-
+  Ensure that imports are explicitly listed and avoid using wildcard imports
+  (`import package.*;`).
+severity: low
+examples:
+  - snippet: import java.util.*;
+    isCorrect: false
+  - snippet: |-
+      import java.util.List;
+      import java.util.Map;
+    isCorrect: true

@@ -1,0 +1,16 @@
+title: Avoid using eval
+rule: >-
+  Detect the use of eval(). Eval allows execution of arbitrary code, leading to
+  security vulnerabilities such as code injection. Recommend safer alternatives
+  like function execution.
+severity: critical
+examples:
+  - snippet: |-
+      const userInput = 'alert("Hacked!")';
+      eval(userInput);
+    isCorrect: false
+  - snippet: |-
+      const userInput = 'alert("Hacked!")';
+      // Avoid eval usage; parse or sanitize input appropriately
+      console.log('Safe execution:', userInput);
+    isCorrect: true

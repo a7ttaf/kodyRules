@@ -1,0 +1,10 @@
+title: Improve field encapsulation with private visibility
+rule: >-
+  Use private fields with accessors; expose the narrowest visibility that
+  satisfies usage.
+severity: low
+examples:
+  - snippet: public int x;
+    isCorrect: false
+  - snippet: private int x;
+    isCorrect: true

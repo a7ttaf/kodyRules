@@ -1,0 +1,10 @@
+title: Backups encrypted, tested, and monitored for RPO/RTO
+rule: >-
+  Create daily encrypted backups (KMS keys) with retention and geo-redundancy;
+  run quarterly restore tests and record results in the audit log.
+severity: high
+examples:
+  - snippet: log_audit("backup.restore_test","success")
+    isCorrect: true
+  - snippet: echo "restores seem fine"
+    isCorrect: false

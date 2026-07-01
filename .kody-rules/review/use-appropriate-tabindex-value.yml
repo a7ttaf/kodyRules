@@ -1,0 +1,30 @@
+title: Use appropriate tabIndex values
+rule: >-
+  Ensure tabIndex values are either 0 or -1. Positive tabIndex values disrupt
+  the natural tab order and can create accessibility issues.
+severity: high
+examples:
+  - snippet: |-
+      function MyDiv() {
+          return (
+              <div>
+                  <span tabIndex="5">foo</span> // Noncompliant
+                  <span tabIndex="3">bar</span> // Noncompliant
+                  <span tabIndex="1">baz</span> // Noncompliant
+                  <span tabIndex="2">qux</span> // Noncompliant
+              </div>
+          );
+      }
+    isCorrect: false
+  - snippet: |-
+      function MyDiv() {
+          return (
+              <div>
+                  <span tabIndex="0">foo</span>
+                  <span tabIndex="-1">bar</span>
+                  <span tabIndex={0}>baz</span>
+                  <span>qux</span>
+              </div>
+          );
+      }
+    isCorrect: true

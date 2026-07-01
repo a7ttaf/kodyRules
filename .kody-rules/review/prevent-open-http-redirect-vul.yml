@@ -1,0 +1,26 @@
+title: Prevent Open HTTP Redirect Vulnerabilities
+rule: >-
+  Ensure that user-controlled HTTP redirections are validated to prevent
+  phishing attacks.
+severity: critical
+examples:
+  - snippet: >-
+      protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws IOException {
+        String location = req.getParameter("url");
+        resp.sendRedirect(location);
+      }
+    isCorrect: false
+  - snippet: >-
+      protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws IOException {
+        String location = req.getParameter("url");
+
+        List<String> allowedHosts = new ArrayList<String>();
+        allowedHosts.add("https://trusted1.example.com/");
+        allowedHosts.add("https://trusted2.example.com/");
+
+        if (allowedHosts.contains(location))
+          resp.sendRedirect(location);
+      }
+    isCorrect: true

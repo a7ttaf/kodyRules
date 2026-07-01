@@ -1,0 +1,10 @@
+title: Optimize database queries with proper indexing
+rule: >-
+  Index columns used in JOIN/WHERE/ORDER BY; verify plans and avoid full scans
+  for hot queries.
+severity: high
+examples:
+  - snippet: WHERE email=? on unindexed col
+    isCorrect: false
+  - snippet: CREATE INDEX ...
+    isCorrect: true

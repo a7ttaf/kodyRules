@@ -1,0 +1,27 @@
+title: Ensure All Used Variables, Classes, and Functions Are Defined
+rule: >-
+  Check for variables, functions, or classes that are used but not defined. This
+  results in `NameError` and should be fixed by ensuring all symbols are
+  properly declared.
+severity: low
+examples:
+  - snippet: |-
+      my_var # Noncompliant (variable is never defined)
+
+      def noncompliant():
+          foo()  # Noncompliant
+          MyClass()  # Noncompliant
+    isCorrect: false
+  - snippet: |-
+      from mod import my_var
+
+      my_var
+
+      def compliant():
+          foo = sum
+          foo()
+
+          class MyClass:
+              pass
+          MyClass()
+    isCorrect: true

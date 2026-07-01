@@ -1,0 +1,18 @@
+title: Explicitly Close Resources in `finally` Blocks
+rule: >-
+  Check if resources such as files or database connections are properly closed
+  in a `finally` block. This ensures resources are always released, even if an
+  exception occurs.
+severity: high
+examples:
+  - snippet: |-
+      file = open('test.txt')
+      data = file.read()
+    isCorrect: false
+  - snippet: |-
+      try:
+          file = open('test.txt')
+          data = file.read()
+      finally:
+          file.close()
+    isCorrect: true

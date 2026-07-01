@@ -1,0 +1,39 @@
+title: Override `read(byte[], int, int)` in InputStream Subclasses
+rule: >-
+  Ensure that the `read(byte[], int, int)` method is overridden in `InputStream`
+  subclasses to improve efficiency.
+severity: low
+examples:
+  - snippet: |-
+      public class MyInputStream extends java.io.InputStream {
+        private FileInputStream fin;
+
+        public MyInputStream(File file) throws IOException {
+          fin = new FileInputStream(file);
+        }
+
+        @Override
+        public int read() throws IOException {
+          return fin.read();
+        }
+      }
+    isCorrect: false
+  - snippet: |-
+      public class MyInputStream extends java.io.InputStream {
+        private FileInputStream fin;
+
+        public MyInputStream(File file) throws IOException {
+          fin = new FileInputStream(file);
+        }
+
+        @Override
+        public int read() throws IOException {
+          return fin.read();
+        }
+
+        @Override
+        public int read(byte[] b, int off, int len) throws IOException {
+          return fin.read(b, off, len);
+        }
+      }
+    isCorrect: true

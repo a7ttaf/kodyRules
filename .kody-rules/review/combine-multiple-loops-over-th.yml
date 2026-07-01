@@ -1,0 +1,24 @@
+title: Combine Multiple Loops Over the Same Collection
+rule: >-
+  Ensure that multiple loops over the same collection are combined into a single
+  loop to improve efficiency.
+severity: low
+examples:
+  - snippet: |-
+      public void doSomethingToAList(List<String> strings) {
+        for (String str : strings) {
+          doStep1(str);
+        }
+        for (String str : strings) {  // Noncompliant
+          doStep2(str);
+        }
+      }
+    isCorrect: false
+  - snippet: |-
+      public void doSomethingToAList(List<String> strings) {
+        for (String str : strings) {
+          doStep1(str);
+          doStep2(str);
+        }
+      }
+    isCorrect: true

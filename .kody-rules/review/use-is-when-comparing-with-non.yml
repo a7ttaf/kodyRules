@@ -1,0 +1,11 @@
+title: Use `is` When Comparing with `None`
+rule: >-
+  Identify occurrences where `== None` or `!= None` is used. Using `is None` and
+  `is not None` is more reliable because it checks identity instead of equality,
+  preventing potential issues with overloaded `__eq__` methods.
+severity: low
+examples:
+  - snippet: 'if value == None:'
+    isCorrect: false
+  - snippet: 'if value is None:'
+    isCorrect: true

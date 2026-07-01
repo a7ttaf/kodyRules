@@ -1,0 +1,8 @@
+title: Remove redundant condition checks in loops
+rule: Avoid re-checking loop-invariant conditions inside iterations; lift them out.
+severity: low
+examples:
+  - snippet: if(flag) inside loop
+    isCorrect: false
+  - snippet: if(flag) { loop }
+    isCorrect: true

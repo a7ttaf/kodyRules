@@ -1,0 +1,23 @@
+title: Document Exceptions in Function Docstrings
+rule: >-
+  Identify functions that raise exceptions but do not document them in
+  docstrings. Missing exception documentation makes it difficult to understand
+  failure cases. Suggest adding an `:raises` section in the docstring.
+severity: high
+examples:
+  - snippet: |-
+      def fetch_data():
+          if error:
+              raise ValueError('Invalid data')
+    isCorrect: false
+  - snippet: |-
+      def fetch_data():
+          """
+          Fetches data from the database.
+
+          Raises:
+              ValueError: If the data is invalid.
+          """
+          if error:
+              raise ValueError("Invalid data")
+    isCorrect: true

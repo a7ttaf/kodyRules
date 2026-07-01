@@ -1,0 +1,16 @@
+title: Add a PodDisruptionBudget for HA Deployments
+rule: >-
+  For Deployments with replicas ≥ 2, include a PodDisruptionBudget with
+  minAvailable or maxUnavailable set.
+severity: low
+examples:
+  - snippet: |-
+      kind: PodDisruptionBudget
+      spec:
+       minAvailable: 2
+    isCorrect: true
+  - snippet: |-
+      kind: Deployment
+      spec:
+       replicas: 3
+    isCorrect: false

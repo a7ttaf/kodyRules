@@ -1,0 +1,10 @@
+title: Replace lambda with regular functions
+rule: >-
+  Prefer named def functions for non-trivial logic; keep lambdas only for tiny,
+  inline expressions.
+severity: low
+examples:
+  - snippet: 'map(lambda x: heavy(x), xs)'
+    isCorrect: false
+  - snippet: 'def heavy_key(x): return heavy(x); map(heavy_key, xs)'
+    isCorrect: true

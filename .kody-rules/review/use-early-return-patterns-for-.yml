@@ -1,0 +1,8 @@
+title: Use early return patterns for control flow
+rule: Validate and return early to reduce nesting and improve readability.
+severity: low
+examples:
+  - snippet: deeply nested ifs
+    isCorrect: false
+  - snippet: guard clauses then main path
+    isCorrect: true

@@ -1,0 +1,32 @@
+title: Use Appropriate HTTP Status Codes
+rule: >-
+  Ensure that HTTP handlers return the appropriate status codes based on request
+  success or failure.
+severity: high
+examples:
+  - snippet: |-
+      @Controller
+      public class UserController {
+          public ResponseEntity<User> getUserById(Long userId) {
+              try {
+                  User user = userService.getUserById(userId);
+                  return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(user); // Noncompliant: Setting 500 for a successful operation
+              } catch (Exception e) {
+                  return ResponseEntity.status(HttpStatus.OK).build(); // Noncompliant: Setting 200 for exception
+              }
+          }
+      }
+    isCorrect: false
+  - snippet: |-
+      @Controller
+      public class UserController {
+          public ResponseEntity<User> getUserById(Long userId) {
+              try {
+                  User user = userService.getUserById(userId);
+                  return ResponseEntity.ok(user); // Compliant: Setting 200 for a successful operation
+              } catch (Exception e) {
+                  return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Compliant: Setting 500 for exception
+              }
+          }
+      }
+    isCorrect: true

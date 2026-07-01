@@ -1,0 +1,6 @@
+title: Avoid Brain Methods (Methods Doing Too Many Tasks)
+rule: >-
+  Ensure that methods perform a single, well-defined task. Large methods should
+  be refactored into smaller, focused methods.
+severity: low
+examples: []

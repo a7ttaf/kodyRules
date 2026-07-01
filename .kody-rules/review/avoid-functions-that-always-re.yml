@@ -1,0 +1,13 @@
+title: Avoid Functions That Always Return the Same Value
+rule: >-
+  Identify functions that return the same value regardless of input. This may
+  indicate poor design or a logic error.
+severity: high
+examples:
+  - snippet: |-
+      def foo(a):  # NonCompliant
+          b = 12
+          if a == 1:
+              return b
+          return b
+    isCorrect: false

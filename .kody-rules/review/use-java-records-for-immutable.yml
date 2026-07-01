@@ -1,0 +1,32 @@
+title: Use Java Records for Immutable Data Structures
+rule: >-
+  Ensure that Java records are used for immutable data structures instead of
+  manually implementing immutable classes.
+severity: high
+examples:
+  - snippet: |-
+      final class Person { // Noncompliant
+        private final String title;
+        private final int age;
+
+        public Person(String title, int age) {
+          this.title = title;
+          this.age = age;
+        }
+
+        public String getName() {...}
+
+        public int getAge() {...}
+
+        @Override
+        public boolean equals(Object o) {...}
+
+        @Override
+        public int hashCode() {...}
+
+        @Override
+        public String toString() {...}
+      }
+    isCorrect: false
+  - snippet: record Person(String title, int age) { }
+    isCorrect: true

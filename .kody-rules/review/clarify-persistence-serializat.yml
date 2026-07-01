@@ -1,0 +1,10 @@
+title: Clarify persistence/serialization with annotations
+rule: >-
+  Annotate fields/props to explicitly control persistence and serialization
+  (e.g., transient/ignored fields).
+severity: low
+examples:
+  - snippet: internal fields serialized by default
+    isCorrect: false
+  - snippet: mark cache fields transient
+    isCorrect: true

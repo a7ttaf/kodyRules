@@ -1,0 +1,14 @@
+title: Avoid Semicolons
+rule: >-
+  Check if semicolons are used at the end of statements in Python code.
+  Semicolons are unnecessary and may cause readability issues or errors when
+  multiple statements are placed on one line. Recommend using new lines instead.
+severity: low
+examples:
+  - snippet: x = 1; y = 2; print(x + y)
+    isCorrect: false
+  - snippet: |
+      x = 1
+      y = 2
+      print(x + y)
+    isCorrect: true

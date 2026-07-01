@@ -1,0 +1,10 @@
+title: Add unique constraints for data integrity
+rule: >-
+  Enforce uniqueness at the database level (unique indexes/constraints) for
+  identifiers and natural keys.
+severity: high
+examples:
+  - snippet: 'if email in emails: ...'
+    isCorrect: false
+  - snippet: CREATE UNIQUE INDEX idx_users_email ON users(email)
+    isCorrect: true

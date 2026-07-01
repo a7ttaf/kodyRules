@@ -1,0 +1,22 @@
+title: Use Object Types for Optional REST Parameters
+rule: >-
+  Ensure that optional REST parameters use object types or `Optional<T>` instead
+  of primitive types to avoid runtime errors.
+severity: high
+examples:
+  - snippet: >-
+      @RequestMapping(value = {"/article", "/article/{id}"})
+
+      public Article getArticle(@PathVariable(required = false) int articleId) {
+      // Noncompliant, null cannot be mapped to int
+         //...
+      }
+    isCorrect: false
+  - snippet: >-
+      @RequestMapping(value = {"/article", "/article/{id}"})
+
+      public Article getArticle(@PathVariable(required = false) Integer
+      articleId) { // Compliant
+         //...
+      }
+    isCorrect: true

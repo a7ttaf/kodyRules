@@ -1,0 +1,10 @@
+title: Extract duplicated API call logic
+rule: >-
+  Factor repeated HTTP call setup/parsing/retry into a reusable helper or
+  client.
+severity: low
+examples:
+  - snippet: build request + send duplicated
+    isCorrect: false
+  - snippet: client abstraction encapsulates calls
+    isCorrect: true

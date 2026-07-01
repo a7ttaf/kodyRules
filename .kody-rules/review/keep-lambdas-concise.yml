@@ -1,0 +1,6 @@
+title: Keep Lambdas Concise
+rule: >-
+  Ensure that lambda expressions remain short and simple. If a lambda grows too
+  complex, refactor it into a titled method.
+severity: high
+examples: []

@@ -1,0 +1,25 @@
+title: Use `Arrays.stream()` for Primitive Arrays
+rule: >-
+  Ensure that `Arrays.stream(array)` is used instead of `Arrays.asList(T...
+  a).stream()` for primitive arrays.
+severity: high
+examples:
+  - snippet: |-
+      Arrays.asList("a1", "a2", "b1", "c2", "c1").stream()
+          .filter(...)
+          .forEach(...);
+
+      Arrays.asList(1, 2, 3, 4).stream() // Noncompliant
+          .filter(...)
+          .forEach(...);
+    isCorrect: false
+  - snippet: |-
+      Arrays.asList("a1", "a2", "b1", "c2", "c1").stream()
+          .filter(...)
+          .forEach(...);
+
+      int[] intArray = new int[]{1, 2, 3, 4};
+      Arrays.stream(intArray)
+          .filter(...)
+          .forEach(...);
+    isCorrect: true

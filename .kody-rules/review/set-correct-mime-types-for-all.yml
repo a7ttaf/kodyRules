@@ -1,0 +1,12 @@
+title: Set correct MIME types for all static assets
+rule: >-
+  Serve assets with accurate Content-Type (e.g., text/css,
+  application/javascript, image/avif, image/webp, font/woff2, image/svg+xml) and
+  include charset for text types. Do not default to text/plain or
+  application/octet-stream.
+severity: low
+examples:
+  - snippet: 'Content-Type: font/woff2'
+    isCorrect: true
+  - snippet: 'Content-Type: text/plain // for .js'
+    isCorrect: false

@@ -1,0 +1,10 @@
+title: Use dict.get() with defaults for safe key access
+rule: >-
+  When keys may be absent, prefer dict.get(key, default) or setdefault instead
+  of direct indexing.
+severity: low
+examples:
+  - snippet: d['x']
+    isCorrect: false
+  - snippet: d.get('x', 0)
+    isCorrect: true

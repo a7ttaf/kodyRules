@@ -1,10 +1,19 @@
-title: Use try-with-resources for resource management
+title: Use Try-With-Resources for Resource Management
 rule: >-
-  Use try-with-resources for Closeable/AutoCloseable objects to guarantee
-  deterministic cleanup.
-severity: high
+  Ensure that resources such as streams or file handlers are managed using
+  try-with-resources to avoid leaks.
+severity: low
 examples:
-  - snippet: new FileInputStream(p)
+  - snippet: |-
+      FileInputStream fis = new FileInputStream("file.txt");
+      try {
+          // Read file
+      } finally {
+          fis.close();
+      }
     isCorrect: false
-  - snippet: try (InputStream in = new FileInputStream(p)) { /* ... */ }
+  - snippet: |-
+      try (FileInputStream fis = new FileInputStream("file.txt")) {
+          // Read file
+      }
     isCorrect: true

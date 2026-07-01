@@ -1,0 +1,11 @@
+title: 'Preload critical fonts and use font-display: swap'
+rule: >-
+  Preload render-blocking WOFF2 fonts using <link rel="preload" as="font"
+  type="font/woff2" crossorigin> and define @font-face with "font-display:
+  swap". Only preload fonts used above the fold.
+severity: high
+examples:
+  - snippet: <link rel="preload" as="font" type="font/woff2" crossorigin>
+    isCorrect: true
+  - snippet: <link rel="preload" href="/fonts/brand.woff2">
+    isCorrect: false

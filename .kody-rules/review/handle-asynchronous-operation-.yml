@@ -1,0 +1,8 @@
+title: Handle asynchronous operation failures
+rule: Attach exceptionally/handle to CompletableFuture chains; never assume success.
+severity: high
+examples:
+  - snippet: future.thenApply(...); // no error path
+    isCorrect: false
+  - snippet: future.handle((v,e) -> e==null?ok(v):error())
+    isCorrect: true

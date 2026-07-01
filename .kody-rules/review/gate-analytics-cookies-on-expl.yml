@@ -1,0 +1,11 @@
+title: Gate analytics cookies on explicit consent (Web)
+rule: >-
+  Only set analytics/marketing cookies if consent.purposes.analytics === true
+  and consent.version matches current policy; re-check on version bump. (GDPR
+  Art. 7, ePrivacy)
+severity: high
+examples:
+  - snippet: if(consent.purposes.analytics) setAnalyticsCookie();
+    isCorrect: true
+  - snippet: setAnalyticsCookie(); // ignoring consent
+    isCorrect: false

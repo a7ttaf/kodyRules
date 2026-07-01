@@ -1,0 +1,10 @@
+title: Add try-catch blocks for external service calls
+rule: >-
+  Wrap network/filesystem/process calls; check status codes/results and add
+  context to failures.
+severity: high
+examples:
+  - snippet: Files.readString(path)
+    isCorrect: false
+  - snippet: try { Files.readString(path); } catch (IOException e) { /* log+wrap */ }
+    isCorrect: true

@@ -1,0 +1,10 @@
+title: Use list comprehensions and avoid redundant sorting
+rule: >-
+  Prefer comprehensions over map/filter chains and avoid double-sorting or
+  sorting inside loops.
+severity: low
+examples:
+  - snippet: sorted(sorted(xs))
+    isCorrect: false
+  - snippet: xs = sorted(xs, key=key)
+    isCorrect: true

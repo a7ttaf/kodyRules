@@ -1,0 +1,38 @@
+title: Retrieve Only Necessary Fields in SQL Queries
+rule: >-
+  Ensure that SQL queries specify only the necessary fields instead of using
+  `SELECT *` to optimize database performance.
+severity: high
+examples:
+  - snippet: |-
+      public class OrderRepository {
+
+          public record OrderSummary(String title, String orderId, BigDecimal price) { }
+
+          public List<OrderSummary> queryOrderSummaries(Connection conn) {
+                  String sql = "SELECT * " +                                                         // Noncompliant
+                                "FROM Orders JOIN Customers ON Orders.customerId = Customers.id ";
+
+                  Statement stmt = conn.createStatement();
+                  ResultSet rs = stmt.executeQuery(sql);
+
+                  return convertResultToOrderSummaryList(rs);
+          }
+      }
+    isCorrect: false
+  - snippet: |-
+      public class OrderRepository {
+
+          public record OrderSummary(String title, String orderId, BigDecimal price) { }
+
+          public List<OrderSummary> queryOrderSummaries(Connection conn) {
+                  String sql = "SELECT Customers.title, Orders.id, Orders.price " +                   // Compliant
+                                "FROM Orders JOIN Customers ON Orders.customerId = Customers.id ";
+
+                  Statement stmt = conn.createStatement();
+                  ResultSet rs = stmt.executeQuery(sql);
+
+                  return convertResultToOrderSummaryList(rs);
+          }
+      }
+    isCorrect: true

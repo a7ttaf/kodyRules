@@ -1,0 +1,22 @@
+title: vue/attribute-hyphenation
+rule: >-
+  Enforces consistent usage of hyphenated (kebab-case) or non-hyphenated
+  (camelCase) attribute names on custom components in templates.
+severity: low
+examples:
+  - snippet: |-
+      // Config: 'always'
+      <MyComponent myProp="value"></MyComponent>
+    isCorrect: false
+  - snippet: |-
+      // Config: 'never'
+      <MyComponent my-prop="value"></MyComponent>
+    isCorrect: false
+  - snippet: |-
+      // Config: 'always'
+      <MyComponent my-prop="value"></MyComponent>
+    isCorrect: true
+  - snippet: |-
+      // Config: 'never'
+      <MyComponent myProp="value"></MyComponent>
+    isCorrect: true

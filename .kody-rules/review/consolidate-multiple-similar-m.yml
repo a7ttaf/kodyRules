@@ -1,0 +1,8 @@
+title: Consolidate multiple similar methods
+rule: Merge near-duplicate methods into a single parameterized method or strategy.
+severity: low
+examples:
+  - snippet: calculateX(), calculateX2()
+    isCorrect: false
+  - snippet: calculate(mode)
+    isCorrect: true

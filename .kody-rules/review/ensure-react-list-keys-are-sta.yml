@@ -1,0 +1,33 @@
+title: Ensure React list keys are stable between renders
+rule: >-
+  Check if React list keys are stable and unique. Using dynamic values like
+  Math.random() or Date.now() can cause rendering issues. Recommend using unique
+  IDs.
+severity: high
+examples:
+  - snippet: |-
+      function Blog(props) {
+        return (
+          <ul>
+            {props.posts.map((post) =>
+              <li key={Math.random()}> <!-- Noncompliant: Since the 'key' will be different on each render, React will update the DOM unnecessarily -->
+                {post.title}
+              </li>
+            )}
+          </ul>
+        );
+      }
+    isCorrect: false
+  - snippet: |-
+      function Blog(props) {
+        return (
+          <ul>
+            {props.posts.map((post) =>
+              <li key={post.id}>
+                {post.title}
+              </li>
+            )}
+          </ul>
+        );
+      }
+    isCorrect: true

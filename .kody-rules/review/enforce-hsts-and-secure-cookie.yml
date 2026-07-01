@@ -1,0 +1,10 @@
+title: Enforce HSTS and secure cookies in Express
+rule: >-
+  Use helmet to set HSTS and configure cookies with Secure, HttpOnly, and
+  SameSite. Reject HTTP by redirecting to HTTPS.
+severity: high
+examples:
+  - snippet: app.use(helmet())
+    isCorrect: true
+  - snippet: res.cookie('sid', v)
+    isCorrect: false

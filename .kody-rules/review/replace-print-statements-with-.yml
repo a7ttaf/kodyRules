@@ -1,0 +1,10 @@
+title: Replace print statements with logging framework
+rule: >-
+  Use the standard logging module (or your app's logger) instead of print() in
+  committed code.
+severity: low
+examples:
+  - snippet: print('error:', e)
+    isCorrect: false
+  - snippet: logger.exception('operation failed')
+    isCorrect: true

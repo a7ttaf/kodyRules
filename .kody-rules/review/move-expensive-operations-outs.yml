@@ -1,0 +1,10 @@
+title: Move expensive operations outside loops
+rule: >-
+  Lift loop-invariant computations (regex, formatters, lookups) out of loops and
+  reuse.
+severity: low
+examples:
+  - snippet: new Pattern(...) each iteration
+    isCorrect: false
+  - snippet: precompute and reuse
+    isCorrect: true

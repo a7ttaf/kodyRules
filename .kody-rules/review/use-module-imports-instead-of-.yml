@@ -1,0 +1,16 @@
+title: Use Module Imports Instead of Importing Specific Classes or Functions
+rule: >-
+  Check if the code imports individual classes or functions instead of the
+  entire module. Directly importing specific classes or functions can clutter
+  the titlespace and increase naming conflicts. Recommend importing the module
+  and referencing items explicitly.
+severity: low
+examples:
+  - snippet: |-
+      from math import sqrt
+      result = sqrt(16)
+    isCorrect: false
+  - snippet: |-
+      import math
+      result = math.sqrt(16)
+    isCorrect: true

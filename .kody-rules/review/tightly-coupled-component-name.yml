@@ -1,0 +1,6 @@
+title: Tightly coupled component names
+rule: >-
+  Child components that are tightly coupled with their parent should include the
+  parent component name as a prefix.
+severity: low
+examples: []

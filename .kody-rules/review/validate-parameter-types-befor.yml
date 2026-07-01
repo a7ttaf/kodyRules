@@ -1,0 +1,10 @@
+title: Validate parameter types before casting
+rule: >-
+  Use instanceof/pattern matching and guard before casts; avoid
+  ClassCastException.
+severity: low
+examples:
+  - snippet: (List<String>) obj
+    isCorrect: false
+  - snippet: if (obj instanceof List<?> list) { /* ... */ }
+    isCorrect: true

@@ -1,0 +1,19 @@
+title: Avoid building system commands from user input
+rule: >-
+  Check for occurrences where user input is directly used to construct system
+  commands. This introduces a risk of command injection. Suggest using
+  parameterized queries or safe wrappers instead.
+severity: high
+examples:
+  - snippet: |-
+      const { spawn } = require("child_process");
+      const input = req.query.input;
+      const proc = spawn("/usr/bin/find", [input]); // Sensitive
+    isCorrect: false
+  - snippet: |-
+      const { spawn } = require("child_process");
+      const input = req.query.input;
+      if (allowed.includes(input)) {
+        const proc = spawn("/usr/bin/find", [input]);
+      }
+    isCorrect: true

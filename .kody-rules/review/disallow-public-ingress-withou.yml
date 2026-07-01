@@ -1,0 +1,13 @@
+title: Disallow public ingress without explicit allowlist
+rule: >-
+  For Ingress/Service of type LoadBalancer, require host/path allowlist and TLS;
+  forbid 0.0.0.0/0 exposure without WAF or Auth.
+severity: critical
+examples:
+  - snippet: 'nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8'
+    isCorrect: true
+  - snippet: |-
+      kind: Service
+      spec:
+       type: LoadBalancer
+    isCorrect: false

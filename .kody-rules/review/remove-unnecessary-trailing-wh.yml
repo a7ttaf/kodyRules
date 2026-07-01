@@ -1,0 +1,10 @@
+title: Remove Unnecessary Trailing Whitespace
+rule: >-
+  Detect lines with trailing whitespace. Trailing spaces add unnecessary noise
+  to version control diffs. Recommend removing them to keep the codebase clean.
+severity: low
+examples:
+  - snippet: x = 42
+    isCorrect: false
+  - snippet: x = 42
+    isCorrect: true

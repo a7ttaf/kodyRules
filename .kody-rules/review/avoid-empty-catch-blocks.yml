@@ -1,0 +1,18 @@
+title: Avoid Empty Catch Blocks
+rule: >-
+  Ensure that catch blocks contain meaningful exception handling logic and do
+  not remain empty.
+severity: high
+examples:
+  - snippet: |-
+      try {
+          process();
+      } catch (IOException e) {}
+    isCorrect: false
+  - snippet: |-
+      try {
+          process();
+      } catch (IOException e) {
+          log.error("Error processing", e);
+      }
+    isCorrect: true

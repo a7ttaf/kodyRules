@@ -1,0 +1,22 @@
+title: Keep `try` Blocks Small and Focused
+rule: >-
+  Detect `try` blocks that contain excessive code. Large `try` blocks make it
+  harder to debug errors. Recommend narrowing the scope of the `try` block to
+  only the necessary code.
+severity: low
+examples:
+  - snippet: |-
+      try:
+          x = 10
+          y = x / 0
+          print(y)
+      except ZeroDivisionError:
+          print('Error')
+    isCorrect: false
+  - snippet: |-
+      x = 10
+      try:
+          y = x / 0
+      except ZeroDivisionError:
+          print('Error')
+    isCorrect: true

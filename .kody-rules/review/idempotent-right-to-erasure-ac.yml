@@ -1,0 +1,11 @@
+title: Idempotent Right to Erasure across all stores
+rule: >-
+  Provide a single idempotency-keyed erasure workflow that scrubs PII in primary
+  DB, caches, search indices, and object storage; emit an audit event with
+  erasure_request_id. (GDPR Art. 17)
+severity: critical
+examples:
+  - snippet: eraseUser(userId, "req-9b3a");
+    isCorrect: true
+  - snippet: eraseUser(userId); // no idempotency, no cache/search cleanup
+    isCorrect: false

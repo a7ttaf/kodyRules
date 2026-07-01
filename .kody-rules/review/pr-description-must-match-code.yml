@@ -1,0 +1,18 @@
+title: PR description must match code changes (no hidden scope creep)
+rule: >-
+  Ensure the PR title/description honestly reflects what the diff actually
+  changes.
+
+  Flag out-of-scope changes (behavioral changes hidden as refactors, unrelated
+  dependency bumps, config/security changes) and require either:
+
+  - splitting into separate PRs, or
+
+  - an explicit 'Additional changes' section with rationale and risk/rollout
+  notes.
+severity: high
+examples:
+  - snippet: 'Description: "minor refactor"; diff changes access control'
+    isCorrect: false
+  - snippet: Description includes all risky changes + review guide
+    isCorrect: true

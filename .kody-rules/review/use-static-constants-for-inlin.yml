@@ -1,0 +1,8 @@
+title: Use static constants for inline collections
+rule: Extract repeated inline collections to unmodifiable static constants.
+severity: low
+examples:
+  - snippet: List.of("x","y") scattered
+    isCorrect: false
+  - snippet: static final List<String> KEYS = List.of("x","y")
+    isCorrect: true

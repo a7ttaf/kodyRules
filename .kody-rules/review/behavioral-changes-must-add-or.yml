@@ -1,0 +1,13 @@
+title: Behavioral changes must add or update tests
+rule: >-
+  If files under src/ change behavior, the PR must include tests/ updates or a
+  PR description line no-tests: <reason> explaining why tests are unaffected.
+severity: high
+examples:
+  - snippet: 'PR_DESCRIPTION: no-tests: refactor-only (rename, no behavior change)'
+    isCorrect: true
+  - snippet: |-
+      files_changed:
+      - src/service.ts
+      # tests/ unchanged and no rationale
+    isCorrect: false

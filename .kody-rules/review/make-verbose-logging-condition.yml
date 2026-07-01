@@ -1,0 +1,8 @@
+title: Make verbose logging conditional
+rule: Guard expensive debug log formatting behind level checks or lazy formatting.
+severity: low
+examples:
+  - snippet: logger.debug(f'big {expensive()}')
+    isCorrect: false
+  - snippet: 'if logger.isEnabledFor(logging.DEBUG): logger.debug(''x'')'
+    isCorrect: true

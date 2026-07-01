@@ -1,0 +1,16 @@
+title: Avoid Redundant Null Checks with `instanceof`
+rule: >-
+  Ensure that explicit null checks are not used with `instanceof`, as `null` is
+  never an instance of any class.
+severity: low
+examples:
+  - snippet: |-
+      if (x != null && x instanceof MyClass) { ... }  // Noncompliant
+
+      if (x == null || ! x instanceof MyClass) { ... } // Noncompliant
+    isCorrect: false
+  - snippet: |-
+      if (x instanceof MyClass) { ... }
+
+      if (! x instanceof MyClass) { ... }
+    isCorrect: true

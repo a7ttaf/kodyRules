@@ -1,0 +1,11 @@
+title: Enforce “minimum necessary” data selection in queries
+rule: >-
+  When reading from PHI tables, project only authorized fields and avoid SELECT
+  *. Implement whitelists per role and document them. Reject requests lacking a
+  Purpose-Of-Use justification.
+severity: high
+examples:
+  - snippet: SELECT * FROM patients WHERE id=?
+    isCorrect: false
+  - snippet: SELECT initials, dob FROM patients WHERE id=?
+    isCorrect: true

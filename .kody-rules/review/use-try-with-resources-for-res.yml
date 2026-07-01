@@ -1,0 +1,10 @@
+title: Use try-with-resources for resource management
+rule: >-
+  Use try-with-resources for Closeable/AutoCloseable objects to guarantee
+  deterministic cleanup.
+severity: high
+examples:
+  - snippet: new FileInputStream(p)
+    isCorrect: false
+  - snippet: try (InputStream in = new FileInputStream(p)) { /* ... */ }
+    isCorrect: true

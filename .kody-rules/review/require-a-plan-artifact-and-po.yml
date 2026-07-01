@@ -1,0 +1,13 @@
+title: Require a plan artifact and policy checks in CI
+rule: >-
+  CI must run fmt/validate, produce and upload a plan artifact (e.g., terraform
+  plan -out plan.bin), run policy-as-code (e.g., tfsec/checkov/conftest), and
+  gate apply on manual approval for prod.
+severity: high
+examples:
+  - snippet: |-
+      terraform plan -out plan.bin
+      # upload artifact
+    isCorrect: true
+  - snippet: terraform apply -auto-approve
+    isCorrect: false

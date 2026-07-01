@@ -1,0 +1,11 @@
+title: Encrypt sensitive data at rest with KMS and rotate keys
+rule: >-
+  Use envelope encryption (AES-256-GCM) with cloud KMS-managed CMKs for
+  databases, object storage, and backups. Rotate CMKs at least annually and
+  rotate DEKs per object/file.
+severity: critical
+examples:
+  - snippet: kms.decrypt(ciphertext)
+    isCorrect: true
+  - snippet: 'db.insert({ ssn: plain_text })'
+    isCorrect: false

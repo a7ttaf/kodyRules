@@ -1,0 +1,20 @@
+title: Element selectors with `scoped`
+rule: >-
+  Avoid using element selectors (e.g., `button {... }`) directly within `<style
+  scoped>`. Prefer class selectors.
+severity: low
+examples:
+  - snippet: |-
+      <style scoped>
+      button { /* Noncompliant: Element selector */
+        background-color: red;
+      }
+      </style>
+    isCorrect: false
+  - snippet: |-
+      <style scoped>
+      .btn-close { /* Compliant: Class selector */
+        background-color: red;
+      }
+      </style>
+    isCorrect: true

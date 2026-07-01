@@ -1,0 +1,6 @@
+title: Order of words in component names
+rule: >-
+  Component names should start with the highest-level (often most general) words
+  and end with descriptive modifying words.
+severity: low
+examples: []

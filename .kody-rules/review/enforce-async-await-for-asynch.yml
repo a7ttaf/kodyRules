@@ -1,0 +1,6 @@
+title: Enforce Async/Await for asynchronous code
+rule: >-
+  Check for the use of eval() to handle asynchronous execution. Eval leads to
+  security vulnerabilities. Recommend using Async/Await or Promises instead.
+severity: low
+examples: []

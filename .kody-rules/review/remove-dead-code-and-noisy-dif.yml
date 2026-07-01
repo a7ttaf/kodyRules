@@ -1,0 +1,10 @@
+title: Remove dead code and noisy diffs
+rule: >-
+  Do not include commented-out code, unused files, or unrelated snapshots. Keep
+  diffs minimal and relevant to the change.
+severity: low
+examples:
+  - snippet: Commented blocks left in diff
+    isCorrect: false
+  - snippet: Separate gist/ADR for historical context; diff is minimal
+    isCorrect: true

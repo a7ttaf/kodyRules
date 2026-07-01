@@ -1,0 +1,10 @@
+title: Use Promise.allSettled for batch operations with partial failures
+rule: >-
+  For many independent tasks, prefer Promise.allSettled and handle per-item
+  results.
+severity: low
+examples:
+  - snippet: await Promise.all([...])
+    isCorrect: false
+  - snippet: await Promise.allSettled([...])
+    isCorrect: true

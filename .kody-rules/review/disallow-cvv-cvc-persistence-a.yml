@@ -1,0 +1,11 @@
+title: Disallow CVV/CVC persistence anywhere
+rule: >-
+  Never store CVV/CVC or other SAD after authorization in databases, caches,
+  files, or telemetry. Schema/models must not define fields for CVV/CVC; reject
+  writes containing cvv/cvc keys. (PCI DSS 4.0 Req. 3.2.1)
+severity: critical
+examples:
+  - snippet: '{"pan_token":"tok_123","cvv":"123"}'
+    isCorrect: false
+  - snippet: '{"pan_token":"tok_123"}'
+    isCorrect: true

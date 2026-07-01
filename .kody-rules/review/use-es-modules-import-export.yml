@@ -1,0 +1,26 @@
+title: Use ES Modules (`import`/`export`)
+rule: >-
+  Always use ES Modules (`import` and `export`) for managing dependencies and
+  organizing code in Vue applications. Avoid non-standard module systems or
+  global namespace pollution.
+severity: low
+examples:
+  - snippet: |-
+      // utils.js
+      module.exports = { format() {} };
+      // component.js
+      var utils = require('./utils');
+    isCorrect: false
+  - snippet: |-
+      // utils.js
+      export function format() {}
+      // component.js
+      import { format } from './utils';
+    isCorrect: true
+  - snippet: |-
+      // api.js
+      const api = { fetch() {} };
+      export default api;
+      // component.js
+      import myApi from './api';
+    isCorrect: true

@@ -1,0 +1,11 @@
+title: Enforce a single package manager via packageManager field
+rule: >-
+  Root package.json must define the packageManager field (e.g., "pnpm@9.x") and
+  the repo must not contain other lockfiles or tool config (e.g., yarn.lock,
+  package-lock.json) conflicting with that choice.
+severity: high
+examples:
+  - snippet: 'package.json { "packageManager": "pnpm@9.4.0" }'
+    isCorrect: true
+  - snippet: yarn.lock
+    isCorrect: false

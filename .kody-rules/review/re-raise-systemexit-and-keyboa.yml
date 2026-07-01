@@ -1,0 +1,43 @@
+title: Re-raise `SystemExit` and `KeyboardInterrupt`
+rule: >-
+  Ensure that `SystemExit` and `KeyboardInterrupt` are not caught without being
+  re-raised. Preventing Python from exiting can cause unintended behavior.
+severity: critical
+examples:
+  - snippet: >-
+      try:
+          ...
+      except SystemExit:  # Noncompliant: the SystemExit exception is not
+      re-raised.
+          pass
+
+      try:
+          ...
+      except BaseException:  # Noncompliant: BaseExceptions encompass SystemExit
+      exceptions and should be re-raised.
+          pass
+
+      try:
+          ...
+      except:  # Noncompliant: exceptions caught by this statement should be
+      re-raised or a more specific exception should be caught.
+          pass
+    isCorrect: false
+  - snippet: |-
+      try:
+          ...
+      except SystemExit as e:
+          ...
+          raise e
+
+      try:
+          ...
+      except BaseException as e:
+          ...
+          raise e
+
+      try:
+          ...
+      except FileNotFoundError:
+          ... # Handle a more specific exception
+    isCorrect: true

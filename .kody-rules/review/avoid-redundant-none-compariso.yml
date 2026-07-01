@@ -1,0 +1,17 @@
+title: Avoid Redundant `None` Comparisons
+rule: >-
+  Identify cases where `x is None` or `x is not None` is used redundantly when
+  `x` is always or never `None`. This may indicate a deeper logic issue.
+severity: critical
+examples:
+  - snippet: |-
+      def foo():
+          my_var = None
+          if my_var == None:  # Noncompliant: always True.
+              ...
+    isCorrect: false
+  - snippet: |-
+      def foo(my_var):
+          if my_var == None:
+              ...
+    isCorrect: true

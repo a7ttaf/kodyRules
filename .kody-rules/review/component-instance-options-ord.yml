@@ -1,0 +1,24 @@
+title: Component/instance options order
+rule: >-
+  Component options (like `name`, `props`, `data`, `computed`, `methods`,
+  lifecycle hooks, etc.) should be ordered consistently according to a
+  predefined sequence.
+severity: low
+examples:
+  - snippet: |-
+      export default {
+        methods: { fn1(){/*...*/} },
+        data() { return { count: 0 }; },
+        props: ['id'],
+        name: 'InconsistentOrder'
+      }
+    isCorrect: false
+  - snippet: |-
+      export default {
+        name: 'ConsistentOrder',
+        props: ['id'],
+        data() { return { count: 0 }; },
+        //... other options in order...
+        methods: { fn1(){/*...*/} }
+      }
+    isCorrect: true

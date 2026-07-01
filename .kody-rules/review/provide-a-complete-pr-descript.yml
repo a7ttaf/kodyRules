@@ -1,0 +1,13 @@
+title: Provide a complete PR description template
+rule: >-
+  Include Motivation, Approach, Considered Alternatives, Risk & Rollout, and
+  Testing Evidence. Use bullet points; avoid single-line descriptions.
+severity: high
+examples:
+  - snippet: This PR fixes it
+    isCorrect: false
+  - snippet: |-
+      Motivation: ...
+      Approach: ...
+      Risk & Rollout: ...
+    isCorrect: true

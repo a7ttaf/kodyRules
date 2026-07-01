@@ -1,0 +1,13 @@
+title: Disallow per-package registries and proxies
+rule: >-
+  Registry configuration (e.g., .npmrc, .yarnrc.yml) must live at the monorepo
+  root. Forbid .npmrc files inside workspace packages overriding registry auth
+  or URL.
+severity: high
+examples:
+  - snippet: packages/ui/.npmrc
+    isCorrect: false
+  - snippet: |-
+      .npmrc
+      @scope:registry=https://npm.pkg.github.com
+    isCorrect: true

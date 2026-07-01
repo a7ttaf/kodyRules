@@ -1,0 +1,4 @@
+title: Full-word component names
+rule: Component names should prefer full words over abbreviations.
+severity: low
+examples: []

@@ -1,0 +1,20 @@
+title: Prevent open redirect vulnerabilities in DOM updates
+rule: >-
+  Ensure that URLs used in redirection are properly validated and restricted to
+  trusted domains. Open redirects can be exploited to redirect users to
+  malicious sites.
+severity: critical
+examples:
+  - snippet: |
+      const queryParams = new URLSearchParams(document.location.search);
+      const redirectUrl = queryParams.get("url");
+      document.location = redirectUrl; // Noncompliant
+    isCorrect: false
+  - snippet: |-
+      const queryParams = new URLSearchParams(document.location.search);
+      const redirectUrl = queryParams.get("url");
+
+      if (redirectUrl.startsWith("https://www.example.com/")) {
+          document.location = redirectUrl;
+      }
+    isCorrect: true

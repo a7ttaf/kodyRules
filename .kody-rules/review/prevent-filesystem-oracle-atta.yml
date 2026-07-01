@@ -1,0 +1,46 @@
+title: Prevent Filesystem Oracle Attacks
+rule: >-
+  Ensure that the application does not disclose file existence based on user
+  input to prevent filesystem oracle attacks.
+severity: critical
+examples:
+  - snippet: |-
+      import java.io.File;
+
+      @Controller
+      public class ExampleController
+      {
+          static private String targetDirectory = "/path/to/target/directory/";
+
+          @GetMapping(value = "/exists")
+          public void delete(@RequestParam("filetitle") String filetitle) throws IOException {
+
+              File file = new File(targetDirectory + filetitle);
+              if (!file.exists()) { // Noncompliant
+                  throw new IOException("File does not exists in the target directory");
+              }
+          }
+      }
+    isCorrect: false
+  - snippet: |-
+      import java.io.File;
+
+      @Controller
+      public class ExampleController
+      {
+          static private String targetDirectory = "/path/to/target/directory/";
+
+          @GetMapping(value = "/exists")
+          public void delete(@RequestParam("filetitle") String filetitle) throws IOException {
+
+              File file = new File(targetDirectory + filetitle);
+              String canonicalDestinationPath = file.getCanonicalPath();
+
+              if (!canonicalDestinationPath.startsWith(targetDirectory)) {
+                  throw new IOException("Entry is outside of the target directory");
+              } else if (!file.exists()) {
+                  throw new IOException("File does not exists in the target directory");
+              }
+          }
+      }
+    isCorrect: true

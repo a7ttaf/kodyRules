@@ -1,0 +1,6 @@
+title: File titles must be lowercase with underscores or dashes
+rule: >-
+  Check if file titles follow the lowercase naming convention with underscores
+  or dashes. This improves cross-platform compatibility and consistency.
+severity: low
+examples: []

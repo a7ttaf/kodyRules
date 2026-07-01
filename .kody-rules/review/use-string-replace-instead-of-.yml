@@ -1,0 +1,18 @@
+title: >-
+  Use `String.replace()` Instead of `String.replaceAll()` for Simple
+  Replacements
+rule: >-
+  Ensure that `String.replace()` is used when a simple string replacement is
+  needed instead of `String.replaceAll()`.
+severity: critical
+examples:
+  - snippet: |-
+      String init = "Bob is a Bird... Bob is a Plane... Bob is Superman!";
+      String changed = init.replaceAll("Bob is", "It's"); // Noncompliant
+      changed = changed.replaceAll("\\.\\.\\.", ";"); // Noncompliant
+    isCorrect: false
+  - snippet: |-
+      String init = "Bob is a Bird... Bob is a Plane... Bob is Superman!";
+      String changed = init.replace("Bob is", "It's");
+      changed = changed.replace("...", ";");
+    isCorrect: true

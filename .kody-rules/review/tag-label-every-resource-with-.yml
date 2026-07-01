@@ -1,0 +1,17 @@
+title: Tag/label every resource with owner, env, and cost-center
+rule: >-
+  All Terraform/Kubernetes resources must include standard tags/labels: owner,
+  env, cost-center (and application if available).
+severity: high
+examples:
+  - snippet: |-
+      metadata:
+       labels:
+       owner: platform-team
+       env: prod
+       cost-center: cc-1234
+    isCorrect: true
+  - snippet: |-
+      metadata:
+       labels: {}
+    isCorrect: false

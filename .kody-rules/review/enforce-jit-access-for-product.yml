@@ -1,0 +1,10 @@
+title: Enforce JIT access for production with break-glass logging
+rule: >-
+  Grant production access just-in-time via approved requests with scoped
+  durations; break-glass access must trigger alerts and expanded audit logging.
+severity: high
+examples:
+  - snippet: grant_access(u, "prod.write", 1800)
+    isCorrect: true
+  - snippet: grant_access(u, "prod.write", 0)
+    isCorrect: false

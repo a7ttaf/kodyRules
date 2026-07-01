@@ -1,0 +1,6 @@
+title: Always use const and let
+rule: >-
+  Check for occurrences of var declarations. Using var leads to function scoping
+  issues. Recommend using const for immutable values and let for mutable ones.
+severity: low
+examples: []

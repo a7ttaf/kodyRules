@@ -1,0 +1,10 @@
+title: Use Route Handlers in app/api with NextResponse
+rule: >-
+  Prefer app/api route handlers over legacy pages/api. Return NextResponse.json,
+  validate input, and handle allowed HTTP methods explicitly.
+severity: high
+examples:
+  - snippet: pages/api/*
+    isCorrect: false
+  - snippet: app/api/* with NextResponse.json()
+    isCorrect: true

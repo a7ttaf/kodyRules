@@ -1,0 +1,23 @@
+title: Multi-attribute elements
+rule: >-
+  Elements with multiple attributes should span multiple lines, with one
+  attribute per line.
+severity: low
+examples:
+  - snippet: <img src="..." alt="...">
+    isCorrect: false
+  - snippet: <MyComponent foo="a" bar="b" baz="c"/>
+    isCorrect: false
+  - snippet: |-
+      <img
+       src="..."
+       alt="..."
+      >
+    isCorrect: true
+  - snippet: |-
+      <MyComponent
+       foo="a"
+       bar="b"
+       baz="c"
+      />
+    isCorrect: true

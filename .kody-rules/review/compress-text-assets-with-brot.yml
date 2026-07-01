@@ -1,0 +1,16 @@
+title: Compress text assets with Brotli/Gzip and set Vary
+rule: >-
+  Serve text-based assets (JS, CSS, JSON, SVG) with Brotli (br) when the client
+  sends "Accept-Encoding: br" and fallback to gzip. Always set "Vary:
+  Accept-Encoding" and do NOT compress already-compressed formats (e.g., .png,
+  .jpg, .woff2).
+severity: high
+examples:
+  - snippet: |-
+      Content-Encoding: br
+      Vary: Accept-Encoding
+    isCorrect: true
+  - snippet: |-
+      Content-Encoding: gzip
+      / for .png /
+    isCorrect: false

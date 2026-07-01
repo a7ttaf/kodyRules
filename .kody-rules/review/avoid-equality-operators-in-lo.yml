@@ -1,0 +1,20 @@
+title: Avoid Equality Operators in Loop Termination Conditions
+rule: >-
+  Ensure that relational operators (`<`, `>`) are used instead of equality
+  operators (`==`, `!=`) in loop termination conditions.
+severity: critical
+examples:
+  - snippet: >-
+      for (int i = 1; i != 10; i += 2)  // Noncompliant. Infinite; i goes from 9
+      straight to 11.
+
+      {
+        //...
+      }
+    isCorrect: false
+  - snippet: |-
+      for (int i = 1; i <= 10; i += 2)  // Compliant
+      {
+        //...
+      }
+    isCorrect: true

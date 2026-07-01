@@ -1,0 +1,6 @@
+title: Proper memory management in event listeners
+rule: >-
+  Ensure that event listeners are removed when no longer needed. Not doing so
+  can lead to memory leaks and unnecessary resource consumption.
+severity: low
+examples: []

@@ -1,0 +1,11 @@
+title: Serve responsive images with modern formats and lazy-load
+rule: >-
+  Provide AVIF/WebP fallbacks via <img srcset> with width/height attributes,
+  meaningful sizes, and "loading=lazy" plus "decoding=async". Avoid shipping
+  oversized PNG/JPEG when AVIF/WebP is supported.
+severity: high
+examples:
+  - snippet: loading="lazy" decoding="async"
+    isCorrect: true
+  - snippet: <img src="/img/hero.png">
+    isCorrect: false

@@ -1,0 +1,38 @@
+title: React's isMounted should not be used
+rule: >-
+  Ensure that isMounted is not used in React components. This method is
+  deprecated and can cause unreliable state updates. Suggest using cleanup
+  functions or useRef instead.
+severity: low
+examples:
+  - snippet: |-
+      class MyComponent extends React.Component {
+        componentDidMount() {
+          mydatastore.subscribe(this);
+        }
+        dataHandler() {
+          if (this.isMounted()) { // Noncompliant: isMounted() hides the error
+            //...
+          }
+        }
+        render() {
+          //... calls dataHandler()
+        }
+      };
+    isCorrect: false
+  - snippet: |-
+      class MyComponent extends React.Component {
+        componentDidMount() {
+          mydatastore.subscribe(this);
+        }
+        dataHandler() {
+          //...
+        }
+        render() {
+          //...
+        }
+        componentWillUnmount() {
+          mydatastore.unsubscribe(this);
+        }
+      }
+    isCorrect: true

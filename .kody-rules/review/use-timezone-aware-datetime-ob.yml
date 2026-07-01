@@ -1,0 +1,10 @@
+title: Use timezone-aware datetime objects
+rule: >-
+  Store and compare datetimes as timezone-aware (UTC). Convert to local time
+  only at the edges (UI/IO).
+severity: low
+examples:
+  - snippet: datetime.utcnow()
+    isCorrect: false
+  - snippet: datetime.now(timezone.utc)
+    isCorrect: true

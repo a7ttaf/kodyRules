@@ -1,5 +1,11 @@
-pullRequestApprovalActive: true
-isRequestChangesActive: true
+summary:
+  customInstructions: |
+    Summaries must call out Hunter, Phantom, shared database, Prisma/MariaDB,
+    authentication, secrets, callbacks, Docker, install/deploy, CI, and
+    observability impact when those areas are touched. Keep implementation
+    claims separate from validation evidence and name skipped gates explicitly.
+  behaviourForNewCommits: replace
+  behaviourForExistingDescription: concatenate
 ignorePaths:
   - .env
   - .env.local
@@ -36,8 +42,6 @@ ignorePaths:
   - '**/*.jpeg'
   - '**/*.gif'
   - '**/*.map'
-ignoredTitleKeywords:
-  - WIP
 baseBranches:
   - main
 reviewOptions:
@@ -50,18 +54,8 @@ reviewOptions:
   documentation_and_comments: true
   performance_and_optimization: true
 suggestionControl:
-  applyFiltersToKodyRules: true
   severityLevelFilter: low
-summary:
-  behaviourForNewCommits: replace
-  behaviourForExistingDescription: concatenate
-  customInstructions: |
-    Summaries must call out Hunter, Phantom, shared database, Prisma/MariaDB,
-    authentication, secrets, callbacks, Docker, install/deploy, CI, and
-    observability impact when those areas are touched. Keep implementation
-    claims separate from validation evidence and name skipped gates explicitly.
-kodyKnowledgeApproval:
-  enabled: true
+  applyFiltersToKodyRules: true
 v2PromptOverrides:
   categories:
     descriptions:
@@ -87,19 +81,6 @@ v2PromptOverrides:
         Duplicate operations: Same operation executed multiple times with
         identical inputs in sequence, wasting resources and potentially causing
         incorrect counts/metrics\n"}]}]}
-      performance: >-
-        {"type":"doc","content":[{"type":"paragraph","content":[{"type":"text","text":"-
-        Algorithm complexity: O(n²) when O(n) is possible\n- Redundant
-        operations: Duplicate calculations, unnecessary loops, or early returns
-        that force multiple operations when a single operation would suffice
-        (e.g., fail-fast in batch processing that requires multiple requests to
-        get complete feedback)\n- Memory waste: Large allocations or leaks over
-        time\n- Blocking operations: Synchronous I/O in critical paths\n-
-        Database inefficiency: N+1, missing indexes, full scans\n- Cache misses:
-        Not leveraging available caching mechanisms\n- Batch processing
-        inefficiency: Validation or processing loops that return on first error
-        instead of collecting all errors, forcing clients to make multiple
-        requests to discover all issues\n"}]}]}
       security: >-
         {"type":"doc","content":[{"type":"paragraph","content":[{"type":"text","text":"-
         Injection vulnerabilities: SQL/NoSQL/command/LDAP injection\n-
@@ -125,6 +106,19 @@ v2PromptOverrides:
         usernames, domains) where one side is normalized
         (toLowerCase/toUpperCase) but the other isn't, allowing bypass through
         case variations\n"}]}]}
+      performance: >-
+        {"type":"doc","content":[{"type":"paragraph","content":[{"type":"text","text":"-
+        Algorithm complexity: O(n²) when O(n) is possible\n- Redundant
+        operations: Duplicate calculations, unnecessary loops, or early returns
+        that force multiple operations when a single operation would suffice
+        (e.g., fail-fast in batch processing that requires multiple requests to
+        get complete feedback)\n- Memory waste: Large allocations or leaks over
+        time\n- Blocking operations: Synchronous I/O in critical paths\n-
+        Database inefficiency: N+1, missing indexes, full scans\n- Cache misses:
+        Not leveraging available caching mechanisms\n- Batch processing
+        inefficiency: Validation or processing loops that return on first error
+        instead of collecting all errors, forcing clients to make multiple
+        requests to discover all issues\n"}]}]}
   generation:
     main: >-
       {"type":"doc","content":[{"type":"paragraph","content":[{"type":"text","text":"Detailed
@@ -139,3 +133,9 @@ v2PromptOverrides:
       identified in...\"\n- **Use Active Voice**: \"The function leaks memory\"
       instead of \"Memory is leaked by the function.\"\n- **Sentence cap**:
       Limit the description to 1-2 high-impact sentences.\n"}]}]}
+ignoredTitleKeywords:
+  - WIP
+kodyKnowledgeApproval:
+  enabled: true
+isRequestChangesActive: true
+pullRequestApprovalActive: true

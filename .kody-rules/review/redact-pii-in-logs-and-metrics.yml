@@ -1,0 +1,13 @@
+title: Redact PII in logs and metrics by default
+rule: >-
+  Logging/metrics must redact or hash personal data; attach lawful_basis and
+  purpose to diagnostic context; forbid raw PII in logs. (GDPR Art. 5(1)(c) data
+  minimization)
+severity: high
+examples:
+  - snippet: >-
+      logger.info({ email_hash, gdpr:{purpose:'auth', lawful_basis:'contract'}
+      });
+    isCorrect: true
+  - snippet: logger.info({ email }); // raw PII
+    isCorrect: false

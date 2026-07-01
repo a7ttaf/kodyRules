@@ -1,0 +1,18 @@
+title: Ensure Functions Use `return` Consistently
+rule: >-
+  Detect functions that mix `return` statements with values and those without.
+  Inconsistent return usage can lead to unpredictable behavior.
+severity: high
+examples:
+  - snippet: |-
+      def foo(a): # Noncompliant, function will return "true" or None
+        if a == 1:
+          return True
+        return
+    isCorrect: false
+  - snippet: |-
+      def foo(a):
+        if a == 1:
+          return True
+        return False
+    isCorrect: true

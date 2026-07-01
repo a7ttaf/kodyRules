@@ -1,0 +1,8 @@
+title: Redact CHD in CI and fail builds on PAN patterns
+rule: "CI logs must redact secrets and CHD; disable shell xtrace, and add a job that fails if PAN regex (e.g., \b[0-9]{13,19}\b with Luhn) appears in logs/artifacts. (PCI DSS 4.0 Req. 10 & CI hygiene)"
+severity: high
+examples:
+  - snippet: set -x
+    isCorrect: false
+  - snippet: grep -ERn "\b[0-9]{13,19}\b" ./artifacts || true
+    isCorrect: true

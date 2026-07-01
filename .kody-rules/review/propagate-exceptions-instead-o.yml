@@ -1,0 +1,10 @@
+title: Propagate exceptions instead of hiding failures
+rule: >-
+  Never swallow exceptions silently; wrap with context and rethrow or translate
+  to a domain exception.
+severity: high
+examples:
+  - snippet: catch(Exception e){}
+    isCorrect: false
+  - snippet: catch(Exception e){ throw new RuntimeException("context", e); }
+    isCorrect: true

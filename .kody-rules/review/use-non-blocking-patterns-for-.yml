@@ -1,0 +1,10 @@
+title: Use non-blocking patterns for async operations
+rule: >-
+  Prefer thenCompose/thenCombine over blocking get/join; propagate async results
+  end-to-end.
+severity: high
+examples:
+  - snippet: future.get()
+    isCorrect: false
+  - snippet: future.thenCompose(f)
+    isCorrect: true

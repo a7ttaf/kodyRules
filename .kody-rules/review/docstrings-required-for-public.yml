@@ -1,0 +1,16 @@
+title: Docstrings required for public APIs (PEP 257 style)
+rule: >-
+  All public modules, classes, and functions must include a docstring
+  immediately after the definition, using PEP 257 conventions (one-line summary
+  + optional sections like Args, Returns, Raises).
+severity: high
+examples:
+  - snippet: |-
+      class User:
+       """Domain user entity."""
+       ...
+    isCorrect: true
+  - snippet: |-
+      class User:
+       pass
+    isCorrect: false

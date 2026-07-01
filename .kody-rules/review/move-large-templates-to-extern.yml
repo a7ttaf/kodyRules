@@ -1,0 +1,10 @@
+title: Move large templates to external files
+rule: >-
+  Store long static templates/prompts in files and load them at runtime; avoid
+  embedding huge multi-line strings in code.
+severity: low
+examples:
+  - snippet: HTML = """... 500 lines ..."""
+    isCorrect: false
+  - snippet: HTML = Path('template.html').read_text()
+    isCorrect: true

@@ -1,0 +1,18 @@
+title: Default-deny NetworkPolicy required when adding a namespace
+rule: >-
+  If a PR introduces workloads in a namespace that lacks a default-deny
+  NetworkPolicy, add one plus explicit allow rules.
+severity: high
+examples:
+  - snippet: |-
+      kind: NetworkPolicy
+      metadata:
+       name: default-deny
+       namespace: payments
+    isCorrect: true
+  - snippet: |-
+      kind: Deployment
+      metadata:
+       name: payments-api
+       namespace: payments
+    isCorrect: false

@@ -1,0 +1,13 @@
+title: Write One Statement Per Line for Clarity
+rule: >-
+  Detect multiple statements on the same line, separated by semicolons. This
+  reduces readability and debugging efficiency. Recommend placing each statement
+  on its own line.
+severity: low
+examples:
+  - snippet: 'if (True): print("hello") # Noncompliant'
+    isCorrect: false
+  - snippet: |-
+      if (True):
+          print("hello")
+    isCorrect: true

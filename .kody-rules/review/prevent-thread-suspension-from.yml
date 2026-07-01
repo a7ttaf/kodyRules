@@ -1,0 +1,28 @@
+title: Prevent Thread Suspension from Leading to Denial of Service (DoS)
+rule: >-
+  Ensure that user-controlled data is not used to suspend threads, as it can
+  lead to Denial of Service (DoS) attacks.
+severity: critical
+examples:
+  - snippet: >-
+      protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws IOException {
+              Long time = Long.parseLong(req.getParameter("time"));
+              try {
+                  Thread.sleep(time); // Noncompliant
+              } catch (InterruptedException e) {
+                  resp.sendError(500);
+              }
+          }
+    isCorrect: false
+  - snippet: >-
+      protected void compliant(HttpServletRequest req, HttpServletResponse resp)
+      throws IOException {
+              Long time = Long.parseLong(req.getParameter("time"));
+              try {
+                  Thread.sleep(Math.min(time, 1000));
+              } catch (InterruptedException e) {
+                  resp.sendError(500);
+              }
+          }
+    isCorrect: true

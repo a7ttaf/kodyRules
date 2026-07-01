@@ -1,0 +1,11 @@
+title: 'International transfers: enforce region allow-list for PII'
+rule: >-
+  Before sending PII to processors, verify the destination region is approved
+  (e.g., BR/EEA with SCC/DPA). Block requests that include personal data and
+  target non-approved regions.
+severity: high
+examples:
+  - snippet: if(containsPII(d)&&!isRegionAllowed(r)) throw Error()
+    isCorrect: true
+  - snippet: sendTo(region, data)
+    isCorrect: false

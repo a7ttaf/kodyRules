@@ -1,0 +1,42 @@
+title: Simplify else blocks with single if statements
+rule: >-
+  Detect unnecessary nesting where an if statement is the only statement inside
+  an else block. Recommend using else-if instead for improved readability.
+severity: low
+examples:
+  - snippet: |-
+      if (condition1) {
+          // ...
+      } else {
+          if (condition2) {  // Noncompliant: 'if' statement is the only statement in the 'else' block
+              // ...
+          }
+      }
+
+
+      if (condition3) {
+          // ...
+      } else {
+          if (condition4) { // Noncompliant: 'if' statement is the only statement in the 'else' block
+              // ...
+          } else {
+              // ...
+          }
+      }
+    isCorrect: false
+  - snippet: |-
+      if (condition1) {
+          // ...
+      } else if (condition2) {
+          // ...
+      }
+
+
+      if (condition3) {
+          // ...
+      } else if (condition4) {
+          // ...
+      } else {
+          // ...
+      }
+    isCorrect: true

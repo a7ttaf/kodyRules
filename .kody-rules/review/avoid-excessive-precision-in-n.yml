@@ -1,0 +1,16 @@
+title: Avoid excessive precision in numeric literals
+rule: >-
+  Detect floating-point numbers with excessive precision. Overly precise numeric
+  literals can cause rounding errors and unexpected behavior in calculations.
+severity: low
+examples:
+  - snippet: |-
+      var c = 999999999999999999999; // Not good, exceeds precision limits
+      var z = 1.12345678901234567;  // Too precise, may lose accuracy
+    isCorrect: false
+  - snippet: |-
+      var a = 9;                     // Ok
+      var b = 999999999999999;       // Ok, within safe limits
+      var w = 1.12e-4;               // Ok
+      var y = 1.1234567890123;       // Ok, precise but within limits
+    isCorrect: true

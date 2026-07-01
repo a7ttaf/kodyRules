@@ -1,0 +1,46 @@
+title: Server-side requests should not be vulnerable to forgery attacks
+rule: >-
+  Identify server-side requests that do not validate input sources. SSRF
+  vulnerabilities allow attackers to make unauthorized requests on behalf of the
+  server. Restrict and validate request sources.
+severity: critical
+examples:
+  - snippet: |-
+      const axios = require('axios');
+      const express = require('express');
+
+      const app = express();
+
+      app.get('/example', async (req, res) => {
+          try {
+              await axios.get(req.query.url); // Noncompliant
+              res.send("OK");
+          } catch (err) {
+              console.error(err);
+              res.send("ERROR");
+          }
+      })
+    isCorrect: false
+  - snippet: |-
+      const axios = require('axios');
+      const express = require('express');
+
+      const schemesList = ["http:", "https:"];
+      const domainsList = ["trusted1.example.com", "trusted2.example.com"];
+
+      app.get('/example', async (req, res) => {
+          const url = (new URL(req.query.url));
+
+          if (schemesList.includes(url.protocol) && domainsList.includes(url.hosttitle)) {
+              try {
+                  await axios.get(url);
+                  res.send("OK");
+              } catch (err) {
+                  console.error(err);
+                  res.send("ERROR");
+              }
+          }else {
+              res.send("INVALID_URL");
+          }
+      })
+    isCorrect: true

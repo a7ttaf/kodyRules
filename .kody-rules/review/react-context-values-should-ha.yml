@@ -1,0 +1,26 @@
+title: React Context values should have stable identities
+rule: >-
+  Identify cases where React Context values are being reassigned dynamically.
+  Unstable context values trigger unnecessary re-renders. Use memoization to
+  stabilize them.
+severity: high
+examples:
+  - snippet: |-
+      function Component() {
+        return (
+          <SomeContext.Provider value={{foo: 'bar'}}> { /* Noncompliant: value is an object literal */ }
+            <SomeComponent />
+          </SomeContext.Provider>
+        );
+      }
+    isCorrect: false
+  - snippet: |-
+      function Component() {
+        const obj = useMemo(() => ({foo: 'bar'}), []); // value is cached by useMemo
+        return (
+          <SomeContext.Provider value={obj}> { /* Compliant */ }
+            <SomeComponent />
+          </SomeContext.Provider>
+        );
+      }
+    isCorrect: true

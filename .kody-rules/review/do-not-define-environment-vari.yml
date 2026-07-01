@@ -1,0 +1,34 @@
+title: Do Not Define Environment Variables from Untrusted Input
+rule: >-
+  Ensure that external user input is properly sanitized before being used to
+  define environment variables.
+severity: critical
+examples:
+  - snippet: >-
+      protected void doGet(HttpServletRequest request, HttpServletResponse
+      response) throws IOException {
+        Runtime r = Runtime.getRuntime();
+        String userInput = request.getParameter("example");
+
+        if (userInput != null) {
+          String[] envs = {userInput};
+          r.exec("/path/to/example", userInput);
+        } else{
+          r.exec("/path/to/example");
+        }
+      }
+    isCorrect: false
+  - snippet: >-
+      protected void doGet(HttpServletRequest request, HttpServletResponse
+      response) throws IOException {
+        Runtime r = Runtime.getRuntime();
+        String userInput = request.getParameter("example");
+
+        if (userInput != null && userInput.matches("^[a-zA-Z0-9]*$")) {
+          String[] envs = {"ENV_VAR=%s".format(userInput)};
+          r.exec("/path/to/example", envs);
+        } else {
+          r.exec("/path/to/example");
+        }
+      }
+    isCorrect: true

@@ -1,0 +1,12 @@
+title: Block real PAN/SAD in fixtures and test data
+rule: >-
+  Reject PRs adding real PAN/CVV in fixtures, seeds, or mocks. Only use
+  Luhn-valid test PANs from the gateway or opaque tokens (e.g., tok_) and never
+  include CVV. Add a check to fail if a PAN regex is matched. (PCI DSS data
+  minimization)
+severity: high
+examples:
+  - snippet: '"pan": "4242424242424242"'
+    isCorrect: false
+  - snippet: '"pan_token": "tok_abc123"'
+    isCorrect: true

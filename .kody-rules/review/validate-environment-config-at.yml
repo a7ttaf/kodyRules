@@ -1,0 +1,10 @@
+title: Validate environment/config at startup
+rule: >-
+  At process start, validate required configuration keys and fail fast with a
+  clear message if any are missing or malformed.
+severity: high
+examples:
+  - snippet: process.env.API_KEY // unchecked
+    isCorrect: false
+  - snippet: if(!process.env.API_KEY) throw new Error('Missing API_KEY')
+    isCorrect: true

@@ -1,0 +1,12 @@
+title: Fingerprint assets and cache immutably
+rule: >-
+  All static JS/CSS/font/image files MUST use content-hashed filenames (e.g.,
+  app.9c1a7b.js) and be served with "Cache-Control: public, max-age=31536000,
+  immutable". HTML and other non-fingerprinted documents MUST be served with
+  "Cache-Control: no-cache" (or equivalent) to enable conditional revalidation.
+severity: critical
+examples:
+  - snippet: 'Cache-Control: public, max-age=31536000, immutable'
+    isCorrect: true
+  - snippet: 'Cache-Control: max-age=600'
+    isCorrect: false

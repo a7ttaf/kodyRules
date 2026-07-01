@@ -1,0 +1,19 @@
+title: Do not reassign imported variables
+rule: >-
+  Ensure that imported variables are not reassigned. This can cause runtime
+  errors, especially in TypeScript. Modify object properties instead of
+  reassigning variables.
+severity: low
+examples:
+  - snippet: >-
+      import { exportedObject } from 'module.js';
+
+      exportedObject = 'hello world!';   // Noncompliant: TypeError: Assignment
+      to constant variable.
+    isCorrect: false
+  - snippet: >
+      import { exportedObject } from 'module.js';
+
+      exportedObject.newAttribute = 'hello world!'; // exportedObject now
+      contains newAttribute and can be seen from all other modules importing it
+    isCorrect: true

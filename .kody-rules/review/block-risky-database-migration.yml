@@ -1,0 +1,17 @@
+title: Block risky database migrations (locking ops, downtime risk)
+rule: >-
+  Review SQL/database migrations for operations that can lock large tables or
+  cause downtime.
+
+  Examples: creating indexes without CONCURRENTLY (Postgres), ALTER COLUMN TYPE
+  on big tables, adding NOT NULL without backfill, long-running updates without
+  batching.
+
+  Require an online migration strategy (CONCURRENTLY, backfill in batches,
+  dual-write/expand-contract) and a rollback plan.
+severity: critical
+examples:
+  - snippet: CREATE INDEX idx_x ON big_table(col);
+    isCorrect: false
+  - snippet: CREATE INDEX CONCURRENTLY idx_x ON big_table(col);
+    isCorrect: true

@@ -1,0 +1,11 @@
+title: Define data export controls and watermarking
+rule: >-
+  All bulk exports of PII require approval, step-up MFA, rate limits, and
+  watermarking of files with requestor and timestamp; record export_id in the
+  audit log.
+severity: high
+examples:
+  - snippet: log_audit({ action:"export.create", export_id })
+    isCorrect: true
+  - snippet: download("users.csv")
+    isCorrect: false

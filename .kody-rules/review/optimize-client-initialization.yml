@@ -1,0 +1,10 @@
+title: Optimize client initialization patterns
+rule: >-
+  Instantiate expensive clients (DB/HTTP/SDK) once and inject/reuse them; avoid
+  per-call construction.
+severity: low
+examples:
+  - snippet: HttpClient() in every function
+    isCorrect: false
+  - snippet: Service(HttpClient()).handler()
+    isCorrect: true

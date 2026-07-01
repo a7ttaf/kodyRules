@@ -1,0 +1,10 @@
+title: 'Jest: use async/await and resolves/rejects instead of done()'
+rule: >-
+  For Promises, return/await the expectation and prefer await
+  expect(p).resolves|rejects...; do not use the callback done().
+severity: high
+examples:
+  - snippet: await expect(fetch(url)).resolves.toBeDefined()
+    isCorrect: true
+  - snippet: test('x',(done)=>{ /* ... */ done(); })
+    isCorrect: false

@@ -1,0 +1,16 @@
+title: Avoid weak or missing CORS policies
+rule: >-
+  Ensure that CORS policies are properly defined. Weak or missing CORS policies
+  may allow unauthorized domains to access your resources, leading to security
+  vulnerabilities.
+severity: low
+examples:
+  - snippet: new ApolloServer({});
+    isCorrect: false
+  - snippet: |-
+      new ApolloServer({
+        cors: {
+          origin: ['https://trusted.com'],
+        },
+      });
+    isCorrect: true

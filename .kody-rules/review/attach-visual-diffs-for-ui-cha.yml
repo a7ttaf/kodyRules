@@ -1,0 +1,11 @@
+title: Attach visual diffs for UI changes
+rule: >-
+  When altering UI, include before/after screenshots or a short clip
+  demonstrating the change, and note responsive states and accessibility
+  impacts.
+severity: low
+examples:
+  - snippet: Changed styles; no screenshots
+    isCorrect: false
+  - snippet: Before/after images + notes
+    isCorrect: true

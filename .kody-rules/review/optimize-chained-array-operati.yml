@@ -1,0 +1,10 @@
+title: Optimize chained array operations
+rule: >-
+  Prefer a single pass when possible (e.g., reduce) over multiple filter/map
+  chains on the same array.
+severity: low
+examples:
+  - snippet: arr.filter().map().filter()
+    isCorrect: false
+  - snippet: arr.reduce((acc,x)=>{/* combine */},[])
+    isCorrect: true

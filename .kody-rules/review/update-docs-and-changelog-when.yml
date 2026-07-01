@@ -1,0 +1,10 @@
+title: Update docs and changelog when user-facing
+rule: >-
+  If the change affects users or operators, update end-user docs/runbooks and
+  add a concise changelog entry in the PR description or designated file.
+severity: low
+examples:
+  - snippet: Behavior changed; no docs
+    isCorrect: false
+  - snippet: Docs + changelog updated
+    isCorrect: true

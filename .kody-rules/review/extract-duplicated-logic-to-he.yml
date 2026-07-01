@@ -1,0 +1,10 @@
+title: Extract duplicated logic to helper functions
+rule: >-
+  Move repeated sequences of operations into named helpers or utilities and
+  reuse them.
+severity: low
+examples:
+  - snippet: same expression pasted everywhere
+    isCorrect: false
+  - snippet: 'def helper(...): ...'
+    isCorrect: true

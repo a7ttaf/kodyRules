@@ -1,0 +1,11 @@
+title: Element attribute order
+rule: >-
+  Attributes within an element tag (including components) should be ordered
+  consistently according to a predefined sequence (e.g., definitions, list
+  rendering, conditionals, unique attributes, binding, events, content).
+severity: low
+examples:
+  - snippet: <MyComponent @click="fn" v-if="ok" :prop="val" id="c1"/>
+    isCorrect: false
+  - snippet: <MyComponent id="c1" v-if="ok" :prop="val" @click="fn"/>
+    isCorrect: true

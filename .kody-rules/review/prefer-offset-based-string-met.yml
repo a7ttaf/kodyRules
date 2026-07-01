@@ -1,0 +1,14 @@
+title: Prefer Offset-Based String Methods
+rule: >-
+  Ensure that offset-based string methods are used instead of creating
+  unnecessary substring instances.
+severity: critical
+examples:
+  - snippet: >-
+      str.substring(beginIndex).indexOf(char1); // Noncompliant; a new String is
+      going to be created by "substring"
+    isCorrect: false
+  - snippet: >-
+      str.indexOf(char1, beginIndex) - beginIndex; // index for char1 not found
+      is (-1-beginIndex)
+    isCorrect: true

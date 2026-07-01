@@ -1,0 +1,11 @@
+title: Harden session management with idle and absolute timeouts
+rule: >-
+  Set session idle timeout ≤ 15 minutes and absolute timeout ≤ 12 hours; cookies
+  must be Secure, HttpOnly, and SameSite=Lax or Strict; revoke sessions on
+  password change.
+severity: high
+examples:
+  - snippet: session.setIdleTimeout(15 * MINUTE)
+    isCorrect: true
+  - snippet: session.setIdleTimeout(0)
+    isCorrect: false

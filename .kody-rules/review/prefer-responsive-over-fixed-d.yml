@@ -1,0 +1,10 @@
+title: Prefer responsive over fixed dimensions
+rule: >-
+  Avoid fixed pixel heights for containers; prefer min/max constraints or
+  flexible layouts.
+severity: low
+examples:
+  - snippet: .box{ height:300px }
+    isCorrect: false
+  - snippet: .box{ min-height:50vh }
+    isCorrect: true

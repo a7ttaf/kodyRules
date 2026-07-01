@@ -1,0 +1,10 @@
+title: Prefer specific types over any/unknown where inferable
+rule: >-
+  Replace any/unknown with inferred generics, unions, or precise interfaces when
+  the shape is known.
+severity: high
+examples:
+  - snippet: 'let v: any'
+    isCorrect: false
+  - snippet: function id<T>(x:T):T { return x }
+    isCorrect: true

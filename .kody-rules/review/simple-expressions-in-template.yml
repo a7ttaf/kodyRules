@@ -1,0 +1,10 @@
+title: Simple expressions in templates
+rule: >-
+  Component templates should only include simple expressions, with more complex
+  expressions refactored into computed properties or methods.
+severity: low
+examples:
+  - snippet: '{{ firstName.trim().toUpperCase() }}'
+    isCorrect: false
+  - snippet: '{{ formattedName }}'
+    isCorrect: true

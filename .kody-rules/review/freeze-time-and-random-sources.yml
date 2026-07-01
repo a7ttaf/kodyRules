@@ -1,0 +1,11 @@
+title: Freeze time and random sources for deterministic tests
+rule: >-
+  In unit and integration tests, call a time-freeze utility and set a fixed
+  random seed before exercising the system under test; unfreeze after
+  assertions.
+severity: high
+examples:
+  - snippet: freezeTime("2024-01-01T00:00:00Z"); setRandomSeed(42);
+    isCorrect: true
+  - snippet: const ts = now(); const id = random(); // flaky
+    isCorrect: false

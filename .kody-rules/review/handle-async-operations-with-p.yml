@@ -1,0 +1,11 @@
+title: Handle async operations with proper error handling
+rule: >-
+  Every awaited async operation must be guarded with error handling. Use
+  try/catch for await and .catch for promise chains; never leave rejections
+  unhandled.
+severity: high
+examples:
+  - snippet: await fetch(url).then(r=>r.json())
+    isCorrect: false
+  - snippet: try { const r = await fetch(url) } catch (e) { logger.error(e) }
+    isCorrect: true

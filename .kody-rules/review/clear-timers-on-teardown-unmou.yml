@@ -1,0 +1,10 @@
+title: Clear timers on teardown/unmount
+rule: >-
+  Whenever you start an interval/timeout, also define a deterministic cleanup
+  path that clears it.
+severity: high
+examples:
+  - snippet: setTimeout(t,500)
+    isCorrect: false
+  - snippet: const id=setTimeout(t,500); clearTimeout(id)
+    isCorrect: true

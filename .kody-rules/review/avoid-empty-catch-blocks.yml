@@ -1,18 +1,20 @@
-title: Avoid Empty Catch Blocks
+title: Avoid empty catch blocks
 rule: >-
-  Ensure that catch blocks contain meaningful exception handling logic and do
-  not remain empty.
+  Ensure that catch blocks do not remain empty. Empty catch blocks hide errors,
+  making debugging difficult. Recommend logging or handling errors properly.
 severity: high
 examples:
   - snippet: |-
       try {
-          process();
-      } catch (IOException e) {}
+        doSomething();
+      } catch (e) {
+        // Ignored
+      }
     isCorrect: false
-  - snippet: |-
+  - snippet: |
       try {
-          process();
-      } catch (IOException e) {
-          log.error("Error processing", e);
+        doSomething();
+      } catch (e) {
+        console.error("Error occurred:", e);
       }
     isCorrect: true

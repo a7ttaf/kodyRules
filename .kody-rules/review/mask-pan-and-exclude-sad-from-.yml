@@ -1,0 +1,12 @@
+title: Mask PAN and exclude SAD from logs
+rule: >-
+  Never emit Primary Account Number (PAN) or Sensitive Authentication Data (SAD:
+  CVV/CVC, full track data, PIN) to application or audit logs. Per PCI DSS 4.0
+  Req. 3 and 10, always mask PAN as first6last4 and fully redact SAD before
+  logging.
+severity: critical
+examples:
+  - snippet: logger.debug(PAN=${pan})
+    isCorrect: false
+  - snippet: logger.debug(PAN=${maskPan(pan)})
+    isCorrect: true

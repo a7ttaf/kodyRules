@@ -1,0 +1,15 @@
+title: Do not log PHI; mask and drop sensitive fields
+rule: >-
+  Never write Protected Health Information (PHI/ePHI) to logs. Redact fields
+  like name, SSN, MRN, DOB, address, diagnoses, and lab results; store only
+  non-identifying metadata and a stable request trace id. If logging is required
+  for troubleshooting, replace values with consistent tokens and record access
+  separately in the audit log.
+severity: high
+examples:
+  - snippet: logger.info({ mrn, diagnosis })
+    isCorrect: false
+  - snippet: >-
+      logger.info({ traceId, status }); /*
+      audit_log.write({action:"READ_PHI",subject:userId,resource:patientId}) */
+    isCorrect: true

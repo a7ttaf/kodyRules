@@ -1,0 +1,37 @@
+title: Only Catch Exceptions That Derive from `BaseException`
+rule: >-
+  Detect exception handling blocks that catch objects not derived from
+  `BaseException`. This causes a `TypeError` and should be avoided.
+severity: critical
+examples:
+  - snippet: >-
+      class CustomException(object):
+          """An Invalid exception class."""
+          pass
+
+      try:
+          ...
+      except CustomException:  # Noncompliant: this custom exception does not
+      derive from BaseException or Exception.
+          print("exception")
+
+      try:
+          ...
+      except [TypeError, ValueError]:  # Noncompliant: list of exceptions, only
+      tuples are valid.
+          print("exception")
+    isCorrect: false
+  - snippet: |-
+      class CustomException(Exception):
+          pass
+
+      try:
+          ...
+      except CustomException:
+          print("exception")
+
+      try:
+          ...
+      except (TypeError, ValueError):
+          print("exception")
+    isCorrect: true

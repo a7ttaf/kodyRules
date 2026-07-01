@@ -1,0 +1,23 @@
+title: Always Verify Server Certificates in SSL/TLS Connections
+rule: >-
+  Ensure that SSL/TLS certificate validation is always enabled to prevent
+  Man-in-the-Middle (MitM) attacks.
+severity: critical
+examples:
+  - snippet: |-
+      class TrustAllManager implements X509TrustManager {
+
+          @Override
+          public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {  // Noncompliant
+          }
+
+          @Override
+          public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException { // Noncompliant
+          }
+
+          @Override
+          public X509Certificate[] getAcceptedIssuers() {
+              return null;
+          }
+      }
+    isCorrect: false

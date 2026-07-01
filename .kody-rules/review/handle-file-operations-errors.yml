@@ -1,0 +1,10 @@
+title: Handle file operations errors
+rule: >-
+  Guard file IO with try/except; handle OSError and data parse errors with clear
+  messages.
+severity: high
+examples:
+  - snippet: open(path).read()
+    isCorrect: false
+  - snippet: 'with open(path) as f: ...;  # try/except around'
+    isCorrect: true

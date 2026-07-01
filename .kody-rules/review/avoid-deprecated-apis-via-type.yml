@@ -1,0 +1,10 @@
+title: Avoid deprecated APIs via types/@deprecated metadata
+rule: >-
+  Flag usages marked as @deprecated (via JSDoc or types) and propose the
+  documented alternative when available.
+severity: low
+examples:
+  - snippet: oldApi() // @deprecated
+    isCorrect: false
+  - snippet: newApi()
+    isCorrect: true

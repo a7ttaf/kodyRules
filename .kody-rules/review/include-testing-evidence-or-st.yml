@@ -1,0 +1,10 @@
+title: Include testing evidence or steps-to-reproduce
+rule: >-
+  Provide explicit verification steps (manual or automated), expected vs actual
+  outcomes, and attach any logs or screenshots relevant to the changes.
+severity: high
+examples:
+  - snippet: Trust me, it works
+    isCorrect: false
+  - snippet: Steps + expected/actual
+    isCorrect: true

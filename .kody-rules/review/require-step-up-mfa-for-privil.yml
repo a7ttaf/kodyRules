@@ -1,0 +1,11 @@
+title: Require step-up MFA for privileged operations
+rule: >-
+  Actions like role changes, key rotations, and exports of PII require MFA
+  re-authentication within the last 5 minutes; record mfa_verified_at in the
+  audit log.
+severity: high
+examples:
+  - snippet: requireFreshMFA(300)
+    isCorrect: true
+  - snippet: if (isAdmin) allow()
+    isCorrect: false

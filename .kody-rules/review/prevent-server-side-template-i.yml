@@ -1,0 +1,24 @@
+title: Prevent Server-Side Template Injection (SSTI)
+rule: >-
+  Ensure that all user inputs in templates are properly validated and sanitized
+  to prevent SSTI attacks.
+severity: critical
+examples:
+  - snippet: |-
+      <!DOCTYPE HTML>
+      <html xmlns:th="http://www.thymeleaf.org">
+      <body>
+          <span th:text="${__${tainted}__}"></span> <!-- Noncompliant -->
+      </div>
+      </body>
+      </html>
+    isCorrect: false
+  - snippet: |-
+      <!DOCTYPE HTML>
+      <html xmlns:th="http://www.thymeleaf.org">
+      <body>
+          <span th:text="${tainted}"></span>
+      </div>
+      </body>
+      </html>
+    isCorrect: true

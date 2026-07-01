@@ -1,0 +1,10 @@
+title: Extract constants from hardcoded values
+rule: >-
+  Move magic values (strings, thresholds, paths) to module-level constants with
+  descriptive names.
+severity: low
+examples:
+  - snippet: 'if level > 3: ...'
+    isCorrect: false
+  - snippet: 'MAX_RETRIES = 3; if level > MAX_RETRIES: ...'
+    isCorrect: true

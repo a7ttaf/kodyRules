@@ -1,0 +1,11 @@
+title: Write immutable audit logs for all ePHI access
+rule: >-
+  For any handler that reads or writes ePHI, write an append-only audit record
+  with user id, patient id, action (READ_PHI/WRITE_PHI), purpose-of-use,
+  timestamp, and request id. Prevent deletion or mutation of audit entries.
+severity: high
+examples:
+  - snippet: return repo.find(id) // no audit
+    isCorrect: false
+  - snippet: await auditLog.write({action:'READ_PHI',user:sub,patient:id})
+    isCorrect: true

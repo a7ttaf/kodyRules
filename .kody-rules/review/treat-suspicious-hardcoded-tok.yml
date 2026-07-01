@@ -1,0 +1,17 @@
+title: >-
+  Treat suspicious hardcoded tokens/keys as secrets and move them to a secret
+  store
+rule: >-
+  Never hardcode credentials (API keys, tokens, private keys) in source code,
+  configs, or tests.
+
+  If a string looks like a credential based on context (variable name, header
+  usage, auth flows), treat it as a secret even if it is not high-entropy. Move
+  it to env/secret manager, rotate the credential if it may have leaked, and
+  remove it from git history if necessary.
+severity: high
+examples:
+  - snippet: 'Authorization: Bearer <hardcoded token>'
+    isCorrect: false
+  - snippet: Read from env/secret manager; no secret literal in repo
+    isCorrect: true

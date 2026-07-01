@@ -1,9 +1,0 @@
-title: Implicit parent-child communication
-rule: >-
-  Avoid implicit communication between parent and child components, such as using `this.$parent`, `this.$root`, or directly mutating props received from the parent. Prefer explicit communication via props down and events up.
-severity: low
-scope: file
-inheritance:
-  inheritable: true
-  exclude: []
-  include: []

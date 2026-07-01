@@ -1,9 +1,0 @@
-title: Always use JSDoc for documentation
-rule: >-
-  Ensure that all classes, fields, and methods are documented with JSDoc. JSDoc improves code clarity, provides documentation for developers, and helps with IDE autocompletion.
-severity: low
-scope: file
-inheritance:
-  inheritable: true
-  exclude: []
-  include: []

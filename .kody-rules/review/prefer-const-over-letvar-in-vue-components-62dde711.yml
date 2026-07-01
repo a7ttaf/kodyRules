@@ -1,9 +1,0 @@
-title: Prefer `const` over `let`/`var` in Vue components
-rule: >-
-  Use `const` for all references by default within Vue components (e.g., imports, non-reassigned variables, refs obtained via `ref()`). Use `let` only when reassignment of the variable itself is necessary (rare for state). Avoid `var` entirely.
-severity: low
-scope: file
-inheritance:
-  inheritable: true
-  exclude: []
-  include: []

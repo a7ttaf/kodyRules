@@ -1,9 +1,0 @@
-title: Component files
-rule: >-
-  Whenever a build system is available to concatenate files, each component should be in its own file.
-severity: low
-scope: file
-inheritance:
-  inheritable: true
-  exclude: []
-  include: []

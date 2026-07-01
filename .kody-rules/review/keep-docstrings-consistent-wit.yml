@@ -1,0 +1,19 @@
+title: Keep docstrings consistent with signature and behavior
+rule: >-
+  Docstrings must match parameter names, optional defaults, return type, and
+  raised exceptions; update the docstring in the same PR as any signature
+  change.
+severity: high
+examples:
+  - snippet: |-
+      def foo(x: int, y: int = 0) -> int:
+       """Add x and y (default 0).
+      """
+       return x + y
+    isCorrect: true
+  - snippet: |-
+      def foo(x: int, y: int = 0) -> int:
+       """Add a and b.
+      """
+       return x + y
+    isCorrect: false

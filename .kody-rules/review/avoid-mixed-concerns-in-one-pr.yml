@@ -1,0 +1,11 @@
+title: Avoid mixed concerns in one PR
+rule: >-
+  Do not combine mechanical changes (formatting, renames) with behavioral
+  changes. If unavoidable, separate commits and call out which commits are
+  mechanical.
+severity: high
+examples:
+  - snippet: Rename files + change logic silently
+    isCorrect: false
+  - snippet: Mechanical commit separated from logic
+    isCorrect: true

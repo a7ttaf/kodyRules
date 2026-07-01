@@ -1,0 +1,29 @@
+title: String references should not be used
+rule: >-
+  Ensure that string refs are not used in React. String refs are deprecated,
+  make components harder to maintain, and reduce composability. Recommend using
+  function-based refs instead.
+severity: low
+examples:
+  - snippet: |-
+      const Hello = createReactClass({
+        componentDidMount() {
+          const component = this.refs.hello; // Noncompliant
+          // ...
+        },
+        render() {
+          return <div ref="hello">Hello, world.</div>;
+        }
+      });
+    isCorrect: false
+  - snippet: |-
+      const Hello = createReactClass({
+        componentDidMount() {
+          const component = this.hello;
+          // ...
+        },
+        render() {
+          return <div ref={(c) => { this.hello = c; }}>Hello, world.</div>;
+        }
+      });
+    isCorrect: true

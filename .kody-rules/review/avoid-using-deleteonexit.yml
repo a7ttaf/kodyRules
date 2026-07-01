@@ -1,0 +1,10 @@
+title: Avoid Using `deleteOnExit()`
+rule: >-
+  Ensure that `File.deleteOnExit()` is not used, as it can cause memory and
+  resource leaks.
+severity: high
+examples:
+  - snippet: |-
+      File file = new File("file.txt");
+      file.deleteOnExit();  // Noncompliant
+    isCorrect: false

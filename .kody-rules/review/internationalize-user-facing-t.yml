@@ -1,0 +1,10 @@
+title: Internationalize user-facing text with next-intl or next-i18next
+rule: >-
+  Do not hardcode user-visible strings in pages/layouts. Use an i18n library
+  integrated with App Router and load dictionaries on the server.
+severity: low
+examples:
+  - snippet: Hardcoded text in page.tsx
+    isCorrect: false
+  - snippet: Load dictionary on the server and render
+    isCorrect: true

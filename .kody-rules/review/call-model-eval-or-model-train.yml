@@ -1,0 +1,26 @@
+title: Call `model.eval()` or `model.train()` After Loading a PyTorch Model
+rule: >-
+  Verify that after loading a PyTorch model, either `model.eval()` or
+  `model.train()` is called. Failing to do so can result in incorrect behavior,
+  especially for layers like dropout and batch normalization.
+severity: high
+examples:
+  - snippet: >-
+      import torch
+
+      import torchvision.models as models
+
+
+      model = models.vgg16()
+
+      model.load_state_dict(torch.load('model_weights.pth')) # Noncompliant:
+      model.train() or model.eval() was not called.
+    isCorrect: false
+  - snippet: |-
+      import torch
+      import torchvision.models as models
+
+      model = models.vgg16()
+      model.load_state_dict(torch.load('model_weights.pth'))
+      model.eval()
+    isCorrect: true

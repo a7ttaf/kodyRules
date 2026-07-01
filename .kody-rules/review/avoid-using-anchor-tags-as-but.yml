@@ -1,0 +1,24 @@
+title: Avoid using anchor tags as buttons
+rule: >-
+  Detect cases where <a> elements are used as buttons. Anchor tags should be
+  used for navigation, while actions should be assigned to <button> elements to
+  maintain accessibility and expected behavior.
+severity: high
+examples:
+  - snippet: |-
+      const MyComponent = () => {
+          return <>
+              <a href="javascript:void(0)" onClick={foo}>Perform action</a>
+              <a href="#" onClick={foo}>Perform action</a>
+              <a onClick={foo}>Perform action</a>
+          </>;
+      };
+    isCorrect: false
+  - snippet: |-
+      const MyComponent = () => {
+          return <>
+            <button onClick={foo}>Perform action</button>
+            <a href="#section" onClick={foo}>Perform action</a>
+          </>;
+      };
+    isCorrect: true

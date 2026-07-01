@@ -1,0 +1,24 @@
+title: Use keyed `v-for`
+rule: >-
+  `key` with `v-for` is *always* required on components to maintain internal
+  component state down the subtree. Even for elements, it's good practice for
+  predictable behavior like object constancy in animations.
+severity: high
+examples:
+  - snippet: |-
+      <ul>
+        <li v-for="todo in todos">
+          {{ todo.text }}
+        </li>
+      </ul>
+    isCorrect: false
+  - snippet: |-
+      <ul>
+        <li
+          v-for="todo in todos"
+          :key="todo.id"
+        >
+          {{ todo.text }}
+        </li>
+      </ul>
+    isCorrect: true

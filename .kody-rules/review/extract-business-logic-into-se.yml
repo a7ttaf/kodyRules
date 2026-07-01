@@ -1,0 +1,10 @@
+title: Extract business logic into separate methods
+rule: >-
+  Move complex domain calculations out of controllers/handlers into services or
+  private helpers.
+severity: low
+examples:
+  - snippet: controller does all work
+    isCorrect: false
+  - snippet: controller delegates to service
+    isCorrect: true

@@ -1,0 +1,20 @@
+title: Create a New Session on User Authentication
+rule: >-
+  Ensure that a new session is always created upon user authentication to
+  prevent session fixation attacks.
+severity: critical
+examples:
+  - snippet: |-
+      @Override
+      protected void configure(HttpSecurity http) throws Exception {
+         http.sessionManagement()
+           .sessionFixation().none(); // Noncompliant: the existing session will continue
+      }
+    isCorrect: false
+  - snippet: |-
+      @Override
+      protected void configure(HttpSecurity http) throws Exception {
+        http.sessionManagement()
+           .sessionFixation().migrateSession();
+      }
+    isCorrect: true

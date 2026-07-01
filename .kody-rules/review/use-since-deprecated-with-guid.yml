@@ -1,0 +1,15 @@
+title: Use @since/@deprecated with guidance
+rule: >-
+  When introducing or deprecating public APIs, include @since for introductions
+  and @deprecated with migration notes and links for removals.
+severity: low
+examples:
+  - snippet: |-
+      / @deprecated Use newApi() /
+      @Deprecated
+      public void oldApi(){ }
+    isCorrect: true
+  - snippet: |-
+      /* Deprecated */
+      public void oldApi(){ }
+    isCorrect: false

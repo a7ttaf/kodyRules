@@ -1,9 +1,0 @@
-title: One variable per declaration
-rule: >-
-  Ensure that multiple variables are not declared in a single statement. This practice reduces readability and can introduce subtle bugs. Recommend declaring variables separately.
-severity: low
-scope: file
-inheritance:
-  inheritable: true
-  exclude: []
-  include: []

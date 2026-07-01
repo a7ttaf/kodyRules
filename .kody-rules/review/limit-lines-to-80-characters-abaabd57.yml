@@ -1,9 +1,0 @@
-title: Limit lines to 80 characters
-rule: >-
-  Ensure that lines do not exceed 80 characters. Long lines reduce readability, especially on smaller screens or during code reviews.
-severity: low
-scope: file
-inheritance:
-  inheritable: true
-  exclude: []
-  include: []

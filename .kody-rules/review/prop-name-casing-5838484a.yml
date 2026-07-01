@@ -1,9 +1,0 @@
-title: Prop name casing
-rule: >-
-  Prop names should always use camelCase during declaration. When used inside in-DOM templates, props should be kebab-cased. Single-File Components templates and JSX can use either kebab-case or camelCase props. Casing should be consistent.
-severity: low
-scope: file
-inheritance:
-  inheritable: true
-  exclude: []
-  include: []

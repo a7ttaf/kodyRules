@@ -1,9 +1,0 @@
-title: Avoid Monster Classes (Excessive Dependencies)
-rule: >-
-  Ensure that large classes with multiple responsibilities are refactored into smaller, more manageable classes.
-severity: low
-scope: file
-inheritance:
-  inheritable: true
-  exclude: []
-  include: []

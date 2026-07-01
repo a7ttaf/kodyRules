@@ -1,0 +1,10 @@
+title: Add null checks before accessing properties
+rule: >-
+  When accessing properties that may be absent, use optional chaining and
+  sensible defaults.
+severity: high
+examples:
+  - snippet: user.address.city
+    isCorrect: false
+  - snippet: user?.address?.city ?? 'unknown'
+    isCorrect: true

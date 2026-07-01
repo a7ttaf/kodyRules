@@ -1,0 +1,11 @@
+title: Restrict production source maps
+rule: >-
+  Do not expose full, unminified source maps publicly in production. If source
+  maps are required for error tracking, serve them behind authentication or IP
+  allowlists and set "X-Robots-Tag: noindex".
+severity: low
+examples:
+  - snippet: 'X-Robots-Tag: noindex'
+    isCorrect: true
+  - snippet: / serve .map publicly /
+    isCorrect: false

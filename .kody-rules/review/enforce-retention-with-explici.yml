@@ -1,0 +1,13 @@
+title: Enforce retention with explicit TTL per data category
+rule: >-
+  PII tables must include an expires_at (or retention_policy) column and a
+  scheduled deletion/archival job aligned to data category. No indefinite
+  retention. (GDPR Art. 5(1)(e))
+severity: high
+examples:
+  - snippet: DELETE FROM events WHERE expires_at <= NOW();
+    isCorrect: true
+  - snippet: >-
+      SELECT COUNT() FROM events WHERE created_at < NOW() - INTERVAL '5 years';
+      -- but never deleting
+    isCorrect: false

@@ -1,0 +1,11 @@
+title: Version and deprecate APIs with logged contract changes
+rule: >-
+  Expose explicit API versions (e.g., v1, v2). Breaking changes require a
+  deprecation window and a CHANGELOG entry; log api_version in requests for
+  traceability.
+severity: low
+examples:
+  - snippet: 'req.log({ api_version: "v1" })'
+    isCorrect: true
+  - snippet: req.log({})
+    isCorrect: false

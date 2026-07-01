@@ -1,0 +1,12 @@
+title: Quoted attribute values
+rule: >-
+  Non-empty HTML attribute values should always be inside quotes (single or
+  double, whichever is not used in JS).
+severity: low
+examples:
+  - snippet: <input type=text>
+    isCorrect: false
+  - snippet: <input type="text">
+    isCorrect: true
+  - snippet: <input type='text'>
+    isCorrect: true

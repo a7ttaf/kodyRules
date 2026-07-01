@@ -1,0 +1,21 @@
+title: Continue should not be used in loops
+rule: >-
+  Detect the use of 'continue' inside loops. This practice can make control flow
+  harder to follow. Recommend restructuring the loop for better readability.
+severity: low
+examples:
+  - snippet: |2-
+        for (i = 0; i < 10; i++) {
+          if (i == 5) {
+            continue;  /* Noncompliant */
+          }
+          alert("i = " + i);
+        }
+    isCorrect: false
+  - snippet: |2-
+        for (i = 0; i < 10; i++) {
+          if (i != 5) {  /* Compliant */
+            alert("i = " + i);
+          }
+        }
+    isCorrect: true

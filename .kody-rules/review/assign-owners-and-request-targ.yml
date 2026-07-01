@@ -1,0 +1,10 @@
+title: Assign owners and request targeted reviewers
+rule: >-
+  Tag code owners or subject-matter experts for impacted areas. Include a short
+  'What to review' section to guide each reviewer.
+severity: low
+examples:
+  - snippet: '@here please review'
+    isCorrect: false
+  - snippet: Owners + targeted checklist
+    isCorrect: true

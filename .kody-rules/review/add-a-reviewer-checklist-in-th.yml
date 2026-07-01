@@ -1,0 +1,12 @@
+title: Add a reviewer checklist in the PR
+rule: >-
+  Provide a short checklist tailored to this change (e.g., 'logic matches spec',
+  'docs updated', 'flags in place', 'rollback plan noted').
+severity: low
+examples:
+  - snippet: LGTM
+    isCorrect: false
+  - snippet: |-
+      [ ] Tests added
+      [ ] Docs updated
+    isCorrect: true

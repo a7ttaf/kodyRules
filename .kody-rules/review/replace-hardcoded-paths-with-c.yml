@@ -1,0 +1,10 @@
+title: Replace hardcoded paths with configuration
+rule: >-
+  Derive paths/URLs from configuration or environment variables, not string
+  literals in code.
+severity: low
+examples:
+  - snippet: BASE_URL = 'https://prod.example.com'
+    isCorrect: false
+  - snippet: BASE_URL = os.environ['BASE_URL']
+    isCorrect: true

@@ -1,0 +1,16 @@
+title: Tighten workspace globs in pnpm-workspace.yaml
+rule: >-
+  In pnpm-workspace.yaml, explicitly list workspace globs (e.g., "apps/",
+  "packages/") and exclude build outputs (e.g., "/dist", "/build"). Forbid
+  catch-all patterns like "*" or "".
+severity: low
+examples:
+  - snippet: |-
+      packages:
+       - ""
+    isCorrect: false
+  - snippet: |-
+      packages:
+       - "apps/"
+       - "packages/"
+    isCorrect: true

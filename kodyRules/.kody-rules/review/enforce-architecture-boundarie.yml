@@ -1,0 +1,16 @@
+title: Enforce architecture boundaries and layering rules
+rule: >-
+  Do not violate the project's architecture boundaries.
+
+  Examples of violations: Controllers/Views directly querying the database; UI
+  importing infrastructure modules; domain modules importing unrelated domains.
+
+  If the repo defines boundaries (lint rules, Nx tags, dependency-cruiser,
+  ARCHITECTURE.md), enforce them. When in doubt, route all I/O through the
+  intended service/repository layer and keep domain logic isolated.
+severity: high
+examples:
+  - snippet: controller.ts imports prisma/orm and queries DB
+    isCorrect: false
+  - snippet: controller -> service -> repository; boundaries respected
+    isCorrect: true

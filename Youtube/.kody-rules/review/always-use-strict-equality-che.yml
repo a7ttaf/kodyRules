@@ -1,0 +1,16 @@
+title: Always use strict equality checks
+rule: >-
+  Ensure that strict equality (===) is used instead of loose equality (==).
+  Loose equality can lead to unexpected type coercion and logical errors.
+severity: low
+examples:
+  - snippet: |-
+      if (userInput == 0) {
+        console.log('This might cause type coercion vulnerabilities');
+      }
+    isCorrect: false
+  - snippet: |-
+      if (userInput === 0) {
+        console.log('This avoids type coercion issues');
+      }
+    isCorrect: true

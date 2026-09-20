@@ -1,0 +1,11 @@
+title: Implement RBAC with least privilege and deny-by-default
+rule: >-
+  Authorize every request by role and resource scope. Policies must default-deny
+  and require explicit allow; privileged roles (admin, auditor) must be rare and
+  reviewed quarterly.
+severity: high
+examples:
+  - snippet: allow = policy.allows(role, "billing.read", org)
+    isCorrect: true
+  - snippet: allow = user.authenticated
+    isCorrect: false

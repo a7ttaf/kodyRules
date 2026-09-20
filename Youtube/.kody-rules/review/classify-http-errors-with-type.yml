@@ -1,0 +1,10 @@
+title: Classify HTTP errors with type-safe narrowing
+rule: >-
+  Define a discriminated union or error class hierarchy and use user-defined
+  type guards before handling specific cases.
+severity: low
+examples:
+  - snippet: if ((e as any).status) {}
+    isCorrect: false
+  - snippet: 'function isHttp(x:unknown): x is HttpError { /*...*/ }'
+    isCorrect: true

@@ -1,0 +1,10 @@
+title: Provide error handlers to subscription/listener APIs
+rule: >-
+  When subscribing to streams/listeners, always provide an error handler and a
+  deterministic unsubscribe/cleanup path.
+severity: high
+examples:
+  - snippet: ws.onmessage = onMsg
+    isCorrect: false
+  - snippet: ws.onmessage = onMsg; ws.onerror = onErr; ws.onclose = onClose
+    isCorrect: true

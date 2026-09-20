@@ -1,0 +1,6 @@
+title: Do not use the 'with' statement
+rule: >-
+  Detect occurrences of the 'with' statement. This construct is banned in strict
+  mode due to unpredictable behavior and makes debugging harder.
+severity: high
+examples: []

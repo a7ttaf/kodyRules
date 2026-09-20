@@ -1,0 +1,20 @@
+title: Warn when modifying unstable or high-latency endpoints
+rule: >-
+  If a PR changes an API endpoint/controller/route, assess current production
+  health before adding heavier logic.
+
+  - If a monitoring MCP is available (Datadog/Grafana): query current p95
+  latency and error rate for that endpoint.
+
+  - If the endpoint is already degraded, warn against adding heavy queries,
+  blocking I/O, or complex synchronous logic; require performance evidence or a
+  safe rollout plan.
+
+  To enable this check, the PR should reference the endpoint path (e.g., `POST
+  /api/payments`) or the controller/action name.
+severity: high
+examples:
+  - snippet: Changed controller; no endpoint reference; no perf signal
+    isCorrect: false
+  - snippet: Mentions route + includes p95/error snapshot + mitigation
+    isCorrect: true

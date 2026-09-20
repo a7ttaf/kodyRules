@@ -1,0 +1,32 @@
+title: Ensure JSX list components have a key property
+rule: >-
+  Check that JSX list components have unique key properties. Missing keys can
+  cause unnecessary re-renders and lead to state inconsistencies.
+severity: high
+examples:
+  - snippet: |-
+      function Blog(props) {
+        return (
+          <ul>
+            {props.posts.map((post) =>
+              <li> <!-- Noncompliant: When 'posts' are reordered, React will need to recreate the list DOM -->
+                {post.title}
+              </li>
+            )}
+          </ul>
+        );
+      }
+    isCorrect: false
+  - snippet: |-
+      function Blog(props) {
+        return (
+          <ul>
+            {props.posts.map((post) =>
+              <li key={post.id}> <!-- Compliant: id will always be the same even if 'posts' order changes -->
+                {post.title}
+              </li>
+            )}
+          </ul>
+        );
+      }
+    isCorrect: true

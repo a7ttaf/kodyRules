@@ -1,0 +1,19 @@
+title: React children should not be passed as props
+rule: >-
+  Check if React children are passed as regular props instead of being nested
+  inside components. Passing them incorrectly can cause conflicts and reduce
+  clarity.
+severity: high
+examples:
+  - snippet: |-
+      <div children='Children' />
+      <Foo children={<Bar />} />
+
+      React.createElement("div", { children: 'Children' })
+    isCorrect: false
+  - snippet: |-
+      <div>Children</div>
+      <Foo><Bar /></Foo>
+
+      React.createElement("div", {}, 'Children');
+    isCorrect: true

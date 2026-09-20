@@ -1,0 +1,15 @@
+title: Introduce an auditable “break-glass” path only with justification
+rule: >-
+  Emergency access to ePHI must go through a dedicated break_glass path that
+  requires reason, approver, limited time window, and automatic post-incident
+  review. The PR must include changes to the audit log schema and runbook.
+severity: high
+examples:
+  - snippet: |-
+      - Add /emergency-access
+      - no audit updates
+    isCorrect: false
+  - snippet: |-
+      - Add /break_glass with reason+approver
+      - Update audit schema and runbook
+    isCorrect: true

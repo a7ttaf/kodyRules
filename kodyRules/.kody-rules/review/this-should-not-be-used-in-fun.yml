@@ -1,0 +1,24 @@
+title: |
+  "this" should not be used in functional components
+rule: >-
+  Ensure that 'this' is not used in functional components. Functional components
+  do not have a 'this' context. Use props and destructuring for data access
+  instead.
+severity: high
+examples:
+  - snippet: |-
+      function MyComponent(props){
+          const foo = this.props.bar; // Noncompliant: remove 'this'
+          return (
+              <div>{foo}</div>
+          );
+      }
+    isCorrect: false
+  - snippet: |-
+      function MyComponent({bar}){
+          const foo = bar;
+          return (
+              <div>{foo}</div>
+          );
+      }
+    isCorrect: true

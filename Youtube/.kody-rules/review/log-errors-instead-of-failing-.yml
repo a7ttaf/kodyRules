@@ -1,0 +1,10 @@
+title: Log errors instead of failing silently
+rule: >-
+  Every catch block must log or report the error at least once before handling
+  or rethrowing.
+severity: high
+examples:
+  - snippet: catch(e){ /* noop */ }
+    isCorrect: false
+  - snippet: catch(e){ logger.error(e) }
+    isCorrect: true

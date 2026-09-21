@@ -1,0 +1,12 @@
+title: Emit tamper-evident audit logs with required fields
+rule: >-
+  Every security-relevant action must append to an immutable, append-only audit
+  log with fields: timestamp (UTC ISO8601), actor.user_id, actor.role, action,
+  resource.id, result, trace_id, ip, user_agent. Logs must be signed or stored
+  in WORM/immutable storage and forwarded to a SIEM.
+severity: high
+examples:
+  - snippet: '{"action":"user.login","trace_id":"abc","result":"failure"}'
+    isCorrect: true
+  - snippet: '{"action":"user.login"}'
+    isCorrect: false

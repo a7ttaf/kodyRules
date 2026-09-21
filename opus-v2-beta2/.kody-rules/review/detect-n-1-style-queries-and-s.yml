@@ -1,0 +1,10 @@
+title: Detect N+1 style queries and suggest batching
+rule: >-
+  Flag patterns that issue network/database calls inside loops; recommend
+  batching (Promise.all), joins, or aggregate endpoints.
+severity: high
+examples:
+  - snippet: await loop(fetch())
+    isCorrect: false
+  - snippet: await Promise.all(ids.map(fetchUser))
+    isCorrect: true

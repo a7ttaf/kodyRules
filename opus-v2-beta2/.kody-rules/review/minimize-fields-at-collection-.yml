@@ -1,0 +1,11 @@
+title: Minimize fields at collection (privacy by default)
+rule: >-
+  Collect only strictly necessary fields for the declared purpose; mark optional
+  PII as nullable and omit from payloads when empty. Fail requests that include
+  undeclared extra PII keys.
+severity: high
+examples:
+  - snippet: validateKeys(body, ["name","email","phone?"])
+    isCorrect: true
+  - snippet: save(req.body) // accepts extra PII
+    isCorrect: false

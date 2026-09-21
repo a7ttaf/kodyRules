@@ -1,0 +1,18 @@
+title: Simple computed properties
+rule: >-
+  Complex computed properties should be split into as many simpler properties as
+  possible.
+severity: low
+examples:
+  - snippet: |-
+      computed: {
+        complexValue() { /* multiple operations */ }
+      }
+    isCorrect: false
+  - snippet: |-
+      computed: {
+        valuePart1() { /* operation 1 */ },
+        valuePart2() { /* operation 2 */ },
+        finalValue() { return this.valuePart1 + this.valuePart2; }
+      }
+    isCorrect: true

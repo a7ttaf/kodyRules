@@ -1,0 +1,15 @@
+title: Record alternatives considered and trade-offs
+rule: >-
+  Add an 'Alternatives' section listing at least two plausible options with
+  pros/cons and reasons for rejection.
+severity: low
+examples:
+  - snippet: |-
+      ## Alternatives
+      - Kafka
+      - SQS
+    isCorrect: true
+  - snippet: |-
+      ## Alternatives
+      N/A
+    isCorrect: false

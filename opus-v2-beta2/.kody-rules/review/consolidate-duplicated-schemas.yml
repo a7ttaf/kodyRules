@@ -1,0 +1,10 @@
+title: Consolidate duplicated schemas
+rule: >-
+  Avoid maintaining multiple equivalent validators for the same shape;
+  centralize checks in a single function/schema.
+severity: low
+examples:
+  - snippet: isUser1 and isUser2 with identical logic
+    isCorrect: false
+  - snippet: single isUser validator reused
+    isCorrect: true

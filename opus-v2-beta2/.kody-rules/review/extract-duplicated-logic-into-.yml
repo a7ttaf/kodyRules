@@ -1,0 +1,10 @@
+title: Extract duplicated logic into functions
+rule: >-
+  Duplicate sequences of statements must be extracted into a named function or
+  utility.
+severity: low
+examples:
+  - snippet: x.price*x.qty // repeated
+    isCorrect: false
+  - snippet: function lineTotal(i){ return i.price*i.qty }
+    isCorrect: true

@@ -1,0 +1,11 @@
+title: Mask PII in logs (CPF, email, phone)
+rule: >-
+  Never write raw personal data to logs. Apply irreversible masking/redaction
+  (e.g., CPF → ..-; emails → f**@domain.com). Include the LGPD purpose in the
+  log context and prefer structured logging.
+severity: high
+examples:
+  - snippet: 'logger.info("export", { email: maskEmail(user.email) })'
+    isCorrect: true
+  - snippet: 'logger.info("export", { email: user.email })'
+    isCorrect: false

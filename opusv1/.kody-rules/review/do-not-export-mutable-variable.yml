@@ -1,0 +1,16 @@
+title: Do not export mutable variables
+rule: >-
+  Check if modules export mutable variables. Mutable exports can be modified by
+  other modules, leading to unpredictable behavior. Recommend exporting
+  immutable values instead.
+severity: high
+examples:
+  - snippet: |-
+      let mutableVar = "initial value";
+
+      export { mutableVar }; // Noncompliant
+    isCorrect: false
+  - snippet: |-
+      const immutableVar = "constant value";
+      export { immutableVar };
+    isCorrect: true

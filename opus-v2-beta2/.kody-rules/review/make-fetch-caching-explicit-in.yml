@@ -1,0 +1,10 @@
+title: Make fetch caching explicit in Server Components
+rule: >-
+  For dynamic data use { cache: 'no-store' } or file-level dynamic =
+  'force-dynamic'. For ISR use { next: { revalidate: N, tags: [...] } }.
+severity: high
+examples:
+  - snippet: fetch(url) with no options
+    isCorrect: false
+  - snippet: fetch(url,{ cache:'no-store' }) // real-time dashboard
+    isCorrect: true

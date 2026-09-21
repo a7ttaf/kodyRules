@@ -1,0 +1,19 @@
+title: A module should not import itself
+rule: >-
+  Identify cases where a module imports itself. Self-imports are usually
+  unintentional and can cause confusion or unnecessary dependencies. Suggest
+  removing them.
+severity: high
+examples:
+  - snippet: |
+      // file: foo.js
+      import foo from './foo'; // Noncompliant
+
+      const foo = require('./foo'); // Noncompliant
+    isCorrect: false
+  - snippet: |-
+      // file: index.js
+      import index from '.'; // Noncompliant
+
+      const index = require('.'); // Noncompliant
+    isCorrect: true

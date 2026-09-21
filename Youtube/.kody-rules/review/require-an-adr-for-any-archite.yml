@@ -1,0 +1,12 @@
+title: Require an ADR for any architectural or cross-team decision
+rule: >-
+  For changes that affect architecture, data models, external APIs, security
+  posture, deployment topology, or cost (>10%), create an ADR in docs/adr/ using
+  the standard template (Context, Decision, Consequences) and link the PR and
+  issue IDs.
+severity: critical
+examples:
+  - snippet: docs/adr/0007-adopt-grpc.md
+    isCorrect: true
+  - snippet: 'README: ''we changed to gRPC'' (no ADR, no issue/PR links)'
+    isCorrect: false

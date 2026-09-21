@@ -1,0 +1,11 @@
+title: Enforce TLS 1.2+ and HSTS on all external endpoints
+rule: >-
+  Public services must require TLSv1.2 or higher and set HSTS (max-age ≥
+  15552000, includeSubDomains). Reject plaintext HTTP and weak ciphers; cookies
+  must be Secure and HttpOnly with SameSite set.
+severity: critical
+examples:
+  - snippet: 'Strict-Transport-Security: max-age=31536000; includeSubDomains'
+    isCorrect: true
+  - snippet: 'Strict-Transport-Security: max-age=0'
+    isCorrect: false
